@@ -24,5 +24,7 @@ void pede_dados(char *nome, int *numero,char *mail, int *nota_final);
 Aluno *cria_estrutura(char *nome, int numero, char  *mail, int nota_final);
 void imprimir_aluno (Aluno *a);
 bool aprovacao(int nota_final);
+//Aluno *editar_aluno (Linkedlist *l, Aluno *a);	
+//Aluno/**??**/ *remover_aluno (Linkedlist *l, Aluno *a);
 
 #endif // FUNCOES_H_INCLUDED
