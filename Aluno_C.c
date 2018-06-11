@@ -5,10 +5,8 @@
 #include "Aluno_H.h"
 
 
-Aluno *cria_aluno (){
+void pede_dados (char *nome, int* numero, char *mail, int* nota_final){
 
-    char nome[30], mail[30];
-    int numero, nota_final;
     fflush(stdin);
     printf("\n\n");
     printf("\t\t\tIntroduza os seguintes dados\t\t\t");
@@ -16,13 +14,11 @@ Aluno *cria_aluno (){
     printf("Nome: ");
     gets(nome);
     printf("Numero: ");
-    scanf("%d", &numero);
-    printf("Mail: ");
-    scanf("%s", &mail);
+    scanf("%d", numero);
+    printf("E-mail: ");
+    scanf("%s", mail);
     printf("Nota Final: ");
-    scanf("%d", &nota_final);
-
-    cria_estrutura(nome,numero,mail,nota_final);
+    scanf("%d", nota_final);
 
 }
 
@@ -47,20 +43,7 @@ Aluno *cria_estrutura(char *nome, int numero, char  *mail, int nota_final){
 
 
 void imprimir_aluno (Aluno *a){
-
-    printf("************************");
-    printf("\n");
-        printf("Nome do Aluno: %s ", a->nome);
-        printf("\n");
-        printf("Numero do Aluno: %d ", a->numero);
-        printf("\n");
-        printf("Mail do Aluno: %s ", a->mail);
-        printf("\n");
-        printf("Nota Final do Aluno: %d ", a->nota_final);
-        printf("\n");
-        printf("Estado do Aluno: %s", a->estado);
-        printf("\n");
-
+    printf("| %s | %d | %s | %d | %s |\n", a->nome, a->numero, a->mail, a->nota_final, a->estado);
 }
 
 bool aprovacao(int nota_final){
