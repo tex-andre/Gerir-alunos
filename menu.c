@@ -53,7 +53,7 @@ void menu(LinkedList *l)
         break;
     }
     }while (op!=6);
-    printf("Adeus");
+    printf("ADeus");
 
 }
 
