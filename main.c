@@ -7,6 +7,7 @@
 
 int main(){
 
+    printf(" O Duarte domina o GITHUB \n");
     LinkedList *l = create();
 
     menu(l);
