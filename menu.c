@@ -95,8 +95,18 @@ void menu_gerir_alunos(LinkedList *l)
     case 2 :
         //editar_aluno();
         break;
-    case 3 :
+    case 3 : ;
         //remover_aluno();
+        int numero;
+        printf("Qual o a num do aluno a remover?");
+        scanf("%d", &numero);
+        int resultado = remove_node(l, numero);
+        if (resultado == 1)
+            printf("Removido com sucesso!!\n");
+        else
+            printf("Nao encontrado / nao removido...\n");
+
+        print_list(l);
         break;
     case 4 :
 

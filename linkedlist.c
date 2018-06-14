@@ -295,8 +295,8 @@ int contains(LinkedList *l, Aluno* info)
 
 #warning TODO (tex#1#): Em  falta
 
-/**
-int remove_node(LinkedList *l, int info)
+
+int remove_node(LinkedList *l, int num_aluno)
 {
     Node *aux, *aux1;
     // 1:Lista vazia
@@ -306,7 +306,7 @@ int remove_node(LinkedList *l, int info)
     {
         aux = l->head;
         // valor no inicio
-        if (aux->data == info)
+        if (aux->aluno->numero == num_aluno)
         {
             // 2:Lista com um elemento
             if (l->head == l->tail)
@@ -324,7 +324,7 @@ int remove_node(LinkedList *l, int info)
             return 1;
         }
         // Vai procurar o valor
-        while (aux->next != NULL && aux->next->data != info)
+        while (aux->next != NULL && aux->next->aluno->numero != num_aluno)
             aux = aux->next;
         // se o valor existe
         if (aux->next != NULL)
