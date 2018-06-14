@@ -37,7 +37,8 @@
 
 #ifndef LINKEDLIST_H_INCLUDED
 #define LINKEDLIST_H_INCLUDED
-#include "Aluno_H.h"
+#include "Aluno.h"
+
 
 typedef struct _Node {
     Aluno* aluno;

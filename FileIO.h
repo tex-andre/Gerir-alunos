@@ -1,6 +1,5 @@
 #ifndef FILEIO_H_INCLUDED
 #define FILEIO_H_INCLUDED
-
 #include "linkedlist.h"
 
 FILE* escreve_f(const char* local);

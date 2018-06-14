@@ -1,26 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Aluno_H.h"
+#include "linkedlist.h"
 #include "menu.h"
+#include "FileIO.h"
 #include <conio.h>
 
 int main(){
 
-    menu();
-    system("cls");
+    LinkedList *l = create();
+
+    menu(l);
+
+    /************Definição de Variavéis**************/
+    //char nome[30], mail[30], estado[11];
+    //int numero, nota_final;
 
 
-    /************Definição de Variavéis****************/
-
-    char nome[30], mail[30], estado[11];
-    int numero, nota_final;
-
-
-
-    /************Criação de estrutura****************/
-
-    Aluno *aluno1=cria_aluno();
-    imprimir_aluno(aluno1);
     return 0;
 } //main
 

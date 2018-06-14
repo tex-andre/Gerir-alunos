@@ -26,7 +26,7 @@
 *       void    reverse(LinkedList *l);
 *       void    print_list(LinkedList *l);
 *
-* AUTHOR :    Renato Panda (renato.panda@ipt.pt) DATE :    13 May 17
+* AUTHOR :    Renato Panda (renato.pansystem("cls");da@ipt.pt) DATE :    13 May 17
 *
 * CHANGES :
 *
@@ -38,7 +38,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "linkedlist.h"
-
 
 
 /**F*****************************************************************
