@@ -53,7 +53,7 @@ void menu(LinkedList *l)
         break;
     }
     }while (op!=6);
-    printf("Adeus");
+    printf("good bye");
 
 }
 
@@ -79,7 +79,7 @@ void menu_gerir_alunos(LinkedList *l)
 
     switch (op)
     {
-    case 1: ;
+    case 1: {
         Aluno *a;
         a = cria_aluno();
         if (a != NULL) {
@@ -92,10 +92,11 @@ void menu_gerir_alunos(LinkedList *l)
         //  se não existir função guardar na lista ligada!!
         //menu();
         break;
+    }
     case 2 :
         //editar_aluno();
         break;
-    case 3 : ;
+    case 3 : {
         //remover_aluno();
         int numero;
         printf("Qual o a num do aluno a remover?");
@@ -108,6 +109,7 @@ void menu_gerir_alunos(LinkedList *l)
 
         print_list(l);
         break;
+    }
     case 4 :
 
         break;
