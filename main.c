@@ -7,7 +7,7 @@
 
 int main(){
 
-    printf(" O André já domina o GITHUB \n");
+    printf(" O Andre e o Duarte ja dominam o GITHUB \n");
 
     LinkedList *l = create();
 
