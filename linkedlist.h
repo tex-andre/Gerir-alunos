@@ -62,7 +62,9 @@ Aluno* peek_tail(LinkedList *l);
 int remove_first(LinkedList *l);        //done
 int remove_last(LinkedList *l);         //done
 int length(LinkedList *l);              //done
-Node* find(LinkedList *l, Aluno* info);   //done
+Node* find(LinkedList *l);
+Node* find_by_name(LinkedList *l, Aluno* info);
+Node* find_by_number(LinkedList *l, Aluno* info);   //done
 void sort(LinkedList *l);
 void reverse(LinkedList *l);
 void print_list(LinkedList *l);

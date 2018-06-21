@@ -123,7 +123,7 @@ void menu_pesquisa(LinkedList *l)
     printf("\n\n");
     printf("\t\t\tMenu de Pesquisa");
     printf("\n\n");
-    printf("\t\t\t1) Pesquisa\n"); // Temos de decidir o que colocar nos menus
+    printf("\t\t\t1) Pesquisar aluno\n"); // Temos de decidir o que colocar nos menus
     printf("\t\t\t2) \n");
     printf("\t\t\t3) \n");
     printf("\n\n");
@@ -141,7 +141,7 @@ void menu_pesquisa(LinkedList *l)
     {
 
     case 1 :
-        //
+        find(l);
         break;
     case 2 :
         // mostrar os alunos que pertencem ao mesmo curso
@@ -371,6 +371,11 @@ void menu_remover_alunos(LinkedList *l){
     default:
         break;
     }
+
+
+}
+
+void menu_find(LinkedList *l){
 
 
 }

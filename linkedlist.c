@@ -685,8 +685,73 @@ int length(LinkedList *l)
 *
 */
 
-Node* find(LinkedList *l, Aluno* info)
+Node* find(LinkedList *l)
 {
+    int op;
+
+    printf("\t\t\t1) Nome\n"); // Temos de decidir o que colocar nos menus
+    printf("\t\t\t2) Numero\n");
+    printf("\n\n");
+
+
+    do
+    {
+        printf("Deseja pesquisar o aluno por:");
+        scanf("%d", &op);
+        system("cls");
+    }
+    while(op<1||op>5);
+
+    switch (op)
+    {
+
+    case 1 : ;
+        char nome[20];
+        printf("Qual o a nome do aluno a encontrar?");
+        getchar();
+        gets(nome);
+        int resultado = find_by_name(l, &nome);
+        if (resultado == 1)
+            printf("encontrado com sucesso!!\n");
+        else
+            printf("Nao encontrado...\n");
+
+        break;
+    case 2 : ;
+        int numero;
+        printf("Qual o a num do aluno a encontar?");
+        scanf("%d", &numero);
+        int resultado_num = find_by_number(l, &numero);
+        if (resultado_num == 1)
+            printf("encontrado com sucesso!!\n");
+        else
+            printf("Nao encontrado...\n");
+        break;
+    case 3 :
+
+        break;
+    case 4 :
+
+        break;
+    case 5 :
+
+        break;
+        break;
+
+    default:
+        break;
+    }
+
+
+}
+
+/***strcmp(aux->aluno->nome, info->nome) != 0)   //Compara nome
+            return 0;
+        else if(aux->aluno->numero != info->numero)     //Compara numero
+            return 0;***/
+
+Node* find_by_name(LinkedList *l, Aluno* info){
+
     Node* aux;
 
     aux = l->head;
@@ -697,18 +762,47 @@ Node* find(LinkedList *l, Aluno* info)
     // Enquanto não for o últimmo elemento e nao for
     // encontrado o elemento, precorre a lista
     while (aux != NULL)
-        if(strcmp(aux->aluno->nome, info->nome) != 0)   //Compara nome
-            return 0;
-        else if(aux->aluno->numero != info->numero)     //Compara numero
-            return 0;
+    {
+        if(strcmp(aux->aluno->nome, info->nome) == 0)
+            return 1;
 
         aux = aux->next;
+
+        printf(" Nome: %s\n", info->nome); // apenas um teste
+    }
     if (aux == NULL)
         return NULL;
     else
         return aux;
+
 }
 
+
+Node* find_by_number(LinkedList *l, Aluno* info){
+
+    Node* aux;
+
+    aux = l->head;
+    //lista vazia?
+    if(l->head == NULL)
+        return 0;
+
+    // Enquanto não for o últimmo elemento e nao for
+    // encontrado o elemento, precorre a lista
+    while (aux != NULL)
+    {
+        if(aux->aluno->numero == info->numero)
+            return 1;
+
+        aux = aux->next;
+        printf("Numero: %d\n", info->numero);
+    }
+    if (aux == NULL)
+        return NULL;
+    else
+        return aux;
+
+}
 /**F*****************************************************************
 * NAME :            int length()
 *
