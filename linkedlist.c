@@ -396,7 +396,7 @@ int remove_node(LinkedList *l, int num_aluno)
 //#warning TODO (tex#1#): Em  falta
 
 
-char remove_node_by_name(LinkedList *l, char nome_aluno)
+int remove_node_by_name(LinkedList *l, char *nome_aluno)
 {
     Node *aux, *aux1;
     // 1:Lista vazia
@@ -406,7 +406,7 @@ char remove_node_by_name(LinkedList *l, char nome_aluno)
     {
         aux = l->head;
         // valor no inicio
-        if (aux->aluno->nome == nome_aluno)
+        if (strcmpi(aux->aluno->nome,nome_aluno)==0)
         {
             // 2:Lista com um elemento
             if (l->head == l->tail)
@@ -424,7 +424,7 @@ char remove_node_by_name(LinkedList *l, char nome_aluno)
             return 1;
         }
         // Vai procurar o valor
-        while (aux->next != NULL && aux->next->aluno->nome != nome_aluno)
+        while (aux->next != NULL && strcmpi(aux->next->aluno->nome,nome_aluno)!=0)
             aux = aux->next;
         // se o valor existe
         if (aux->next != NULL)

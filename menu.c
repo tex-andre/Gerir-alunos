@@ -333,8 +333,9 @@ void menu_remover_alunos(LinkedList *l){
         #warning TODO (tex#1#): não consigo remover um aluno por nome será que consegues dar uma olhadela ao que fiz??
             char nome[20];
             printf("Qual o nome do aluno que deseja remover?");
+             getchar(); // limpa o enter anterior
             gets(nome);
-            char resultado = remove_node_by_name(l, nome);
+            int resultado = remove_node_by_name(l, nome);
             if (resultado == 1)
                 printf("Removido com sucesso!!\n");
             else

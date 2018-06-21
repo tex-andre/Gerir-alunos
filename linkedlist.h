@@ -56,7 +56,7 @@ int insert_tail(LinkedList *l, Aluno* info);
 int insert_head(LinkedList *l, Aluno* info);
 int contains(LinkedList *l, Aluno* info);
 int remove_node(LinkedList *l, int num_aluno);
-char remove_node_by_name(LinkedList *l, char nome_aluno);
+int remove_node_by_name(LinkedList *l, char *nome_aluno);
 Aluno* peek_head(LinkedList *l);
 Aluno* peek_tail(LinkedList *l);
 int remove_first(LinkedList *l);        //done
@@ -66,6 +66,6 @@ Node* find(LinkedList *l, Aluno* info);   //done
 void sort(LinkedList *l);
 void reverse(LinkedList *l);
 void print_list(LinkedList *l);
-
+void print_node (Aluno *a);
 
 #endif // LINKEDLIST_H_INCLUDED

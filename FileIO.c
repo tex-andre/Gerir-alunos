@@ -6,6 +6,8 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "FileIO.h"
 #include "linkedlist.h"
 
@@ -50,7 +52,7 @@ FILE* escreve_fB(const char* local){
 
 /************************************************/
 
-FILE* le_fB(const char local){
+FILE* le_fB(const char *local){
     FILE* ptr = fopen(local, "rb");
     if(ptr == NULL){
         printf("\nErro a aceder ao ficheiro!\n");
@@ -100,7 +102,6 @@ A função  recebe a localização do ficheiro de origem e a localização do ficheiro
 a modificar.*/
 
 int copia_ficheiro(const char* origem, const char* destino){
-    int i;
     FILE* fp_leitura = le_f(origem);    // Cria ponteiro para aceder ao ficheiro origem em modo de leitura
 
     fseek(fp_leitura, 0, SEEK_END);     // Faz a contagem do número de  caracteres existentes no ficheiro
