@@ -64,7 +64,7 @@ bool aprovacao(unsigned short nota_final){
     return (nota_final >= 10) ? 1 : 0;
 }
 
-Aluno* editar_aluno (Aluno *a){
+int editar_aluno (Aluno* a){
 
 
 }

@@ -144,6 +144,12 @@ int insert_tail(LinkedList *l, Aluno* info)
 
     if (n == NULL || n->aluno == NULL)
         return 0;
+
+    if(contains(l, info)){
+        printf("\nERRO: Este aluno ja existe na lista, nao foi adicionado!\n");
+        return 0;
+    }
+
     n->aluno = info;
     n->next = NULL;
     // lista vazia
@@ -195,6 +201,12 @@ int insert_head(LinkedList *l, Aluno* info)
 
     if (n == NULL || n->aluno == NULL)
         return 0;
+
+    if(contains(l, info)){
+        printf("\nERRO: Este aluno ja existe na lista, nao foi adicionado!\n");
+        return 0;
+    }
+
     n->aluno = info;
     n->next = NULL;
     // lista vazia
@@ -246,10 +258,9 @@ int contains(LinkedList *l, Aluno* info)
     // Enquanto não for o últimmo elemento e nao for
     // encontrado o elemento, precorre a lista
     while (aux != NULL){
-        if(strcmp(aux->aluno->nome, info->nome) != 0)   //Compara nome
-            return 0;
-        else if(aux->aluno->numero != info->numero)     //Compara numero
-            return 0;
+        if(strcmp(aux->aluno->nome, info->nome) == 0 &&
+           aux->aluno->numero == info->numero)   //Compara nome  e numero
+            return 1;
 
         aux = aux->next;
     }
@@ -265,11 +276,11 @@ int contains(LinkedList *l, Aluno* info)
 /**F*****************************************************************
 * NAME :            int remove_node(LinkedList *l, int info)
 *
-* DESCRIPTION :     Removes a value from the Linked List
+* DESCRIPTION :     Removes a value from the Linked List by is number
 *
 * INPUTS :
 *       LinkedList *l   -> Memory address (pointer) of the list
-*       int info        -> integer value to be removed
+*       int num_aluno        -> integer value to be removed
 *
 * RETURN :
 *       Type:   int                    Error code:
@@ -293,7 +304,7 @@ int contains(LinkedList *l, Aluno* info)
 *
 */
 
-#warning TODO (tex#1#): Em  falta
+//#warning TODO (tex#1#): Em  falta
 
 
 int remove_node(LinkedList *l, int num_aluno)
@@ -351,6 +362,94 @@ int remove_node(LinkedList *l, int num_aluno)
     }
 }
 
+/**F*****************************************************************
+* NAME :            int remove_node(LinkedList *l, int info)
+*
+* DESCRIPTION :     Removes a value from the Linked List by is number
+*
+* INPUTS :
+*       LinkedList *l   -> Memory address (pointer) of the list
+*       int num_aluno        -> integer value to be removed
+*
+* RETURN :
+*       Type:   int                    Error code:
+*       Values: 1                      value was removed successfully
+*               0                      value not found/not removed
+*
+* PROCESS :
+*                   [1]  Iterate over the list of nodes, remove the node and free memory if the value is found
+*
+* NOTES :           There are 6 possible conditions covered here:
+*                       1 - The list is empty (no node to remove)
+*                       2 - The value is the first node AND the list has only one element
+*                       3 - The value is the first node AND the list has many values
+*                       4 - The value is the last nod
+*                       5 - The value is in the middle
+*                       6 - The value is NOT present
+*
+* CHANGES :
+* REF NO    DATE    WHO     DETAIL
+*           13May17 panda   Original Code
+*
+*/
+
+//#warning TODO (tex#1#): Em  falta
+
+
+char remove_node_by_name(LinkedList *l, char nome_aluno)
+{
+    Node *aux, *aux1;
+    // 1:Lista vazia
+    if (l->head == NULL)
+        return 0;
+    else
+    {
+        aux = l->head;
+        // valor no inicio
+        if (aux->aluno->nome == nome_aluno)
+        {
+            // 2:Lista com um elemento
+            if (l->head == l->tail)
+            {
+                l->head = NULL;
+                l->tail = NULL;
+                free(aux);
+            }
+            else
+            {
+                // 3:Lista com vários elementos
+                l->head = l->head->next;
+                free(aux);
+            }
+            return 1;
+        }
+        // Vai procurar o valor
+        while (aux->next != NULL && aux->next->aluno->nome != nome_aluno)
+            aux = aux->next;
+        // se o valor existe
+        if (aux->next != NULL)
+        {
+            // 4:se é o ultimo valor da lista
+            if (aux->next == l->tail)
+            {
+                l->tail = aux;
+                free(aux->next);
+                l->tail->next = NULL;
+            }
+            else
+            {
+                // 5:esta no meio da lista
+                aux1 = aux->next;
+                aux->next = aux->next->next;
+                free(aux1);
+            }
+            return 1;
+        }
+        else
+            // 6:valor não existe
+            return 0;
+    }
+}
 
 
 

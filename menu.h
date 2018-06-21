@@ -9,10 +9,11 @@
 
  void menu(LinkedList *l);
  void menu_gerir_alunos(LinkedList *l);
- void menu_pesquisa();
- void menu_importar();
- void menu_exportar();
- void menu_sair_guardar();
+ void menu_pesquisa(LinkedList *l);
+ void menu_importar(LinkedList *l);
+ void menu_exportar(LinkedList *l);
+ void menu_remover_alunos(LinkedList *l);
+ void menu_sair_guardar(LinkedList *l);
 
 
 #endif // MENU_H_INCLUDED

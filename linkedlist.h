@@ -55,7 +55,8 @@ void destroy(LinkedList *l);
 int insert_tail(LinkedList *l, Aluno* info);
 int insert_head(LinkedList *l, Aluno* info);
 int contains(LinkedList *l, Aluno* info);
-int remove_node(LinkedList *l, int info);
+int remove_node(LinkedList *l, int num_aluno);
+char remove_node_by_name(LinkedList *l, char nome_aluno);
 Aluno* peek_head(LinkedList *l);
 Aluno* peek_tail(LinkedList *l);
 int remove_first(LinkedList *l);        //done
