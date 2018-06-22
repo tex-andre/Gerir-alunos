@@ -19,7 +19,7 @@ FILE* escreve_f(const char* local){
         printf("\nErro a aceder ao ficheiro!\n");
         exit(1);
     }else
-        printf("\nFicheiro \"%s\" encontrado com sucesso!\n", local);
+        printf("\nFicheiro \"%s\" criado com sucesso!\n", local);
 
     return ptr;
 }
@@ -45,7 +45,7 @@ FILE* escreve_fB(const char* local){
         printf("\nErro a aceder ao ficheiro!\n");
         exit(1);
     }else
-        printf("\nFicheiro \"%s\" encontrado com sucesso!\n", local);
+        printf("\nFicheiro \"%s\" criado com sucesso!\n", local);
 
     return ptr;
 }
@@ -125,16 +125,25 @@ int copia_ficheiro(const char* origem, const char* destino){
 /************************************************/
 
 void input_lista(FILE* fp, LinkedList* l){
-    int i = 5;
-    char buffer[30];
-    while(!feof(fp)){
-        fgets(buffer, 30, fp);
-        strtok(buffer, "\n");
-        Aluno* a = cria_estrutura(buffer, i, "aluno@ipt.pt", rand() %21);
+    char* nome;
+    char mail[30];
+    int numero;
+    unsigned short nota;
 
-        i--;
+    char buffer[80];
+    while(!feof(fp)){
+        fgets(buffer, 80, fp);
+        strtok(buffer, "\n");
+        if(buffer[0] != '\n'){
+            nome = strtok(buffer, "|");
+            numero = atoi(strtok(NULL, "|"));
+            strcpy(mail, strtok(NULL, "|"));
+            nota = atoi(strtok(NULL, "|"));
+
+        Aluno* a = cria_estrutura(nome, numero, mail, nota);
 
         insert_tail(l, a);
+        }
     }
 }
 
@@ -178,10 +187,10 @@ int output_lista(char* destino, LinkedList* l){
 void formato_txt(FILE* fp, LinkedList* l){
     Node* aux = l->head;
 
-    fprintf(fp, "Nome do aluno | Numero | e-mail | Nota final | Estado\n");
+    //fprintf(fp, "Nome do aluno | Numero | e-mail | Nota final | Estado\n");
 
     while(aux != NULL){
-        fprintf(fp, "%s | %d | %s | %d | %s\n", aux->aluno->nome, aux->aluno->numero, aux->aluno->mail, aux->aluno->nota_final, aux->aluno->estado);
+        fprintf(fp, "%s|%d|%s|%d|%s\n", aux->aluno->nome, aux->aluno->numero, aux->aluno->mail, aux->aluno->nota_final, aux->aluno->estado);
         aux = aux->next;
     }
     printf("Ficheiro guardado com sucesso!\n");
@@ -194,7 +203,7 @@ void formato_txt(FILE* fp, LinkedList* l){
 void formato_csv(FILE* fp, LinkedList* l){
     Node* aux = l->head; // Cria nó temporário para aceder aos elementos da lista
 
-    fprintf(fp, "Nome do aluno;Numero;e-mail;Nota final;Estado\n");
+    //fprintf(fp, "Nome do aluno;Numero;e-mail;Nota final;Estado\n");
 
     while(aux != NULL){
         fprintf(fp, "%s;%d;%s;%d;%s\n", aux->aluno->nome, aux->aluno->numero, aux->aluno->mail, aux->aluno->nota_final, aux->aluno->estado);
