@@ -158,7 +158,7 @@ int output_lista(const char* destino, LinkedList* l){
     //lista vazia
     if(aux == NULL)
         return 0;
-    printf("Formato para guardar o ficheiro:\n");
+    printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2  Formato para guardar o ficheiro:\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2 \n");
     printf("\t1. Texto(.txt)\n");
     printf("\t2. Excel(.csv)\n");
     printf("\t3. HTML(.html)\n");
@@ -178,6 +178,8 @@ int output_lista(const char* destino, LinkedList* l){
     case 3:
         formato_html(fp, l);
         break;
+    default:
+    break;
     }
     return 1;
 }
