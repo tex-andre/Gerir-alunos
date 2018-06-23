@@ -721,11 +721,12 @@ Node* find(LinkedList *l)
         int numero;
         printf("Qual o a num do aluno a encontar?");
         scanf("%d", &numero);
-        int resultado_num = find_by_number(l, &numero);
-        if (resultado_num == 1)
-            printf("encontrado com sucesso!!\n");
+
+        if(find_by_number(l, nome))
+            printf("Encontrado com sucesso!\n");
         else
             printf("Nao encontrado...\n");
+
         break;
     case 3 :
 
