@@ -211,7 +211,7 @@ void formato_txt(char* destino, LinkedList* l){
         aux = aux->next;
     }
     fprintf(fp, "\\---------------------------------------------------------------/\n");
-    fprintf(fp, "Lista guardada com sucesso!\n");
+    printf("Lista guardada com sucesso!\n");
 
 
 }
