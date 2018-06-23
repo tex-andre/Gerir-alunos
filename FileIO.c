@@ -281,14 +281,20 @@ void formato_html(char* destino, LinkedList* l){
     fprintf(fp, "<h1>\nLista de alunos\n</h1>");
     fprintf(fp, "<table>\n");
 
+    fprintf(fp, "\n<td><b>Nome:</b></td>");
+    fprintf(fp, "\n<td><b>Numero:</b></td>");
+    fprintf(fp, "\n<td><b>E-mail:</b></td>");
+    fprintf(fp, "\n<td><b>Nota final:</b></td>");
+    fprintf(fp, "\n<td><b>Estado:</b></td>");
+
     while(aux != NULL){
         fprintf(fp, "<tr>");
 
-        fprintf(fp, "\n<td><b>Nome:</b> %s</td>", aux->aluno->nome);
-        fprintf(fp, "\n<td><b>Numero:</b> %d</td>", aux->aluno->numero);
-        fprintf(fp, "\n<td><b>E-mail:</b> %s</td>", aux->aluno->mail);
-        fprintf(fp, "\n<td><b>Nota final:</b> %hu</td>", aux->aluno->nota_final);
-        fprintf(fp, "\n<td><b>Estado:</b> %s</td>", aux->aluno->estado);
+        fprintf(fp, "\n<td>%s</td>", aux->aluno->nome);
+        fprintf(fp, "\n<td>%d</td>", aux->aluno->numero);
+        fprintf(fp, "\n<td>%s</td>", aux->aluno->mail);
+        fprintf(fp, "\n<td>%hu</td>", aux->aluno->nota_final);
+        fprintf(fp, "\n<td>%s</td>", aux->aluno->estado);
 
         fprintf(fp, "\n</tr>");
     aux = aux->next;
