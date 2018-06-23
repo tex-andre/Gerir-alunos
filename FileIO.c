@@ -150,15 +150,19 @@ void input_lista(FILE* fp, LinkedList* l){
 
 /************************************************/
 
-int output_lista(const char* destino, LinkedList* l){
+int output_lista(LinkedList* l){
     int opc;
+    char destino[30] = "Ficheiros\\";
+    char file_name[20] = {"0"};
 
-    FILE* fp = escreve_f(destino);
     Node* aux = l->head;
 
     //lista vazia
     if(aux == NULL)
         return 0;
+    printf("\nIntroduza o nome do ficheiro (sem extencao): ");
+    scanf("%s", &file_name);
+    strcat(destino, file_name);
     printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2  Formato para guardar o ficheiro:\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2 \n");
     printf("\t1. Texto(.txt)\n");
     printf("\t2. Excel(.csv)\n");
@@ -167,17 +171,20 @@ int output_lista(const char* destino, LinkedList* l){
 
     do
         scanf("%d", &opc);
-    while(opc < 1 || opc > 2);
+    while(opc < 1 || opc > 3);
 
     switch(opc){
     case 1:
-        formato_txt(fp, l);
+        strcat(destino, ".txt");
+        formato_txt(destino, l);
         break;
     case 2:
-        formato_csv(fp, l);
+        strcat(destino, ".csv");
+        formato_csv(destino, l);
         break;
     case 3:
-        formato_html(fp, l);
+        strcat(destino, ".html");
+        formato_html(destino, l);
         break;
     default:
     break;
@@ -187,39 +194,106 @@ int output_lista(const char* destino, LinkedList* l){
 
 /************************************************/
 
-void formato_txt(FILE* fp, LinkedList* l){
+void formato_txt(char* destino, LinkedList* l){
     Node* aux = l->head;
 
-    //fprintf(fp, "Nome do aluno | Numero | e-mail | Nota final | Estado\n");
+    FILE* fp = escreve_f(destino);
 
-    while(aux != NULL){
-        fprintf(fp, "%s|%d|%s|%d|%s\n", aux->aluno->nome, aux->aluno->numero, aux->aluno->mail, aux->aluno->nota_final, aux->aluno->estado);
+    fprintf(fp, "/---------------------------------------------------------------\\\n");
+    fprintf(fp, "|************** Alunos de Tecnicas de programacao **************|\n");
+    fprintf(fp, "| Numero de alunos: %d\t\t\t\t\t\t|\n", length(l));
+    fprintf(fp, "|---------------------------------------------------------------|\n");
+
+    while(aux != NULL)
+    {
+        fprint_node(fp, aux->aluno);
+        fprintf(fp, "|---------------------------------------------------------------|\n");
         aux = aux->next;
     }
-    printf("Ficheiro guardado com sucesso!\n");
+    fprintf(fp, "\\---------------------------------------------------------------/\n");
+    fprintf(fp, "Lista guardada com sucesso!\n");
 
-    free(aux);
+
 }
 
 /************************************************/
 
-void formato_csv(FILE* fp, LinkedList* l){
-    Node* aux = l->head; // Cria nó temporário para aceder aos elementos da lista
+void fprint_node (FILE* fp, Aluno *a){
 
-    //fprintf(fp, "Nome do aluno;Numero;e-mail;Nota final;Estado\n");
+    fprintf(fp, "| Nome: %s", a->nome);
+    fprint_tabs(fp, a->nome);
+    fprintf(fp, "|\n");
+
+    fprintf(fp, "| Numero: %d", a->numero);
+    fprintf(fp, "\t\t\t\t\t\t\t|\n");
+
+    fprintf(fp, "| E-mail: %s", a->mail);
+    fprint_tabs(fp, a->mail);
+    fprintf(fp, "|\n");
+
+    fprintf(fp, "| Nota final:  %d", a->nota_final);
+    fprintf(fp, "\t\t\t\t\t\t|\n");
+
+    fprintf(fp, "| Estado: %s", a->estado);
+    fprintf(fp, "\t\t\t\t\t\t|\n");
+
+}
+
+/************************************************/
+
+void fprint_tabs(FILE* fp, char* str){
+    int i;
+
+    size_t size = strlen(str);
+
+    short tab_num = (size / 8) + 1;
+
+    for (i=0;  (i + tab_num) < 8; i++)
+        fprintf(fp, "\t");
+}
+
+/************************************************/
+
+void formato_csv(char* destino, LinkedList* l){
+    Node* aux = l->head; // Cria nó temporário para aceder aos elementos da lista
+    FILE* fp = escreve_f(destino);
+
+    fprintf(fp, "Nome do aluno;Numero;e-mail;Nota final;Estado\n");
 
     while(aux != NULL){
         fprintf(fp, "%s;%d;%s;%d;%s\n", aux->aluno->nome, aux->aluno->numero, aux->aluno->mail, aux->aluno->nota_final, aux->aluno->estado);
         aux = aux->next;
     }
-    printf("Ficheiro guardado com sucesso!\n");
-    free(aux);
+    printf("Lista guardada com sucesso!\n");
+
 }
 
 /************************************************/
 
-void formato_html(FILE* fp, LinkedList* l){
-    Node* aux = l->head;
+void formato_html(char* destino, LinkedList* l){
+    Node* aux = l->head; // Cria nó temporário para aceder aos elementos da lista
+    FILE* fp = escreve_f(destino);
 
-    free(aux);
+    fprintf(fp, "<style>\ntable, th, td {border: 1px solid black;\nborder-collapse: collapse;padding: 5px;}\n</style>");
+
+    fprintf(fp, "\n<img src=\"logo-ipt.png\" alt=\"IPT\" width=\"500\" height=\"119\">"); // Logo do ipt
+
+    fprintf(fp, "<h1>\nLista de alunos\n</h1>");
+    fprintf(fp, "<table>\n");
+
+    while(aux != NULL){
+        fprintf(fp, "<tr>");
+
+        fprintf(fp, "\n<td><b>Nome:</b> %s</td>", aux->aluno->nome);
+        fprintf(fp, "\n<td><b>Numero:</b> %d</td>", aux->aluno->numero);
+        fprintf(fp, "\n<td><b>E-mail:</b> %s</td>", aux->aluno->mail);
+        fprintf(fp, "\n<td><b>Nota final:</b> %hu</td>", aux->aluno->nota_final);
+        fprintf(fp, "\n<td><b>Estado:</b> %s</td>", aux->aluno->estado);
+
+        fprintf(fp, "\n</tr>");
+    aux = aux->next;
+        }
+    fprintf(fp, "\n<table>\n");
+
+    printf("Lista guardada com sucesso!\n");
 }

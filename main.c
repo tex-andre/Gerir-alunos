@@ -7,16 +7,15 @@
 
 int main(){
     const char* origem = "Ficheiros\\Participantes.txt";
-    const char* destino ="Ficheiros\\Destino.txt";
 
     LinkedList* l = create();
     FILE* fp = le_f(origem);
 
     input_lista(fp, l);
 
-    menu(l);
+    //menu(l);
 
-    output_lista(destino, l);
+    output_lista(l);
 
     destroy(l);
     return 0;
