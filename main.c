@@ -14,7 +14,7 @@ int main(){
 
     input_lista(fp, l);
 
-    print_list(l);
+    menu(l);
 
     output_lista(destino, l);
 

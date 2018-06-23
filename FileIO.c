@@ -145,6 +145,7 @@ void input_lista(FILE* fp, LinkedList* l){
         insert_tail(l, a);
         }
     }
+    printf("\nLista importada com socesso!\n");
 }
 
 /************************************************/
