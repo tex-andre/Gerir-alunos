@@ -6,16 +6,17 @@
 #include <conio.h>
 
 int main(){
-    const char* participantes = "Ficheiros\\Participantes.txt";
-    const char* teste ="Ficheiros\\Destino.txt";
+    const char* origem = "Ficheiros\\Participantes.txt";
+    const char* destino ="Ficheiros\\Destino.txt";
+
     LinkedList* l = create();
-    FILE* fp = le_f(participantes);
+    FILE* fp = le_f(origem);
 
     input_lista(fp, l);
 
     print_list(l);
 
-    output_lista(teste, l);
+    output_lista(destino, l);
 
     destroy(l);
     return 0;

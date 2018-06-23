@@ -149,7 +149,7 @@ void input_lista(FILE* fp, LinkedList* l){
 
 /************************************************/
 
-int output_lista(char* destino, LinkedList* l){
+int output_lista(const char* destino, LinkedList* l){
     int opc;
 
     FILE* fp = escreve_f(destino);
