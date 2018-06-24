@@ -9,8 +9,8 @@ FILE* le_fB(const char *local);
 FILE* cria_ponteiros (const char* local);
 int output_lista(LinkedList* l);
 void formato_txt(char* destino, LinkedList* l);
-void fprint_node (FILE* fp, Aluno *a);
-void fprint_tabs(FILE* fp, char* str);
+void fprint_node_txt (FILE* fp, Aluno *a);
+void fprint_tabs_txt (FILE* fp, char* str);
 void formato_csv(char* destino, LinkedList* l);
 void formato_html(char* destino, LinkedList* l);
 

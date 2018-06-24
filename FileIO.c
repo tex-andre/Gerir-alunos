@@ -1,9 +1,8 @@
-/*  Biblioteca para manipulação de ficheiros
-*
-*
-*
-*
-*/
+/*******************************************************\
+*   Biblioteca para manipulação de ficheiros            *
+*   associados ao trabalho de técnicas de programação   *
+*                                                       *
+********************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,8 +10,11 @@
 #include "FileIO.h"
 #include "linkedlist.h"
 
+/************************************************
+Descrição:
+Retorna um ponteiro FILE para escrita de texto "w"
+*/
 
-/************************************************/
 FILE* escreve_f(const char* local){
     FILE* ptr = fopen(local, "w");
     if(ptr == NULL){
@@ -24,7 +26,10 @@ FILE* escreve_f(const char* local){
     return ptr;
 }
 
-/************************************************/
+/************************************************
+Descrição:
+Retorna um ponteiro FILE para leitura de texto "r"
+*/
 
 FILE* le_f (const char* local){
     FILE* ptr = fopen(local, "r");
@@ -37,7 +42,10 @@ FILE* le_f (const char* local){
     return ptr;
 }
 
-/************************************************/
+/************************************************
+Descrição:
+Retorna um ponteiro FILE para escrita binária "wb"
+*/
 
 FILE* escreve_fB(const char* local){
     FILE* ptr = fopen(local, "wb");
@@ -50,7 +58,10 @@ FILE* escreve_fB(const char* local){
     return ptr;
 }
 
-/************************************************/
+/************************************************
+Descrição:
+Retorna um ponteiro FILE para leitura binária "rb"
+*/
 
 FILE* le_fB(const char *local){
     FILE* ptr = fopen(local, "rb");
@@ -62,7 +73,8 @@ FILE* le_fB(const char *local){
     return ptr;
 }
 
-/************************************************/
+/************************************************
+Descrição: */
 
 FILE* cria_ponteiros (const char* local){
     int opc;
@@ -71,7 +83,7 @@ FILE* cria_ponteiros (const char* local){
     printf("Manipulacao de ficheiros\nOpcoes:\n");
     printf("1: Escrever\n");
     printf("2: Ler\n");
-    printf("3: Apagar\n");
+    printf("3: Apagar (Em construcao)\n");
     printf("4: Copiar ficheiro\n");
     printf("Escolha: ");
     do
@@ -85,8 +97,11 @@ FILE* cria_ponteiros (const char* local){
             ptr = le_f(local);
             break;
         case 3:
+            //Em falta
             break;
         case 4:
+            //Em falta: pedir diretorias ao utilizador
+            //copia_ficheiro(origem, destino);
             break;
         default:
             ptr = NULL;
@@ -95,8 +110,9 @@ FILE* cria_ponteiros (const char* local){
     return ptr;
 }
 
-/************************************************/
-/*  Esta função copia o conteúdo de um ficheiro de texto existente e guarda-o em
+/************************************************
+Descrição:
+Esta função copia o conteúdo de um ficheiro de texto existente e guarda-o em
 outro ficheiro de  texto numa localização defenida pelo  utilizador.
 A função  recebe a localização do ficheiro de origem e a localização do ficheiro
 a modificar.*/
@@ -122,24 +138,32 @@ int copia_ficheiro(const char* origem, const char* destino){
    return 1;
 }
 
-/************************************************/
+/************************************************
+Descrição:
+Importa uma lista através do ponteiro fp para FILE
+e guarda o conteúdo numa lista.
+*/
 
 void input_lista(FILE* fp, LinkedList* l){
+    // Variáveis da estrutura Aluno
     char* nome;
     char mail[30];
     int numero;
     unsigned short nota;
 
-    char buffer[80];
+    char buffer[80]; // buffer temporário
+
     while(!feof(fp)){
         fgets(buffer, 80, fp);
-        strtok(buffer, "\n");
-        if(buffer[0] != '\n'){
+        strtok(buffer, "\n");       // Retira "\n" do fim da string lida
+        if(buffer[0] != '\n'){      // Previne a utilização de uma string composta apenas por "\n",
+                                    // relacionado com a forma de escrita de cada nó da lista.
             nome = strtok(buffer, "|");
-            numero = atoi(strtok(NULL, "|"));
+            numero = atoi(strtok(NULL, "|")); // "|" : Caracter e de separação
             strcpy(mail, strtok(NULL, "|"));
             nota = atoi(strtok(NULL, "|"));
 
+        // Cria estrutura Aluno com dados lidos e incere na lista
         Aluno* a = cria_estrutura(nome, numero, mail, nota);
 
         insert_tail(l, a);
@@ -148,21 +172,28 @@ void input_lista(FILE* fp, LinkedList* l){
     printf("\nLista importada com socesso!\n");
 }
 
-/************************************************/
+/************************************************
+Descrição:
+Exporta a lista para diferentes formatos predefinidos
+que o utilizador pode escolher.
+*/
 
 int output_lista(LinkedList* l){
     int opc;
     char destino[30] = "Ficheiros\\";
-    char file_name[20] = {"0"};
+    char file_name[20] = {"0"}; // nome do ficheiro para guardar lista
 
     Node* aux = l->head;
 
-    //lista vazia
+    //lista vazia?
     if(aux == NULL)
         return 0;
+
     printf("\nIntroduza o nome do ficheiro (sem extencao): ");
-    scanf("%s", &file_name);
-    strcat(destino, file_name);
+
+    scanf("%s", &file_name);        // lê nome do ficheiro
+    strcat(destino, file_name);     // adiciona o nome do ficheiro à directoria de destino
+
     printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2  Formato para guardar o ficheiro:\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2 \n");
     printf("\t1. Texto(.txt)\n");
     printf("\t2. Excel(.csv)\n");
@@ -174,15 +205,15 @@ int output_lista(LinkedList* l){
     while(opc < 1 || opc > 3);
 
     switch(opc){
-    case 1:
+    case 1:                 // Formato de texto
         strcat(destino, ".txt");
         formato_txt(destino, l);
         break;
-    case 2:
+    case 2:                 // Formato csv
         strcat(destino, ".csv");
         formato_csv(destino, l);
         break;
-    case 3:
+    case 3:                 // Formato HTML
         strcat(destino, ".html");
         formato_html(destino, l);
         break;
@@ -192,7 +223,10 @@ int output_lista(LinkedList* l){
     return 1;
 }
 
-/************************************************/
+/************************************************
+Descrição:
+Exporta a lista em formato de texto
+*/
 
 void formato_txt(char* destino, LinkedList* l){
     Node* aux = l->head;
@@ -206,7 +240,7 @@ void formato_txt(char* destino, LinkedList* l){
 
     while(aux != NULL)
     {
-        fprint_node(fp, aux->aluno);
+        fprint_node_txt(fp, aux->aluno);
         fprintf(fp, "|---------------------------------------------------------------|\n");
         aux = aux->next;
     }
@@ -216,20 +250,24 @@ void formato_txt(char* destino, LinkedList* l){
 
 }
 
-/************************************************/
+/************************************************
+Descrição:
+Escreve o conteúdo da estrutura Aluno de um nó para
+o ficheiro de texto.
+*/
 
-void fprint_node (FILE* fp, Aluno *a){
+void fprint_node_txt (FILE* fp, Aluno *a){
 
     fprintf(fp, "| Nome: %s", a->nome);
-    fprint_tabs(fp, a->nome);
+    fprint_tabs(fp, a->nome);           // escreve o número de tabs correcto para uma string
+                                        // de modo a estar formatado
     fprintf(fp, "|\n");
-
     fprintf(fp, "| Numero: %d", a->numero);
     fprintf(fp, "\t\t\t\t\t\t\t|\n");
 
     fprintf(fp, "| E-mail: %s", a->mail);
     fprint_tabs(fp, a->mail);
-    fprintf(fp, "|\n");
+    fprintf(fp, "|\n");                 // Insere caracter separador
 
     fprintf(fp, "| Nota final:  %d", a->nota_final);
     fprintf(fp, "\t\t\t\t\t\t|\n");
@@ -239,7 +277,11 @@ void fprint_node (FILE* fp, Aluno *a){
 
 }
 
-/************************************************/
+/************************************************
+Descrição:
+Escreve o número de tabs correcto para uma string
+de modo a que a informação esteja formatada.
+*/
 
 void fprint_tabs(FILE* fp, char* str){
     int i;
@@ -252,7 +294,10 @@ void fprint_tabs(FILE* fp, char* str){
         fprintf(fp, "\t");
 }
 
-/************************************************/
+/************************************************
+Descrição:
+Exporta lista em formato csv.
+*/
 
 void formato_csv(char* destino, LinkedList* l){
     Node* aux = l->head; // Cria nó temporário para aceder aos elementos da lista
@@ -268,19 +313,27 @@ void formato_csv(char* destino, LinkedList* l){
 
 }
 
-/************************************************/
+/************************************************
+Descrição:
+Exporta lista em formato HTML.
+*/
 
 void formato_html(char* destino, LinkedList* l){
-    Node* aux = l->head; // Cria nó temporário para aceder aos elementos da lista
-    FILE* fp = escreve_f(destino);
+    Node* aux = l->head;                // Cria nó temporário para aceder aos elementos da lista
+    FILE* fp = escreve_f(destino);      // ponteiro para escrita em texto
 
+    //titulo da página
+    fprintf(fp, "<head>\n<title>Lista de Alunos</title>\n</head>\n");
+    // Formatação da tabela
     fprintf(fp, "<style>\ntable, th, td {border: 1px solid black;\nborder-collapse: collapse;padding: 5px;}\n</style>");
+    // imagem do logo do ipt
+    fprintf(fp, "\n<img src=\"http://portal2.ipt.pt/img/logo.png\" alt=\"IPT Logo\" width=\"348\" height=\"65\">\n");
+    // Header
+    fprintf(fp, "<h1>Lista de alunos</h1>\n");
 
-    fprintf(fp, "\n<img src=\"logo-ipt.png\" alt=\"IPT\" width=\"500\" height=\"119\">"); // Logo do ipt
-
-    fprintf(fp, "<h1>\nLista de alunos\n</h1>");
-    fprintf(fp, "<table>\n");
-
+    // Cria uma tabela para escrever a lista de alunos
+    fprintf(fp, "<table>");
+    // Headers de cada coluna
     fprintf(fp, "\n<td><b>Nome:</b></td>");
     fprintf(fp, "\n<td><b>Numero:</b></td>");
     fprintf(fp, "\n<td><b>E-mail:</b></td>");
@@ -289,7 +342,7 @@ void formato_html(char* destino, LinkedList* l){
 
     while(aux != NULL){
         fprintf(fp, "<tr>");
-
+        // conteúdo da tabela
         fprintf(fp, "\n<td>%s</td>", aux->aluno->nome);
         fprintf(fp, "\n<td>%d</td>", aux->aluno->numero);
         fprintf(fp, "\n<td>%s</td>", aux->aluno->mail);
