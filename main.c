@@ -8,8 +8,11 @@
 int main(){
     const char* origem = "Ficheiros\\Participantes.txt";
 
+    printf(" O Andre e o Duarte ja dominam o GITHUB \n");
+
     LinkedList* l = create();
     FILE* fp = le_f(origem);
+
 
     input_lista(fp, l);
 
