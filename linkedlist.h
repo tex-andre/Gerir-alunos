@@ -42,6 +42,7 @@
 
 typedef struct _Node {
     Aluno* aluno;
+    struct _Node *prev;
     struct _Node *next;
 } Node;
 
@@ -59,12 +60,12 @@ int remove_node(LinkedList *l, int num_aluno);
 int remove_node_by_name(LinkedList *l, char *nome_aluno);
 Aluno* peek_head(LinkedList *l);
 Aluno* peek_tail(LinkedList *l);
-int remove_first(LinkedList *l);        //done
-int remove_last(LinkedList *l);         //done
-int length(LinkedList *l);              //done
+int remove_first(LinkedList *l);
+int remove_last(LinkedList *l);
+int length(LinkedList *l);
 Node* find(LinkedList *l);
 Node* find_by_name(LinkedList *l, Aluno* info);
-Node* find_by_number(LinkedList *l, Aluno* info);   //done
+Node* find_by_number(LinkedList *l, Aluno* info);
 void sort(LinkedList *l);
 void reverse(LinkedList *l);
 void print_list(LinkedList *l);
