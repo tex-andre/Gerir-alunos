@@ -1,6 +1,6 @@
 # Gerir-alunos
 
 ## Trabalho final de TP
-Duarte Miguel e AndrÈ Qualquer Coisa
+Duarte Miguel e Andr√© Teixeira
 
-AndrÈ, n„o estragues o projecto que eu estou a fazer. Ass. Duarte.
+Andr√©, n√£o estragues o projecto que eu estou a fazer. Ass. Duarte.
