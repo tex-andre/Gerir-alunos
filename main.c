@@ -12,7 +12,7 @@ int main(){
     printf(" O Andre e o Duarte ja dominam o GITHUB \n");
 
     LinkedList *l = create();
-    input_lista(origem, l);
+    input_lista(fp, l);
     print_list(l);
     remove_first(l);
     print_list(l);
