@@ -9,7 +9,7 @@ void menu(LinkedList *l)
 
     printf("\n\n");
     printf("\tWelcome to the most horrifying program ever: Gestao de Alunos de Tecnicas de Programacao\t\t\t");
-    printf("\n\n");
+    printf("\ngestao de alunos\n");
     printf("\t\t\t1) Gerir Lista de Alunos\n");
     printf("\t\t\t2) Pesquisa\n");
     printf("\t\t\t3) Importar Lista de Alunos\n");
@@ -103,12 +103,6 @@ void menu_gerir_alunos(LinkedList *l)
 
         break;
     }
-    case '4' :
-
-        break;
-    case '5' :
-
-        break;
 
     default:
         break;
@@ -146,16 +140,6 @@ void menu_pesquisa(LinkedList *l)
     case 2 :
         // mostrar os alunos que pertencem ao mesmo curso
         break;
-    case 3 :
-
-        break;
-    case 4 :
-
-        break;
-    case 5 :
-
-        break;
-        break;
 
     default:
         break;
@@ -191,19 +175,6 @@ void menu_importar(LinkedList *l)
 
     case 1 :
         //
-        break;
-    case 2 :
-
-        break;
-    case 3 :
-
-        break;
-    case 4 :
-
-        break;
-    case 5 :
-
-        break;
         break;
 
     default:
@@ -241,19 +212,7 @@ void menu_exportar(LinkedList *l)
     case 1 :
         //
         break;
-    case 2 :
 
-        break;
-    case 3 :
-
-        break;
-    case 4 :
-
-        break;
-    case 5 :
-
-        break;
-        break;
 
     default:
         break;
@@ -289,16 +248,6 @@ void menu_sair_guardar(LinkedList *l){
         break;
     case 2 :
         // mostrar os alunos que pertencem ao mesmo curso
-        break;
-    case 3 :
-
-        break;
-    case 4 :
-
-        break;
-    case 5 :
-
-        break;
         break;
 
     default:
@@ -357,16 +306,6 @@ void menu_remover_alunos(LinkedList *l){
 
         print_list(l);
         break;
-    case '3' : {
-
-        break;
-    }
-    case '4' :
-
-        break;
-    case '5' :
-
-        break;
 
     default:
         break;
@@ -376,6 +315,13 @@ void menu_remover_alunos(LinkedList *l){
 }
 
 void menu_find(LinkedList *l){
+
+
+}
+
+
+void print_menu_header(char* str){
+    printf("%c", 186);
 
 
 }
