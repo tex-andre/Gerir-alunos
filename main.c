@@ -12,13 +12,7 @@ int main(){
 
     LinkedList* l = create();
     FILE* fp = le_f(origem);
-
-
-    input_lista(fp, l);
-
-    //menu(l);
-
-    output_lista(l);
+    print_menu_header("fasfsa");
 
     destroy(l);
     return 0;
