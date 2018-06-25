@@ -6,18 +6,21 @@
 #include <conio.h>
 
 int main(){
+    const char* origem = "Ficheiros\\Participantes.txt";
 
     printf(" O Andre e o Duarte ja dominam o GITHUB \n");
 
-    LinkedList *l = create();
-
-    menu(l);
-
-    /************Definição de Variavéis**************/
-    //char nome[30], mail[30], estado[11];
-    //int numero, nota_final;
+    LinkedList* l = create();
+    FILE* fp = le_f(origem);
 
 
+    input_lista(fp, l);
+
+    //menu(l);
+
+    output_lista(l);
+
+    destroy(l);
     return 0;
 } //main
 
