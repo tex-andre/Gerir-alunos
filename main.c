@@ -15,7 +15,7 @@ int main(){
     LinkedList* l = create();
     FILE* fp = le_f(origem);
 
-    //menu(l);
+    menu(l);
     input_list(fp, l);
 
     printf("%f\n", media_final(l));
