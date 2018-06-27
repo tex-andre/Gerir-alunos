@@ -908,14 +908,14 @@ void print_list(LinkedList *l)
 void print_node (Aluno *a){
 
     printf("| Nome: %s", a->nome);
-    print_tabs(a->nome);
+    print_tabs(a->nome, 8);
     printf("|\n");
 
     printf("| Numero: %d", a->numero);
     printf("\t\t\t\t\t\t\t|\n");
 
     printf("| E-mail: %s", a->mail);
-    print_tabs(a->mail);
+    print_tabs(a->mail, 8);
     printf("|\n");
 
     printf("| Nota final:  %d", a->nota_final);
@@ -926,13 +926,13 @@ void print_node (Aluno *a){
 
 }
 
-void print_tabs(char* str){
+void print_tabs(char* str, int tab_count){
     int i;
 
     size_t size = strlen(str);
 
     short tab_num = (size / 8) + 1;
 
-    for (i=0;  (i + tab_num) < 8; i++)
+    for (i=0;  (i + tab_num) < tab_count; i++)
         printf("\t");
 }
