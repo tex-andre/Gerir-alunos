@@ -57,14 +57,13 @@ Aluno *cria_estrutura(char *nome, int numero, char  *mail, unsigned short nota_f
 }
 
 
-<<<<<<< HEAD
+
 void imprimir_aluno (Aluno *a){
     //printf("\n| %s | %d | %s | %hu | %s |\n", a->nome, a->numero, a->mail, a->nota_final, a->estado);
 
 }
 
-=======
->>>>>>> origin/Menu-padrão
+
 bool aprovacao(unsigned short nota_final){
     return (nota_final >= 10) ? 1 : 0;
 }

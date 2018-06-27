@@ -98,12 +98,11 @@ void menu_gerir_alunos(LinkedList *l)
 
         break;
     }
-<<<<<<< HEAD
-=======
+
     case '4': {
         break;
     }
->>>>>>> origin/Menu-padrão
+
 
     default:
         break;
@@ -139,11 +138,10 @@ void menu_pesquisa(LinkedList *l)
     case '2' :
         // mostrar os alunos que pertencem ao mesmo curso
         break;
-<<<<<<< HEAD
-=======
+
     case '3':
         break;
->>>>>>> origin/Menu-padrão
+
 
     default:
         break;
@@ -299,11 +297,10 @@ void menu_remover_alunos(LinkedList *l){
 
         print_list(l);
         break;
-<<<<<<< HEAD
-=======
+
     case '3':
         break;
->>>>>>> origin/Menu-padrão
+
 
     default:
         break;

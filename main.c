@@ -18,8 +18,8 @@ int main(){
     menu(l);
     input_list(fp, l);
 
-<<<<<<< HEAD
-    input_lista(fp, l);
+
+
 
     menu(l);
     print_list(l);
@@ -27,13 +27,13 @@ int main(){
 
 
 
-    output_lista(l);
-=======
+
+
     printf("%f\n", media_final(l));
     media = media_final(l);
     printf("%f", media);
     //output_lista(l);
->>>>>>> origin/Menu-padrão
+
 
 
     destroy(l);
