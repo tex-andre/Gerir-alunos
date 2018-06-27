@@ -144,7 +144,7 @@ Importa uma lista através do ponteiro fp para FILE
 e guarda o conteúdo numa lista.
 */
 
-void input_lista(FILE* fp, LinkedList* l){
+void input_list(FILE* fp, LinkedList* l){
     // Variáveis da estrutura Aluno
     char* nome;
     char mail[30];
@@ -178,7 +178,7 @@ Exporta a lista para diferentes formatos predefinidos
 que o utilizador pode escolher.
 */
 
-int output_lista(LinkedList* l){
+int output_list(LinkedList* l){
     int opc;
     char destino[30] = "Ficheiros\\";
     char file_name[20] = {"0"}; // nome do ficheiro para guardar lista
@@ -194,26 +194,28 @@ int output_lista(LinkedList* l){
     scanf("%s", &file_name);        // lê nome do ficheiro
     strcat(destino, file_name);     // adiciona o nome do ficheiro à directoria de destino
 
-    printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2  Formato para guardar o ficheiro:\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2 \n");
-    printf("\t1. Texto(.txt)\n");
-    printf("\t2. Excel(.csv)\n");
-    printf("\t3. HTML(.html)\n");
-    printf("Opc: ");
+    print_menu_header("Formato para guardar o ficheiro:");
+    print_menu_option("1. Texto(.txt)");
+    print_menu_option("2. Excel(.csv)");
+    print_menu_option("3. HTML(.html)");
+    print_menu_end_line();
 
-    do
-        scanf("%d", &opc);
-    while(opc < 1 || opc > 3);
+    do{
+        printf("%c%cOpcao: ", 8, 13);
+        fflush(stdin);
+        opc = getc(stdin);
+    }while(opc < '1' || opc > '3');
 
     switch(opc){
-    case 1:                 // Formato de texto
+    case '1':                 // Formato de texto
         strcat(destino, ".txt");
         formato_txt(destino, l);
         break;
-    case 2:                 // Formato csv
+    case '2':                 // Formato csv
         strcat(destino, ".csv");
         formato_csv(destino, l);
         break;
-    case 3:                 // Formato HTML
+    case '3':                 // Formato HTML
         strcat(destino, ".html");
         formato_html(destino, l);
         break;

@@ -7,7 +7,7 @@ FILE* le_f (const char* local);
 FILE* escreve_fB(const char* local);
 FILE* le_fB(const char *local);
 FILE* cria_ponteiros (const char* local);
-int output_lista(LinkedList* l);
+int output_list(LinkedList* l);
 void formato_txt(char* destino, LinkedList* l);
 void fprint_node_txt (FILE* fp, Aluno *a);
 void fprint_tabs_txt (FILE* fp, char* str);

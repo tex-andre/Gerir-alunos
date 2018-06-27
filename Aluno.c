@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include "Aluno.h"
+#include "linkedlist.h"
 
 
 Aluno* cria_aluno(){
@@ -56,11 +57,14 @@ Aluno *cria_estrutura(char *nome, int numero, char  *mail, unsigned short nota_f
 }
 
 
+<<<<<<< HEAD
 void imprimir_aluno (Aluno *a){
     //printf("\n| %s | %d | %s | %hu | %s |\n", a->nome, a->numero, a->mail, a->nota_final, a->estado);
 
 }
 
+=======
+>>>>>>> origin/Menu-padrão
 bool aprovacao(unsigned short nota_final){
     return (nota_final >= 10) ? 1 : 0;
 }
@@ -68,5 +72,41 @@ bool aprovacao(unsigned short nota_final){
 int editar_aluno (Aluno* a){
 
 
+}
+
+int num_aprovados(LinkedList* l){
+    //Lista vazia?
+    if(l->head == NULL){
+        printf("\nERRO: lista vazia!!\n");;
+        return 0;
+    }
+    Node* aux = l->head;
+    int num = 0;
+
+    while(aux != NULL){
+        if(aprovacao(aux->aluno->nota_final))
+            num++;                              //conta elementos da lista aprovados
+        aux = aux->next;
+    }
+    return num;
+}
+
+float media_final(LinkedList* l){
+    //Lista vazia?
+    if(l->head == NULL){
+        printf("\nERRO: lista vazia!!\n");;
+        return 0;
+    }
+
+    float soma = 0;
+    float media;
+    Node* aux = l->head;
+
+    while(aux != NULL){
+        soma += aux->aluno->nota_final;
+        aux = aux->next;
+    }
+    media = (float)soma /length(l);
+    return (float)media;
 }
 

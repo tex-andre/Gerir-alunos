@@ -6,53 +6,49 @@ void menu(LinkedList *l)
 
     char op;
     do{
-
-    printf("\n\n");
-    printf("\tWelcome to the most horrifying program ever: Gestao de Alunos de Tecnicas de Programacao\t\t\t");
-    printf("\n\n");
-    printf("\t\t\t1) Gerir Lista de Alunos\n");
-    printf("\t\t\t2) Pesquisa\n");
-    printf("\t\t\t3) Importar Lista de Alunos\n");
-    printf("\t\t\t4) Exportar Lista de Alunos\n");
-    printf("\t\t\t5) Sair e Guardar\n");
-    printf("\t\t\t6) Sair\n");
-    printf("\n\n");
-
-    do
-    {
-        printf("Bem-vindo, introduza a sua opcao:");
-        fflush(stdin);
-        scanf("%c", &op);
         system("cls");
+        printf("\n");
+        print_menu_header("Gestao de alunos");
+        print_menu_option("1) Gerir Lista de Alunos");
+        print_menu_option("2) Pesquisa");
+        print_menu_option("3) Importar Lista de Alunos");
+        print_menu_option("4) Exportar Lista de Alunos");
+        print_menu_option("5) Sair e Guardar");
+        print_menu_option("6) Sair");
+        print_menu_end_line();
+
+        do{
+            printf("%c%cBem-vindo, introduza a sua opcao: ", 8, 13);
+            fflush(stdin);
+            op = getc(stdin);
+
+        }while(op < '0' || op > '6');
+
+        switch (op)
+        {
+
+        case '1' :
+            menu_gerir_alunos(l);
+
+            break;
+        case '2' :
+            menu_pesquisa(l);
+            break;
+        case '3' :
+            menu_importar(l);
+            break;
+        case '4' :
+            menu_exportar(l);
+            break;
+        case '5' :
+            menu_sair_guardar(l);
+            break;
+
+        default:
+            break;
+        }
     }
-    while(op < '0' || op > '6');
-
-    switch (op)
-    {
-
-    case '1' :
-        menu_gerir_alunos(l);
-
-        break;
-    case '2' :
-        menu_pesquisa(l);
-        break;
-    case '3' :
-        menu_importar(l);
-        break;
-    case '4' :
-        menu_exportar(l);
-        break;
-    case '5' :
-        menu_sair_guardar(l);
-        break;
-
-
-
-    default:
-        break;
-    }
-    }while (op != '6');
+    while (op != '6');
     printf("Good bye");
 
 }
@@ -60,21 +56,20 @@ void menu(LinkedList *l)
 void menu_gerir_alunos(LinkedList *l)
 {
     char op;
-
-    printf("\n\n");
-    printf("\t\t\tMenu Gerir Alunos");
-    printf("\n\n");
-    printf("\t\t\t1) Adicionar novo aluno\n");
-    printf("\t\t\t2) Editar aluno\n");
-    printf("\t\t\t3) Remover um aluno\n");
-    printf("\n\n");
+    system("cls");
+    printf("\n");
+    print_menu_header("Menu Gerir Alunos");
+    print_menu_option("1) Adicionar novo aluno");
+    print_menu_option("2) Editar aluno");
+    print_menu_option("3) Remover um aluno");
+    print_menu_option("4) Voltar");
+    print_menu_end_line();
 
     do
     {
-        printf("Introduza a sua opcao:");
+        printf("%c%cIntroduza a sua opcao: ", 8, 13);
         fflush(stdin);
-        scanf("%c", &op);
-        system("cls");
+        op = getc(stdin);
     }
     while(op < '1' || op > '5');
 
@@ -103,6 +98,12 @@ void menu_gerir_alunos(LinkedList *l)
 
         break;
     }
+<<<<<<< HEAD
+=======
+    case '4': {
+        break;
+    }
+>>>>>>> origin/Menu-padr√£o
 
     default:
         break;
@@ -112,177 +113,135 @@ void menu_gerir_alunos(LinkedList *l)
 
 void menu_pesquisa(LinkedList *l)
 {
-
     int op;
-    printf("\n\n");
-    printf("\t\t\tMenu de Pesquisa");
-    printf("\n\n");
-    printf("\t\t\t1) Pesquisar aluno\n"); // Temos de decidir o que colocar nos menus
-    printf("\t\t\t2) \n");
-    printf("\t\t\t3) \n");
-    printf("\n\n");
-
+    system("cls");
+    printf("\n");
+    print_menu_header("Menu de Pesquisa");
+    print_menu_option("1) Pesquisar aluno");
+    print_menu_option("2) ");
+    print_menu_option("3) Voltar");
+    print_menu_end_line();
 
     do
     {
-        printf("Introduza a sua opcao:");
-        scanf("%d", &op);
-        system("cls");
+        printf("%c%cIntroduza a sua opcao: ", 8, 13);
+        fflush(stdin);
+        op = getc(stdin);
     }
-    while(op<1||op>5);
+    while(op< '1'|| op> '5');
 
     switch (op)
     {
 
-    case 1 :
+    case '1' :
         find(l);
         break;
-    case 2 :
+    case '2' :
         // mostrar os alunos que pertencem ao mesmo curso
         break;
+<<<<<<< HEAD
+=======
+    case '3':
+        break;
+>>>>>>> origin/Menu-padr√£o
 
     default:
         break;
     }
-
-
-
 }
 
 void menu_importar(LinkedList *l)
 {
-
     int op;
-    printf("\n\n");
-    printf("\t\t\tMenu de Importacao");
-    printf("\n\n");
-    printf("\t\t\t1) Ver\n");
-    printf("\t\t\t2) Importar um aluno\n"); // Temos de decidir o que colocar nos menus
-    printf("\t\t\t3) \n");
-    printf("\n\n");
+    system("cls");
+    printf("\n");
+    print_menu_header("Menu de Importacao");
+    print_menu_option("1) Ver");
+    print_menu_option("2) Voltar");
+    print_menu_end_line();
 
 
     do
     {
-        printf("Introduza a sua opcao:");
-        scanf("%d", &op);
-        system("cls");
+        printf("%c%cIntroduza a sua opcao: ", 8, 13);
+        fflush(stdin);
+        op = getc(stdin);
     }
-    while(op<1||op>5);
+    while(op< '1' || op> '5');
 
     switch (op)
     {
 
-    case 1 :
+    case '1' :
         //
         break;
-    case 2 :
-
-        break;
-    case 3 :
-
-        break;
-    case 4 :
-
-        break;
-    case 5 :
-
-        break;
+    case '2':
         break;
 
     default:
         break;
     }
-
-
-
 }
 
 void menu_exportar(LinkedList *l)
 {
-
     int op;
-    printf("\n\n");
-    printf("\t\t\tMenu de Importacao");
-    printf("\n\n");
-    printf("\t\t\t1) Ver todos os alunos existentes\n"); // Temos de decidir o que colocar nos menus
-    printf("\t\t\t2) Exportar um aluno\n");
-    printf("\t\t\t3) \n");
-    printf("\n\n");
-
+    system("cls");
+    printf("\n");
+    print_menu_header("Menu de Importacao");
+    print_menu_option("1) Ver todos os alunos existentes");
+    print_menu_option("2) Exportar um aluno");
+    print_menu_option("3) Voltar");
+    print_menu_end_line();
 
     do
     {
-        printf("Introduza a sua opcao:");
-        scanf("%d", &op);
-        system("cls");
+        printf("%c%cIntroduza a sua opcao: ", 8, 13);
+        fflush(stdin);
+        op = getc(stdin);
     }
-    while(op<1||op>5);
+    while(op< '1' || op> '5');
 
     switch (op)
     {
 
-    case 1 :
-        //
+    case '1' :
         break;
-    case 2 :
-
-        break;
-    case 3 :
-
-        break;
-    case 4 :
-
-        break;
-    case 5 :
-
-        break;
+    case '2':
         break;
 
     default:
         break;
     }
-
 }
 
 void menu_sair_guardar(LinkedList *l){
 
     int op;
-    printf("\n\n");
-    printf("\t\t\tMenu Sair e Guardar");
-    printf("\n\n");
-    printf("\t\t\t1) \n"); // Temos de decidir o que colocar nos menus
-    printf("\t\t\t2) \n");
-    printf("\t\t\t3) \n");
-    printf("\n\n");
-
+    system("cls");
+    printf("\n");
+    print_menu_header("Menu Sair e Guardar");
+    print_menu_option("3) Voltar");
+    print_menu_end_line();
 
     do
     {
-        printf("Introduza a sua opcao:");
-        scanf("%d", &op);
-        system("cls");
+        printf("%c%cIntroduza a sua opcao: ", 8, 13);
+        fflush(stdin);
+        op = getc(stdin);
     }
-    while(op<1||op>5);
+    while(op< '1' || op> '5');
 
     switch (op)
     {
 
-    case 1 :
+    case '1' :
 
         break;
-    case 2 :
+    case '2' :
         // mostrar os alunos que pertencem ao mesmo curso
         break;
-    case 3 :
-
-        break;
-    case 4 :
-
-        break;
-    case 5 :
-
-        break;
+    case '3':
         break;
 
     default:
@@ -294,20 +253,19 @@ void menu_sair_guardar(LinkedList *l){
 void menu_remover_alunos(LinkedList *l){
 
     char op;
-
-    printf("\n\n");
-    printf("\t\t\tMenu Remover Alunos");
-    printf("\n\n");
-    printf("\t\t\t1) Nome\n");
-    printf("\t\t\t2) Numero\n");
-    printf("\n\n");
+    system("cls");
+    printf("\n");
+    print_menu_header("Menu Remover Alunos");
+    print_menu_option("1) Nome");
+    print_menu_option("2) Numero");
+    print_menu_option("3) Voltar");
+    print_menu_end_line();
 
     do
     {
-        printf("Deseja Remover o Aluno por?:");
+        printf("%c%cDeseja Remover o Aluno por?: ", 8, 13);
         fflush(stdin);
-        scanf("%c", &op);
-        system("cls");
+        op = getc(stdin);
     }
     while(op < '1' || op > '5');
 
@@ -341,6 +299,11 @@ void menu_remover_alunos(LinkedList *l){
 
         print_list(l);
         break;
+<<<<<<< HEAD
+=======
+    case '3':
+        break;
+>>>>>>> origin/Menu-padr√£o
 
     default:
         break;
@@ -351,5 +314,60 @@ void menu_remover_alunos(LinkedList *l){
 
 void menu_find(LinkedList *l){
 
+
+}
+
+
+void print_menu_header(char* str){  //Isto ficou mais complicado do que estave previsto!!!
+    size_t str_size = strlen(str);
+    size_t width = 8 * 8;           // 8 tabs
+    int i;
+
+    printf("%c", 201);              //canto superior esquerdo
+    for (i = 0; i < width ; i++)
+        printf("%c", 205);          //barra superior
+    printf("%c\n", 187);            //canto superior direito
+
+    printf("%c", 186);              //barra vertical
+
+    for (i = 0; i < (width/2) - str_size/2; i++)
+        printf(" ");
+    printf("%s", str);
+    for (i = 0; i < (width/2) - (str_size/2) - (str_size%2); i++)
+        printf(" ");
+
+    printf("%c\n", 186);            //barra vertical
+
+
+    printf("%c", 204);              //T deitado para a esquerdo ( nao sei explicar melhor)
+    for (i = 0; i < width ; i++)
+        printf("%c", 205);          //barra inferior
+
+    printf("%c\n", 185);            //T deitado para a direita
+    print_menu_option(" ");         //apresenta uma linha de espaÁo  entre header e restante menu
+}
+
+void print_menu_option(char* str){
+    int width = 7 * 8,              //7 tabs descontando o tab  escrito ao apresentar str
+        i;
+    size_t str_size = strlen(str);
+
+    printf("%c", 186);              //barra vertical
+    printf("\t%s", str);
+    for (i = str_size; i <= width; i++) //Imprime espaÁos considerando o tamanho de str
+        printf(" ");
+
+    printf("%c\n", 186);            //barra vertical
+}
+
+void print_menu_end_line(){
+    int width = 8 * 8,              //8 tabs
+        i;
+    print_menu_option(" ");         //apresenta uma linha de espaÁo entre menu e linha de fundo
+
+    printf("%c", 200);              //canto inferior esquerdo
+    for (i = 0; i < width ; i++)
+        printf("%c", 205);          //barra superior
+    printf("%c\n\n", 188);            //canto inferior direito
 
 }
