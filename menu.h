@@ -15,6 +15,9 @@
  void menu_remover_alunos(LinkedList *l);
  void menu_sair_guardar(LinkedList *l);
  void menu_find(LinkedList *l);
+ void print_menu_header(char* str);
+ void print_menu_option(char* str);
+ void print_menu_end_line();
 
 
 #endif // MENU_H_INCLUDED

@@ -38,6 +38,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "linkedlist.h"
+#include "menu.h"
+#include "string.h"
 
 
 /**F*****************************************************************
@@ -688,24 +690,27 @@ int length(LinkedList *l)
 Node* find(LinkedList *l)
 {
     int op;
-
-    printf("\t\t\t1) Nome\n"); // Temos de decidir o que colocar nos menus
-    printf("\t\t\t2) Numero\n");
-    printf("\n\n");
+    printf("\n");
+    print_menu_header("Menu de Pesquisa Alunos");
+    print_menu_option("1) Nome");
+    print_menu_option("2) Numero");
+    print_menu_option("3) Voltar");
+    print_menu_end_line();
 
 
     do
     {
-        printf("Deseja pesquisar o aluno por:");
-        scanf("%d", &op);
+        printf("%c%cDeseja Pesquisar o Aluno por?: ", 8, 13);
+        fflush(stdin);
+        op = getc(stdin);
         system("cls");
     }
-    while(op<1||op>5);
+    while(op<'1'||op>'5');
 
     switch (op)
     {
 
-    case 1 : ;
+    case '1' : ;
         char nome[20];
         printf("Qual o a nome do aluno a encontrar?");
         getchar();
@@ -718,7 +723,7 @@ Node* find(LinkedList *l)
             printf("Nao encontrado...\n");
 
         break;
-    case 2 : ;
+    case '2' : ;
         int numero;
         printf("Qual o a numero do aluno a encontar?");
         scanf(" %d", &numero);
@@ -729,13 +734,13 @@ Node* find(LinkedList *l)
         else
             printf("O Aluno nao foi encontrado...\n");
         break;
-    case 3 :
+    case '3' :
 
         break;
-    case 4 :
+    case '4' :
 
         break;
-    case 5 :
+    case '5' :
 
         break;
         break;

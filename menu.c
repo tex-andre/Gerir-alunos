@@ -6,7 +6,6 @@ void menu(LinkedList *l)
 
     char op;
     do{
-        system("cls");
         printf("\n");
         print_menu_header("Gestao de alunos");
         print_menu_option("1) Gerir Lista de Alunos");
@@ -21,6 +20,7 @@ void menu(LinkedList *l)
             printf("%c%cBem-vindo, introduza a sua opcao: ", 8, 13);
             fflush(stdin);
             op = getc(stdin);
+            system("cls");
 
         }while(op < '0' || op > '6');
 
@@ -56,7 +56,6 @@ void menu(LinkedList *l)
 void menu_gerir_alunos(LinkedList *l)
 {
     char op;
-    system("cls");
     printf("\n");
     print_menu_header("Menu Gerir Alunos");
     print_menu_option("1) Adicionar novo aluno");
@@ -70,6 +69,7 @@ void menu_gerir_alunos(LinkedList *l)
         printf("%c%cIntroduza a sua opcao: ", 8, 13);
         fflush(stdin);
         op = getc(stdin);
+        system("cls");
     }
     while(op < '1' || op > '5');
 
@@ -90,7 +90,8 @@ void menu_gerir_alunos(LinkedList *l)
         break;
     }
     case '2' :
-        //editar_aluno();
+
+        editar_aluno();
         break;
     case '3' : {
         //remover_aluno();
@@ -113,7 +114,6 @@ void menu_gerir_alunos(LinkedList *l)
 void menu_pesquisa(LinkedList *l)
 {
     int op;
-    system("cls");
     printf("\n");
     print_menu_header("Menu de Pesquisa");
     print_menu_option("1) Pesquisar aluno");
@@ -126,6 +126,7 @@ void menu_pesquisa(LinkedList *l)
         printf("%c%cIntroduza a sua opcao: ", 8, 13);
         fflush(stdin);
         op = getc(stdin);
+        system("cls");
     }
     while(op< '1'|| op> '5');
 
@@ -151,7 +152,6 @@ void menu_pesquisa(LinkedList *l)
 void menu_importar(LinkedList *l)
 {
     int op;
-    system("cls");
     printf("\n");
     print_menu_header("Menu de Importacao");
     print_menu_option("1) Ver");
@@ -164,6 +164,7 @@ void menu_importar(LinkedList *l)
         printf("%c%cIntroduza a sua opcao: ", 8, 13);
         fflush(stdin);
         op = getc(stdin);
+        system("cls");
     }
     while(op< '1' || op> '5');
 
@@ -171,7 +172,7 @@ void menu_importar(LinkedList *l)
     {
 
     case '1' :
-        //
+        print_list(l);
         break;
     case '2':
         break;
@@ -184,7 +185,6 @@ void menu_importar(LinkedList *l)
 void menu_exportar(LinkedList *l)
 {
     int op;
-    system("cls");
     printf("\n");
     print_menu_header("Menu de Importacao");
     print_menu_option("1) Ver todos os alunos existentes");
@@ -197,6 +197,7 @@ void menu_exportar(LinkedList *l)
         printf("%c%cIntroduza a sua opcao: ", 8, 13);
         fflush(stdin);
         op = getc(stdin);
+        system("cls");
     }
     while(op< '1' || op> '5');
 
@@ -216,7 +217,6 @@ void menu_exportar(LinkedList *l)
 void menu_sair_guardar(LinkedList *l){
 
     int op;
-    system("cls");
     printf("\n");
     print_menu_header("Menu Sair e Guardar");
     print_menu_option("3) Voltar");
@@ -227,6 +227,7 @@ void menu_sair_guardar(LinkedList *l){
         printf("%c%cIntroduza a sua opcao: ", 8, 13);
         fflush(stdin);
         op = getc(stdin);
+        system("cls");
     }
     while(op< '1' || op> '5');
 
@@ -251,7 +252,6 @@ void menu_sair_guardar(LinkedList *l){
 void menu_remover_alunos(LinkedList *l){
 
     char op;
-    system("cls");
     printf("\n");
     print_menu_header("Menu Remover Alunos");
     print_menu_option("1) Nome");
@@ -264,24 +264,25 @@ void menu_remover_alunos(LinkedList *l){
         printf("%c%cDeseja Remover o Aluno por?: ", 8, 13);
         fflush(stdin);
         op = getc(stdin);
+        system("cls");
     }
     while(op < '1' || op > '5');
 
     switch (op)
     {
     case '1': {
-        #warning TODO (tex#1#): não consigo remover um aluno por nome será que consegues dar uma olhadela ao que fiz??
             char nome[20];
             printf("Qual o nome do aluno que deseja remover?");
-             getchar(); // limpa o enter anterior
+            getchar(); // limpa o enter anterior
             gets(nome);
+            find_by_name(l,nome);
             int resultado = remove_node_by_name(l, nome);
             if (resultado == 1)
                 printf("Removido com sucesso!!\n");
             else
                 printf("Nao encontrado / nao removido...\n");
 
-            print_list(l);
+            //print_list(l);
         break;
     }
     case '2' : ;
@@ -289,13 +290,14 @@ void menu_remover_alunos(LinkedList *l){
         int numero;
         printf("Qual o a num do aluno a remover?");
         scanf("%d", &numero);
+        find_by_number(l,numero);
         int resultado = remove_node(l, numero);
         if (resultado == 1)
             printf("Removido com sucesso!!\n");
         else
             printf("Nao encontrado / nao removido...\n");
 
-        print_list(l);
+        //print_list(l);
         break;
 
     case '3':

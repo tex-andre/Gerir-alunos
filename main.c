@@ -15,7 +15,7 @@ int main(){
     LinkedList* l = create();
     FILE* fp = le_f(origem);
 
-    menu(l);
+    //menu(l);
     input_list(fp, l);
 
 
@@ -23,7 +23,7 @@ int main(){
 
     menu(l);
     print_list(l);
-    find(l);
+    //find(l);
 
 
 
