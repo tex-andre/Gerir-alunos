@@ -2,6 +2,9 @@
 #define ALUNO_H_INCLUDED
 #include <stdbool.h>
 
+
+
+
 typedef struct {
     char nome[30];
     int numero;
@@ -24,6 +27,7 @@ void pede_dados(char *nome, int *numero,char *mail, unsigned short *nota_final);
 Aluno *cria_estrutura(char *nome, int numero, char  *mail, unsigned short nota_final);
 void imprimir_aluno (Aluno *a);
 bool aprovacao(unsigned short nota_final);
+
 //int editar_aluno (Aluno* a);
 //Aluno/**??**/ *remover_aluno (Linkedlist *l, Aluno *a);
 

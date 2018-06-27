@@ -144,7 +144,7 @@ Importa uma lista através do ponteiro fp para FILE
 e guarda o conteúdo numa lista.
 */
 
-void input_lista(FILE* fp, LinkedList* l){
+void input_list(FILE* fp, LinkedList* l){
     // Variáveis da estrutura Aluno
     char* nome;
     char mail[30];
@@ -178,7 +178,7 @@ Exporta a lista para diferentes formatos predefinidos
 que o utilizador pode escolher.
 */
 
-int output_lista(LinkedList* l){
+int output_list(LinkedList* l){
     int opc;
     char destino[30] = "Ficheiros\\";
     char file_name[20] = {"0"}; // nome do ficheiro para guardar lista
