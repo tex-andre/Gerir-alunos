@@ -7,6 +7,7 @@
 
 float media_final(LinkedList* l);
 
+
 int main(){
     const char* origem = "Ficheiros\\Participantes.txt";
     float media = 0;

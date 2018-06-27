@@ -260,7 +260,7 @@ int contains(LinkedList *l, Aluno* info)
     // Enquanto não for o últimmo elemento e nao for
     // encontrado o elemento, precorre a lista
     while (aux != NULL){
-        if(strcmp(aux->aluno->nome, info->nome) == 0 &&
+        if(strcmpi(aux->aluno->nome, info->nome) == 0 &&
            aux->aluno->numero == info->numero)   //Compara nome  e numero
             return 1;
 

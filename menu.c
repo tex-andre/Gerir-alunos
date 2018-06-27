@@ -90,8 +90,7 @@ void menu_gerir_alunos(LinkedList *l)
         break;
     }
     case '2' :
-
-        editar_aluno();
+        editar_aluno_by_name(l);
         break;
     case '3' : {
         //remover_aluno();
@@ -368,5 +367,46 @@ void print_menu_end_line(){
     for (i = 0; i < width ; i++)
         printf("%c", 205);          //barra superior
     printf("%c\n\n", 188);            //canto inferior direito
+
+}
+
+void menu_editar_aluno(LinkedList *l)
+{
+
+    int op;
+    printf("\n");
+    print_menu_header("Quer pesquisar o aluno por:");
+    print_menu_option("1) Nome");
+    print_menu_option("2) Numero");
+    print_menu_option("5) Voltar");
+    print_menu_end_line();
+
+    do
+    {
+        printf("%c%cIntroduza a sua opcao: ", 8, 13);
+        fflush(stdin);
+        op=getc(stdin);
+        system("cls");
+    }
+    while(op< '1' || op> '5');
+
+    switch (op)
+    {
+
+    case '1' :
+        Node *aux = l->head;
+        char novo_nome[20];
+        printf("Qual o novo nome do aluno a que pretende editar?");
+        fflush(stdin);
+        gets(novo_nome);
+        strcpy(aux->aluno->nome,novo_nome);
+        break;
+    case '2':
+
+        break;
+
+    default:
+        break;
+    }
 
 }

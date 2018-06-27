@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include "Aluno.h"
-#include "linkedlist.h"
+
 
 
 Aluno* cria_aluno(){
@@ -68,26 +68,31 @@ bool aprovacao(unsigned short nota_final){
     return (nota_final >= 10) ? 1 : 0;
 }
 
-int editar_aluno (LinkedList*l, Aluno* a){
+int *editar_aluno_by_name(LinkedList*l){
     //Lista vazia?
-    if(l->head == NULL){
+    if(l->head == NULL)
+    {
         printf("\nERRO: lista vazia!!\n");;
         return 0;
     }
-    Node* aux = l->head;
+    //Node* aux = l->head;
 
     // Verifica se o Aluno existe na lista ligada
 
-        char nome[20];
+        char buffer_nome[20];
         printf("Qual o a nome do aluno a que pretende editar?");
-        getchar();
-        gets(nome);
+        fflush(stdin);
+        gets(buffer_nome);
         printf("\n");
-        int resultado=find_by_name(l,nome);
-        if(resultado!= NULL)
-            printf("encontrado com sucesso!!\n");
+        Node* resultado=find_by_name(l,buffer_nome);
+        if(resultado!= NULL){
+            printf("Encontrado com sucesso!!\n");
+            menu_editar_aluno(l);
+        }
         else
             printf("Nao encontrado...\n");
+
+
 
 
 }
