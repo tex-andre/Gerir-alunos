@@ -16,9 +16,14 @@ int main(){
 
     input_lista(fp, l);
 
-    //menu(l);
+    menu(l);
+    print_list(l);
+    find(l);
+
+
 
     output_lista(l);
+
 
     destroy(l);
     return 0;

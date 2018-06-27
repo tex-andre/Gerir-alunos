@@ -57,7 +57,8 @@ Aluno *cria_estrutura(char *nome, int numero, char  *mail, unsigned short nota_f
 
 
 void imprimir_aluno (Aluno *a){
-    printf("\n| %s | %d | %s | %hu | %s |\n", a->nome, a->numero, a->mail, a->nota_final, a->estado);
+    //printf("\n| %s | %d | %s | %hu | %s |\n", a->nome, a->numero, a->mail, a->nota_final, a->estado);
+
 }
 
 bool aprovacao(unsigned short nota_final){

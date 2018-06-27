@@ -710,8 +710,9 @@ Node* find(LinkedList *l)
         printf("Qual o a nome do aluno a encontrar?");
         getchar();
         gets(nome);
-        int resultado = find_by_name(l, &nome);
-        if (resultado == 1)
+        printf("\n");
+        Node *resultado=find_by_name(l,nome);
+        if(resultado!= NULL)
             printf("encontrado com sucesso!!\n");
         else
             printf("Nao encontrado...\n");
@@ -719,13 +720,14 @@ Node* find(LinkedList *l)
         break;
     case 2 : ;
         int numero;
-        printf("Qual o a num do aluno a encontar?");
-        scanf("%d", &numero);
-        int resultado_num = find_by_number(l, &numero);
-        if (resultado_num == 1)
-            printf("encontrado com sucesso!!\n");
+        printf("Qual o a numero do aluno a encontar?");
+        scanf(" %d", &numero);
+        printf("\n");
+        Node* resultado_num = find_by_number(l, numero);
+        if (resultado_num != NULL)
+            printf("Aluno encontrado com sucesso!!\n");
         else
-            printf("Nao encontrado...\n");
+            printf("O Aluno nao foi encontrado...\n");
         break;
     case 3 :
 
@@ -750,7 +752,7 @@ Node* find(LinkedList *l)
         else if(aux->aluno->numero != info->numero)     //Compara numero
             return 0;***/
 
-Node* find_by_name(LinkedList *l, Aluno* info){
+Node* find_by_name(LinkedList *l, char* info){
 
     Node* aux;
 
@@ -763,12 +765,18 @@ Node* find_by_name(LinkedList *l, Aluno* info){
     // encontrado o elemento, precorre a lista
     while (aux != NULL)
     {
-        if(strcmp(aux->aluno->nome, info->nome) == 0)
-            return 1;
+        if(strcmpi(aux->aluno->nome, info) == 0){
+            printf("/---------------------------------------------------------------\\\n");
+            printf("|************************ Aluno Encontrado *********************|\n");
+            printf("|---------------------------------------------------------------|\n");
+            print_node(aux->aluno);
+            printf("\\---------------------------------------------------------------/\n");
+            return aux;
+        }
 
         aux = aux->next;
 
-        printf(" Nome: %s\n", info->nome); // apenas um teste
+        //printf(" Nome: %s\n", info->nome); // apenas um teste
     }
     if (aux == NULL)
         return NULL;
@@ -778,7 +786,7 @@ Node* find_by_name(LinkedList *l, Aluno* info){
 }
 
 
-Node* find_by_number(LinkedList *l, Aluno* info){
+Node* find_by_number(LinkedList *l, int info){
 
     Node* aux;
 
@@ -791,11 +799,18 @@ Node* find_by_number(LinkedList *l, Aluno* info){
     // encontrado o elemento, precorre a lista
     while (aux != NULL)
     {
-        if(aux->aluno->numero == info->numero)
-            return 1;
+        if(aux->aluno->numero == info){
+            printf("/---------------------------------------------------------------\\\n");
+            printf("|************************ Aluno Encontrado *********************|\n");
+            printf("|---------------------------------------------------------------|\n");
+            print_node(aux->aluno);
+            printf("\\---------------------------------------------------------------/\n");
+            return aux;
+        }
 
         aux = aux->next;
-        printf("Numero: %d\n", info->numero);
+        //printf("Numero: %d\n", info->numero);
+
     }
     if (aux == NULL)
         return NULL;

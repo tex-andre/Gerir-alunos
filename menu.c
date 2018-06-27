@@ -103,12 +103,6 @@ void menu_gerir_alunos(LinkedList *l)
 
         break;
     }
-    case '4' :
-
-        break;
-    case '5' :
-
-        break;
 
     default:
         break;
@@ -145,16 +139,6 @@ void menu_pesquisa(LinkedList *l)
         break;
     case 2 :
         // mostrar os alunos que pertencem ao mesmo curso
-        break;
-    case 3 :
-
-        break;
-    case 4 :
-
-        break;
-    case 5 :
-
-        break;
         break;
 
     default:
@@ -356,16 +340,6 @@ void menu_remover_alunos(LinkedList *l){
             printf("Nao encontrado / nao removido...\n");
 
         print_list(l);
-        break;
-    case '3' : {
-
-        break;
-    }
-    case '4' :
-
-        break;
-    case '5' :
-
         break;
 
     default:
