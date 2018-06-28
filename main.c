@@ -17,11 +17,11 @@ int main(){
 
     //menu(l);
     input_list(fp, l);
-   // save_list_bin(l, origem);
 
 
 
-    //menu(l);
+
+    menu(l);
     print_list(l);
     //find(l);
 

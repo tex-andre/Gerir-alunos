@@ -178,7 +178,7 @@ Exporta a lista para diferentes formatos predefinidos
 que o utilizador pode escolher.
 */
 
-int export_list(LinkedList* l){
+int output_list(LinkedList* l){
     int opc;
     char destino[30] = "Ficheiros\\";
     char file_name[20] = {"0"}; // nome do ficheiro para guardar lista
@@ -209,15 +209,15 @@ int export_list(LinkedList* l){
     switch(opc){
     case '1':                 // Formato de texto
         strcat(destino, ".txt");
-        export_list_txt(destino, l);
+        formato_txt(destino, l);
         break;
     case '2':                 // Formato csv
         strcat(destino, ".csv");
-        export_list_csv(destino, l);
+        formato_csv(destino, l);
         break;
     case '3':                 // Formato HTML
         strcat(destino, ".html");
-        export_list_html(destino, l);
+        formato_html(destino, l);
         break;
     default:
     break;
@@ -230,7 +230,7 @@ Descrição:
 Exporta a lista em formato de texto
 */
 
-void  export_list_txt(char* destino, LinkedList* l){
+void formato_txt(char* destino, LinkedList* l){
     Node* aux = l->head;
 
     FILE* fp = escreve_f(destino);
@@ -301,7 +301,7 @@ Descrição:
 Exporta lista em formato csv.
 */
 
-void  export_list_csv(char* destino, LinkedList* l){
+void formato_csv(char* destino, LinkedList* l){
     Node* aux = l->head; // Cria nó temporário para aceder aos elementos da lista
     FILE* fp = escreve_f(destino);
 
@@ -320,7 +320,7 @@ Descrição:
 Exporta lista em formato HTML.
 */
 
-void  export_list_html(char* destino, LinkedList* l){
+void formato_html(char* destino, LinkedList* l){
     Node* aux = l->head;                // Cria nó temporário para aceder aos elementos da lista
     FILE* fp = escreve_f(destino);      // ponteiro para escrita em texto
 
@@ -357,27 +357,4 @@ void  export_list_html(char* destino, LinkedList* l){
     fprintf(fp, "\n<table>\n");
 
     printf("Lista guardada com sucesso!\n");
-}
-
-/************************************************
-Descrição:
-
-*/
-
-
-int save_list_bin(LinkedList* l, const char* list_file){
-    if(l->head == NULL){
-        printf("\nLinked List is empty!\n");
-        return 0;
-    }
-    Node*  aux = l->head;
-    char* buffer;
-
-    FILE* fp = escreve_f(list_file);
-
-    while(aux != NULL){
-        fprintf(fp, "%s|%d|%s|%hu|%s\n", aux->aluno->nome, aux->aluno->numero, aux->aluno->mail, aux->aluno->nota_final, aux->aluno->estado);
-
-        aux = aux->next;
-    }
 }
