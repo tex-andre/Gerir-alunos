@@ -90,8 +90,7 @@ void menu_gerir_alunos(LinkedList *l)
         break;
     }
     case '2' :
-
-        editar_aluno();
+        menu_editar_aluno(l);
         break;
     case '3' : {
         //remover_aluno();
@@ -117,7 +116,7 @@ void menu_pesquisa(LinkedList *l)
     printf("\n");
     print_menu_header("Menu de Pesquisa");
     print_menu_option("1) Pesquisar aluno");
-    print_menu_option("2) ");
+    print_menu_option("2) Pesquisar varios alunos");
     print_menu_option("3) Voltar");
     print_menu_end_line();
 
@@ -137,7 +136,7 @@ void menu_pesquisa(LinkedList *l)
         find(l);
         break;
     case '2' :
-        // mostrar os alunos que pertencem ao mesmo curso
+        find_all_by_name(l,"Andre");
         break;
 
     case '3':
@@ -369,4 +368,49 @@ void print_menu_end_line(){
         printf("%c", 205);          //barra superior
     printf("%c\n\n", 188);            //canto inferior direito
 
+}
+
+void menu_editar_aluno(LinkedList *l)
+{
+    Aluno *a=find(l);
+    if(a!=NULL)
+    {
+
+        int op;
+        printf("\n");
+        print_menu_header("Quer editar o aluno por:");
+        print_menu_option("1) Nome");
+        print_menu_option("2) Numero");
+        print_menu_option("3) Email");
+        print_menu_option("4) Voltar");
+        print_menu_end_line();
+
+        do
+        {
+            printf("%c%cIntroduza a sua opcao: ", 8, 13);
+            fflush(stdin);
+            op=getc(stdin);
+        }
+        while(op< '1' || op> '3');
+
+        switch (op)
+        {
+
+        case '1' :
+            ;
+            editar_aluno_by_name(a);
+            break;
+        case '2':
+            ;
+            editar_aluno_by_number(a);
+            break;
+        case '3':
+            ;
+            editar_aluno_by_email(a);
+        default:
+            break;
+        }
+    }
+    else
+        printf("Aluno nao encontrado");
 }

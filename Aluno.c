@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include "Aluno.h"
-#include "linkedlist.h"
+
 
 
 Aluno* cria_aluno(){
@@ -60,63 +60,63 @@ bool aprovacao(unsigned short nota_final){
     return (nota_final >= 10) ? 1 : 0;
 }
 
-int editar_aluno (LinkedList*l, Aluno* a){
-    //Lista vazia?
-    if(l->head == NULL){
-        printf("\nERRO: lista vazia!!\n");;
-        return 0;
-    }
-    Node* aux = l->head;
+void editar_aluno_by_name(Aluno *a){
 
-    // Verifica se o Aluno existe na lista ligada
+    /*******Novo nome do aluno que o utilizador pretende editar*****/
 
-        char nome[20];
-        printf("Qual o a nome do aluno a que pretende editar?");
-        getchar();
-        gets(nome);
+        char buffer_novo_nome[20];
+        printf("Qual o a novo nome do aluno a que pretende editar?");
+        fflush(stdin);
+        gets(buffer_novo_nome);
         printf("\n");
-        int resultado=find_by_name(l,nome);
-        if(resultado!= NULL)
-            printf("encontrado com sucesso!!\n");
-        else
-            printf("Nao encontrado...\n");
+        strcpy(a->nome, buffer_novo_nome);
+        printf("/---------------------------------------------------------------\\\n");
+        printf("|************************* Aluno Alterado **********************|\n");
+        printf("|---------------------------------------------------------------|\n");
+        print_node(a);
+        printf("\\---------------------------------------------------------------/\n");
 
 
 }
 
-int num_aprovados(LinkedList* l){
-    //Lista vazia?
-    if(l->head == NULL){
-        printf("\nERRO: lista vazia!!\n");;
-        return 0;
-    }
-    Node* aux = l->head;
-    int num = 0;
+void editar_aluno_by_number(Aluno *a){
 
-    while(aux != NULL){
-        if(aprovacao(aux->aluno->nota_final))
-            num++;                              //conta elementos da lista aprovados
-        aux = aux->next;
-    }
-    return num;
+    /**********Novo numero do aluno que o utilizador pretende editar****/
+
+        int buffer_novo_number;
+        printf("Qual o a novo numero do aluno a que pretende editar?");
+        fflush(stdin);
+        scanf("%d", &buffer_novo_number);
+        printf("\n");
+        a->numero=buffer_novo_number;
+        printf("/---------------------------------------------------------------\\\n");
+        printf("|************************* Aluno Alterado **********************|\n");
+        printf("|---------------------------------------------------------------|\n");
+        print_node(a);
+        printf("\\---------------------------------------------------------------/\n");
+
+
 }
 
-float media_final(LinkedList* l){
-    //Lista vazia?
-    if(l->head == NULL){
-        printf("\nERRO: lista vazia!!\n");;
-        return 0;
-    }
+void editar_aluno_by_email(Aluno *a){
 
-    float soma = 0;
-    float media;
-    Node* aux = l->head;
+    /*******Novo email do aluno que o utilizador pretende editar***/
 
-    while(aux != NULL){
-        soma += aux->aluno->nota_final;
-        aux = aux->next;
-    }
-    media = (float)soma /length(l);
-    return (float)media;
+        char buffer_novo_email[20];
+        printf("Qual o a novo email do aluno a que pretende editar?");
+        fflush(stdin);
+        gets(buffer_novo_email);
+        printf("\n");
+        strcpy(a->mail, buffer_novo_email);
+        printf("/---------------------------------------------------------------\\\n");
+        printf("|************************* Aluno Alterado **********************|\n");
+        printf("|---------------------------------------------------------------|\n");
+        print_node(a);
+        printf("\\---------------------------------------------------------------/\n");
+
+
+
 }
+
+
 

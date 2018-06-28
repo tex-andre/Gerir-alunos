@@ -260,7 +260,7 @@ int contains(LinkedList *l, Aluno* info)
     // Enquanto não for o últimmo elemento e nao for
     // encontrado o elemento, precorre a lista
     while (aux != NULL){
-        if(strcmp(aux->aluno->nome, info->nome) == 0 &&
+        if(strcmpi(aux->aluno->nome, info->nome) == 0 &&
            aux->aluno->numero == info->numero)   //Compara nome  e numero
             return 1;
 
@@ -717,10 +717,14 @@ Node* find(LinkedList *l)
         gets(nome);
         printf("\n");
         Node *resultado=find_by_name(l,nome);
-        if(resultado!= NULL)
+        if(resultado!= NULL){
             printf("encontrado com sucesso!!\n");
-        else
+            return resultado->aluno;
+        }
+        else{
             printf("Nao encontrado...\n");
+            return 0;
+        }
 
         break;
     case '2' : ;
@@ -787,6 +791,41 @@ Node* find_by_name(LinkedList *l, char* info){
         return NULL;
     else
         return aux;
+
+}
+
+LinkedList* find_all_by_name(LinkedList *l, char* info){
+
+    LinkedList *f=create();
+
+    Node* aux;
+
+    aux = l->head;
+    //lista vazia?
+    if(l->head == NULL)
+        return 0;
+
+    // Enquanto não for o últimmo elemento e nao for
+    // encontrado o elemento, precorre a lista
+    while (aux != NULL)
+    {
+        if(strstr(aux->aluno->nome, info) != NULL){
+            printf("/---------------------------------------------------------------\\\n");
+            printf("|************************ Aluno Encontrados ********************|\n");
+            printf("|---------------------------------------------------------------|\n");
+            print_node(aux->aluno);
+            printf("\\---------------------------------------------------------------/\n");
+            insert_tail(f,aux);
+        }
+
+        aux = aux->next;
+
+        //printf(" Nome: %s\n", info->nome); // apenas um teste
+    }
+    if (length(f)== 0)
+        return NULL;
+    else
+        return f;
 
 }
 
@@ -955,4 +994,41 @@ void print_tabs(char* str, int tab_count){
 
     for (i=0;  (i + tab_num) < tab_count; i++)
         printf("\t");
+}
+
+
+int num_aprovados(LinkedList* l){
+    //Lista vazia?
+    if(l->head == NULL){
+        printf("\nERRO: lista vazia!!\n");;
+        return 0;
+    }
+    Node* aux = l->head;
+    int num = 0;
+
+    while(aux != NULL){
+        if(aprovacao(aux->aluno->nota_final))
+            num++;                              //conta elementos da lista aprovados
+        aux = aux->next;
+    }
+    return num;
+}
+
+float media_final(LinkedList* l){
+    //Lista vazia?
+    if(l->head == NULL){
+        printf("\nERRO: lista vazia!!\n");;
+        return 0;
+    }
+
+    float soma = 0;
+    float media;
+    Node* aux = l->head;
+
+    while(aux != NULL){
+        soma += aux->aluno->nota_final;
+        aux = aux->next;
+    }
+    media = (float)soma /length(l);
+    return (float)media;
 }

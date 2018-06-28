@@ -5,7 +5,8 @@
 #include "FileIO.h"
 #include <conio.h>
 
-float media_final(LinkedList* l);
+
+
 
 int main(){
     const char* origem = "Ficheiros\\Participantes.txt";
@@ -15,8 +16,12 @@ int main(){
     LinkedList* l = create();
     FILE* fp = le_f(origem);
 
-    //menu(l);
     input_list(fp, l);
+    /********Para editar um aluno pela solução adotada pelo Professor*******/
+
+
+    //menu(l);
+
 
 
 
