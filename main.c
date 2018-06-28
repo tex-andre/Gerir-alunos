@@ -5,13 +5,13 @@
 #include "FileIO.h"
 #include <conio.h>
 
-float media_final(LinkedList* l);
+
 
 
 int main(){
     const char* origem = "Ficheiros\\Participantes.txt";
     float media = 0;
-    printf(" O Andre e o Duarte ja dominam o GITHUB \n");
+    //printf(" O Andre e o Duarte ja dominam o GITHUB \n");
 
     LinkedList* l = create();
     FILE* fp = le_f(origem);

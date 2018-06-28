@@ -30,8 +30,8 @@ Aluno *cria_estrutura(char *nome, int numero, char  *mail, unsigned short nota_f
 void imprimir_aluno (Aluno *a);
 bool aprovacao(unsigned short nota_final);
 void editar_aluno_by_name(Aluno *a);
-void editar_aluno_by_number(Aluno *b);
-void editar_aluno_by_email(Aluno *c);
+void editar_aluno_by_number(Aluno *a);
+void editar_aluno_by_email(Aluno *a);
 
 
 #endif // FUNCOES_H_INCLUDED

@@ -64,16 +64,22 @@ void editar_aluno_by_name(Aluno *a){
 
     /*******Novo nome do aluno que o utilizador pretende editar*****/
 
-        char *buffer_novo_nome;
+        char buffer_novo_nome[20];
         printf("Qual o a novo nome do aluno a que pretende editar?");
         fflush(stdin);
         gets(buffer_novo_nome);
         printf("\n");
         strcpy(a->nome, buffer_novo_nome);
+        printf("/---------------------------------------------------------------\\\n");
+        printf("|************************* Aluno Alterado **********************|\n");
+        printf("|---------------------------------------------------------------|\n");
+        print_node(a);
+        printf("\\---------------------------------------------------------------/\n");
+
 
 }
 
-void editar_aluno_by_number(Aluno *b){
+void editar_aluno_by_number(Aluno *a){
 
     /**********Novo numero do aluno que o utilizador pretende editar****/
 
@@ -82,57 +88,35 @@ void editar_aluno_by_number(Aluno *b){
         fflush(stdin);
         scanf("%d", &buffer_novo_number);
         printf("\n");
-        b->numero=buffer_novo_number;
+        a->numero=buffer_novo_number;
+        printf("/---------------------------------------------------------------\\\n");
+        printf("|************************* Aluno Alterado **********************|\n");
+        printf("|---------------------------------------------------------------|\n");
+        print_node(a);
+        printf("\\---------------------------------------------------------------/\n");
+
 
 }
 
-void editar_aluno_by_email(Aluno *c){
+void editar_aluno_by_email(Aluno *a){
 
     /*******Novo email do aluno que o utilizador pretende editar***/
 
-        char *buffer_novo_email;
+        char buffer_novo_email[20];
         printf("Qual o a novo email do aluno a que pretende editar?");
         fflush(stdin);
         gets(buffer_novo_email);
         printf("\n");
-        strcpy(c->mail, buffer_novo_email);
+        strcpy(a->mail, buffer_novo_email);
+        printf("/---------------------------------------------------------------\\\n");
+        printf("|************************* Aluno Alterado **********************|\n");
+        printf("|---------------------------------------------------------------|\n");
+        print_node(a);
+        printf("\\---------------------------------------------------------------/\n");
+
 
 
 }
 
-int num_aprovados(LinkedList* l){
-    //Lista vazia?
-    if(l->head == NULL){
-        printf("\nERRO: lista vazia!!\n");;
-        return 0;
-    }
-    Node* aux = l->head;
-    int num = 0;
 
-    while(aux != NULL){
-        if(aprovacao(aux->aluno->nota_final))
-            num++;                              //conta elementos da lista aprovados
-        aux = aux->next;
-    }
-    return num;
-}
-
-float media_final(LinkedList* l){
-    //Lista vazia?
-    if(l->head == NULL){
-        printf("\nERRO: lista vazia!!\n");;
-        return 0;
-    }
-
-    float soma = 0;
-    float media;
-    Node* aux = l->head;
-
-    while(aux != NULL){
-        soma += aux->aluno->nota_final;
-        aux = aux->next;
-    }
-    media = (float)soma /length(l);
-    return (float)media;
-}
 

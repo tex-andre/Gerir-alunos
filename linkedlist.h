@@ -69,5 +69,8 @@ void sort(LinkedList *l);
 void reverse(LinkedList *l);
 void print_list(LinkedList *l);
 void print_node (Aluno *a);
+int num_aprovados(LinkedList* l);
+float media_final(LinkedList* l);
+LinkedList* find_all_by_name(LinkedList *l, char* info);
 
 #endif // LINKEDLIST_H_INCLUDED
