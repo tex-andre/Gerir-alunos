@@ -62,7 +62,7 @@ bool aprovacao(unsigned short nota_final){
 
 void editar_aluno_by_name(Aluno *a){
 
-    /*******Novo nome do aluno que o user pretende editar*****/
+    /*******Novo nome do aluno que o utilizador pretende editar*****/
 
         char *buffer_novo_nome;
         printf("Qual o a novo nome do aluno a que pretende editar?");
@@ -75,6 +75,8 @@ void editar_aluno_by_name(Aluno *a){
 
 void editar_aluno_by_number(Aluno *b){
 
+    /**********Novo numero do aluno que o utilizador pretende editar****/
+
         int buffer_novo_number;
         printf("Qual o a novo numero do aluno a que pretende editar?");
         fflush(stdin);
@@ -85,6 +87,8 @@ void editar_aluno_by_number(Aluno *b){
 }
 
 void editar_aluno_by_email(Aluno *c){
+
+    /*******Novo email do aluno que o utilizador pretende editar***/
 
         char *buffer_novo_email;
         printf("Qual o a novo email do aluno a que pretende editar?");
