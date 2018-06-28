@@ -60,31 +60,38 @@ bool aprovacao(unsigned short nota_final){
     return (nota_final >= 10) ? 1 : 0;
 }
 
-int *editar_aluno_by_name(LinkedList*l){
-    //Lista vazia?
-    if(l->head == NULL)
-    {
-        printf("\nERRO: lista vazia!!\n");;
-        return 0;
-    }
-    //Node* aux = l->head;
+int editar_aluno_by_name(Aluno *a){
 
-    // Verifica se o Aluno existe na lista ligada
+    /*******Novo nome do aluno que o user pretende editar*****/
 
-        char buffer_nome[20];
-        printf("Qual o a nome do aluno a que pretende editar?");
+        char *buffer_novo_nome;
+        printf("Qual o a novo nome do aluno a que pretende editar?");
         fflush(stdin);
-        gets(buffer_nome);
+        gets(buffer_novo_nome);
         printf("\n");
-        Node* resultado=find_by_name(l,buffer_nome);
-        if(resultado!= NULL){
-            printf("Encontrado com sucesso!!\n");
-            menu_editar_aluno(l);
-        }
-        else
-            printf("Nao encontrado...\n");
+        strcpy(a->nome, buffer_novo_nome);
 
+}
 
+int editar_aluno_by_number(Aluno *a){
+
+        int buffer_novo_nome;
+        printf("Qual o a novo numero do aluno a que pretende editar?");
+        fflush(stdin);
+        scanf("%d", &buffer_novo_nome);
+        printf("\n");
+        a->numero=buffer_novo_nome;
+
+}
+
+int editar_aluno_by_email(Aluno *a){
+
+        char *buffer_novo_email;
+        printf("Qual o a novo email do aluno a que pretende editar?");
+        fflush(stdin);
+        gets(buffer_novo_nome);
+        printf("\n");
+        strcpy(a->mail, buffer_novo_email);
 
 
 }

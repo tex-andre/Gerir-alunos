@@ -90,7 +90,7 @@ void menu_gerir_alunos(LinkedList *l)
         break;
     }
     case '2' :
-        editar_aluno_by_name(l);
+        menu_editar_aluno(l);
         break;
     case '3' : {
         //remover_aluno();
@@ -393,17 +393,36 @@ void menu_editar_aluno(LinkedList *l)
     switch (op)
     {
 
-    case '1' :
-        Node *aux = l->head;
-        char novo_nome[20];
-        printf("Qual o novo nome do aluno a que pretende editar?");
-        fflush(stdin);
-        gets(novo_nome);
-        strcpy(aux->aluno->nome,novo_nome);
-        break;
-    case '2':
+    case '1' : ;
+        Aluno *a=find(l);
+        if(a!=NULL)
+        {
+            printf("Aluno encontrado com sucesso");
+            editar_aluno_by_name(a);
+        }
+        else
+            printf("Aluno nao encontrado");
 
         break;
+    case '2': ;
+        Aluno *a=find(l);
+        if(a!=NULL)
+        {
+            printf("Aluno encontrado com sucesso");
+            editar_aluno_by_number(a);
+        }
+        else
+            printf("Aluno nao encontrado");
+
+        break;
+    case '3': ;
+        Aluno *a=find(l);
+        if(a!=NULL){
+            printf("Aluno encontrado com sucesso");
+            editar_aluno_by_email(a);
+        }
+        else
+            printf("Aluno nao encontrado");
 
     default:
         break;

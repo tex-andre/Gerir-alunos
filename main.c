@@ -16,8 +16,12 @@ int main(){
     LinkedList* l = create();
     FILE* fp = le_f(origem);
 
-    //menu(l);
     input_list(fp, l);
+    /********Para editar um aluno pela solução adotada pelo Professor*******/
+
+
+    //menu(l);
+
 
 
 
