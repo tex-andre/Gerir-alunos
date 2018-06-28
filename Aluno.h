@@ -29,7 +29,7 @@ void pede_dados(char *nome, int *numero,char *mail, unsigned short *nota_final);
 Aluno *cria_estrutura(char *nome, int numero, char  *mail, unsigned short nota_final);
 void imprimir_aluno (Aluno *a);
 bool aprovacao(unsigned short nota_final);
-int *editar_aluno_by_name(LinkedList*l);
+int editar_aluno_by_name(LinkedList*l);
 
 
 #endif // FUNCOES_H_INCLUDED
