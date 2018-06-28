@@ -405,21 +405,21 @@ void menu_editar_aluno(LinkedList *l)
 
         break;
     case '2': ;
-        Aluno *a=find(l);
-        if(a!=NULL)
+        Aluno *b=find(l);
+        if(b!=NULL)
         {
             printf("Aluno encontrado com sucesso");
-            editar_aluno_by_number(a);
+            editar_aluno_by_number(b);
         }
         else
             printf("Aluno nao encontrado");
 
         break;
     case '3': ;
-        Aluno *a=find(l);
-        if(a!=NULL){
+        Aluno *c=find(l);
+        if(c!=NULL){
             printf("Aluno encontrado com sucesso");
-            editar_aluno_by_email(a);
+            editar_aluno_by_email(c);
         }
         else
             printf("Aluno nao encontrado");

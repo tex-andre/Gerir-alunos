@@ -73,25 +73,25 @@ int editar_aluno_by_name(Aluno *a){
 
 }
 
-int editar_aluno_by_number(Aluno *a){
+int editar_aluno_by_number(Aluno *b){
 
-        int buffer_novo_nome;
+        int buffer_novo_number;
         printf("Qual o a novo numero do aluno a que pretende editar?");
         fflush(stdin);
-        scanf("%d", &buffer_novo_nome);
+        scanf("%d", &buffer_novo_number);
         printf("\n");
-        a->numero=buffer_novo_nome;
+        b->numero=buffer_novo_number;
 
 }
 
-int editar_aluno_by_email(Aluno *a){
+int editar_aluno_by_email(Aluno *c){
 
         char *buffer_novo_email;
         printf("Qual o a novo email do aluno a que pretende editar?");
         fflush(stdin);
-        gets(buffer_novo_nome);
+        gets(buffer_novo_email);
         printf("\n");
-        strcpy(a->mail, buffer_novo_email);
+        strcpy(c->mail, buffer_novo_email);
 
 
 }
