@@ -195,7 +195,7 @@ void menu_pesquisa(LinkedList *l)
     case '2' : ;
         char nome[20];
         printf("Qual o a nome do aluno a encontrar?");
-        getchar();
+        fflush(stdin);
         gets(nome);
         printf("\n");
         LinkedList *resultado=find_all_by_name(l,nome);
@@ -361,7 +361,7 @@ void menu_remover_alunos(LinkedList *l){
     case '1': {
             char nome[20];
             printf("Qual o nome do aluno que deseja remover?");
-            getchar(); // limpa o enter anterior
+            fflush(stdin); // limpa o enter anterior
             gets(nome);
             find_by_name(l,nome);
             int resultado = remove_node_by_name(l, nome);
