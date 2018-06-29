@@ -1,6 +1,10 @@
 #include "menu.h"
 #include "Aluno.h"
 
+/************************************************
+Descrição:
+Menu principal.
+*/
 void menu(LinkedList *l)
 {
 
@@ -52,6 +56,11 @@ void menu(LinkedList *l)
     printf("Good bye");
 
 }
+
+/************************************************
+Descrição:
+Sub-menu para gerir a lista de alunos.
+*/
 
 void menu_gerir_alunos(LinkedList *l)
 {
@@ -110,6 +119,11 @@ void menu_gerir_alunos(LinkedList *l)
 
 }
 
+/************************************************
+Descrição:
+Sub-menu de pesquisa da lista.
+*/
+
 void menu_pesquisa(LinkedList *l)
 {
     int op;
@@ -148,6 +162,11 @@ void menu_pesquisa(LinkedList *l)
     }
 }
 
+/************************************************
+Descrição:
+Sub-menu para importar a lista de um ficheiro externo.
+*/
+
 void menu_importar(LinkedList *l)
 {
     int op;
@@ -179,6 +198,11 @@ void menu_importar(LinkedList *l)
         break;
     }
 }
+
+/************************************************
+Descrição:
+Sub-menu para exportar a lista em diferentes formatos.
+*/
 
 void menu_exportar(LinkedList *l)
 {
@@ -212,13 +236,18 @@ void menu_exportar(LinkedList *l)
     }
 }
 
+/************************************************
+Descrição:
+Sub-menu para guardar o conteúdo da lista e sair da aplicação.
+*/
+
 void menu_sair_guardar(LinkedList *l){
 
     int op;
 
     do{
         printf("\n");
-        print_menu_header("Menu Sair e Guardar");
+        print_menu_header("Menu Guardar e Sair");
         print_menu_option("3) Voltar");
         print_menu_end_line();
 
@@ -247,6 +276,12 @@ void menu_sair_guardar(LinkedList *l){
 
 
 }
+
+/************************************************
+Descrição:
+Sub-menu para remover um aluno da lista.
+*/
+
 void menu_remover_alunos(LinkedList *l){
 
     char op;
@@ -286,7 +321,7 @@ void menu_remover_alunos(LinkedList *l){
     case '2' : ;
 
         int numero;
-        printf("Qual o a num do aluno a remover?");
+        printf("Qual o num do aluno a remover?");
         scanf("%d", &numero);
         find_by_number(l,numero);
         int resultado = remove_node(l, numero);
@@ -314,6 +349,10 @@ void menu_find(LinkedList *l){
 
 }
 
+/************************************************
+Descrição:
+Apresenta o cabeçalho padrão para o menu
+*/
 
 void print_menu_header(char* str){  //Isto ficou mais complicado do que estave previsto!!!
     size_t str_size = strlen(str);
@@ -344,6 +383,11 @@ void print_menu_header(char* str){  //Isto ficou mais complicado do que estave p
     print_menu_option(" ");         //apresenta uma linha de espaço  entre header e restante menu
 }
 
+/************************************************
+Descrição:
+Apresenta uma opção para o menu padrão.
+*/
+
 void print_menu_option(char* str){
     int width = 7 * 8,              //7 tabs descontando o tab  escrito ao apresentar str
         i;
@@ -357,6 +401,11 @@ void print_menu_option(char* str){
     printf("%c\n", 186);            //barra vertical
 }
 
+/************************************************
+Descrição:
+Apresenta a última linha da caixa do menu padrão.
+*/
+
 void print_menu_end_line(){
     int width = 8 * 8,              //8 tabs
         i;
@@ -368,6 +417,11 @@ void print_menu_end_line(){
     printf("%c\n\n", 188);            //canto inferior direito
 
 }
+
+/************************************************
+Descrição:
+Sub-menu para editar um aluno da lista.
+*/
 
 void menu_editar_aluno(LinkedList *l)
 {
