@@ -19,6 +19,7 @@
  void print_menu_option(char* str);
  void print_menu_end_line();
  void menu_editar_aluno(LinkedList *l);
+ void menu_ver(LinkedList *l);
 
 
 #endif // MENU_H_INCLUDED

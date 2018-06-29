@@ -15,10 +15,11 @@ void menu(LinkedList *l)
             print_menu_header("Gestao de alunos");
             print_menu_option("1) Gerir Lista de Alunos");
             print_menu_option("2) Pesquisa");
-            print_menu_option("3) Importar Lista de Alunos");
-            print_menu_option("4) Exportar Lista de Alunos");
-            print_menu_option("5) Sair e Guardar");
-            print_menu_option("6) Sair");
+            print_menu_option("3) Ver");
+            print_menu_option("4) Importar Lista de Alunos");
+            print_menu_option("5) Exportar Lista de Alunos");
+            print_menu_option("6) Sair e Guardar");
+            print_menu_option("7) Sair");
             print_menu_end_line();
 
             printf("%c%cBem-vindo, introduza a sua opcao: ", 8, 13);
@@ -26,7 +27,7 @@ void menu(LinkedList *l)
             op = getc(stdin);
             system("cls");
 
-        }while(op < '0' || op > '6');
+        }while(op < '0' || op > '7');
 
         switch (op)
         {
@@ -39,22 +40,64 @@ void menu(LinkedList *l)
             menu_pesquisa(l);
             break;
         case '3' :
-            menu_importar(l);
+            menu_ver(l);
             break;
         case '4' :
-            menu_exportar(l);
+            menu_importar(l);
             break;
         case '5' :
-            menu_sair_guardar(l);
+            menu_exportar(l);
             break;
+        case '6':
+            menu_sair_guardar(l);
 
         default:
             break;
         }
     }
-    while (op != '6');
-    printf("Good bye");
+    while (op != '7');
+    printf("Good bye\n");
 
+}
+
+void menu_ver(LinkedList *l)
+{
+    int op;
+
+    do{
+        printf("\n");
+        print_menu_header("Menu Ver");
+        print_menu_option("1) Ver Lista de Alunos ");
+        print_menu_option("2) Ver Lista de Alunos Aprovados");
+        print_menu_option("3) Ver Lista de Alunos Reprovados");
+        print_menu_option("4) Ver Estatisticas");
+        print_menu_end_line();
+
+        printf("%c%cIntroduza a sua opcao: ", 8, 13);
+        fflush(stdin);
+        op = getc(stdin);
+        system("cls");
+    }
+    while(op< '1' || op> '5');
+
+    switch (op)
+    {
+
+    case '1' :
+        print_list(l);
+        break;
+    case '2':
+        find_all_aprovados(l);
+        break;
+    case '3':
+
+        break;
+    case '4':
+        //menu_estatistica(l);
+        break;
+    default:
+        break;
+    }
 }
 
 /************************************************
@@ -149,8 +192,20 @@ void menu_pesquisa(LinkedList *l)
     case '1' :
         find(l);
         break;
-    case '2' :
-        find_all_by_name(l,"Andre");
+    case '2' : ;
+        char nome[20];
+        printf("Qual o a nome do aluno a encontrar?");
+        getchar();
+        gets(nome);
+        printf("\n");
+        LinkedList *resultado=find_all_by_name(l,nome);
+        if(resultado!= NULL){
+            printf("Foram encontrados estes %ss!!\n", nome);
+        }
+        else{
+            printf("Nao encontrado...\n");
+        }
+        //find_all_by_name(l,"Andre");
         break;
 
     case '3':
@@ -189,7 +244,7 @@ void menu_importar(LinkedList *l)
     {
 
     case '1' :
-        print_list(l);
+
         break;
     case '2':
         break;

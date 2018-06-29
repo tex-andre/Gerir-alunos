@@ -72,5 +72,6 @@ void print_node (Aluno *a);
 int num_aprovados(LinkedList* l);
 float media_final(LinkedList* l);
 LinkedList* find_all_by_name(LinkedList *l, char* info);
+LinkedList *find_all_aprovados(LinkedList *l);
 
 #endif // LINKEDLIST_H_INCLUDED

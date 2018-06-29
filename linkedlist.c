@@ -829,6 +829,43 @@ LinkedList* find_all_by_name(LinkedList *l, char* info){
 
 }
 
+LinkedList *find_all_aprovados(LinkedList *l){
+
+    LinkedList *aprovados=create();
+
+    Node *aux;
+    aux = l->head;
+    //lista vazia?
+    if(l->head == NULL)
+        return 0;
+
+    // Enquanto não for o últimmo elemento e nao for
+    // encontrado o elemento, precorre a lista
+    while (aux != NULL)
+    {
+        if(aprovacao(aux->aluno->nota_final) == 1){
+            printf("/---------------------------------------------------------------\\\n");
+            printf("|************************ Aluno Encontrados ********************|\n");
+            printf("|---------------------------------------------------------------|\n");
+            print_node(aux->aluno);
+            printf("\\---------------------------------------------------------------/\n");
+            insert_tail(aprovados,aux);
+        }
+
+        aux = aux->next;
+
+        //printf(" Nome: %s\n", info->nome); // apenas um teste
+    }
+    if (length(aprovados)== 0)
+        return NULL;
+    else
+        return aprovados;
+
+}
+
+
+
+
 
 Node* find_by_number(LinkedList *l, int info){
 
@@ -1030,5 +1067,5 @@ float media_final(LinkedList* l){
         aux = aux->next;
     }
     media = (float)soma /length(l);
-    return (float)media;
+    return media;
 }
