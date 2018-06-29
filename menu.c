@@ -71,6 +71,7 @@ void menu_ver(LinkedList *l)
         print_menu_option("2) Ver Lista de Alunos Aprovados");
         print_menu_option("3) Ver Lista de Alunos Reprovados");
         print_menu_option("4) Ver Estatisticas");
+        print_menu_option("5) Voltar");
         print_menu_end_line();
 
         printf("%c%cIntroduza a sua opcao: ", 8, 13);
@@ -90,14 +91,59 @@ void menu_ver(LinkedList *l)
         find_all_aprovados(l);
         break;
     case '3':
-
+        find_all_reprovados(l);
         break;
     case '4':
-        //menu_estatistica(l);
+        menu_estatistica(l);
         break;
     default:
         break;
     }
+}
+
+void menu_estatistica(LinkedList *l){
+
+    int op;
+
+    do{
+        printf("\n");
+        print_menu_header("Menu Estatisticas");
+        print_menu_option("1) Ver Media de Notas Finais ");
+        print_menu_option("2) Ver Percentagem de Alunos Aprovados");
+        print_menu_option("3) Ver Percentagem de Alunos Reprovados");
+        print_menu_option("4) Voltar");
+        print_menu_end_line();
+
+        printf("%c%cIntroduza a sua opcao: ", 8, 13);
+        fflush(stdin);
+        op = getc(stdin);
+        system("cls");
+    }
+    while(op< '1' || op> '4');
+
+    switch (op)
+    {
+
+    case '1' :
+        printf("A media final dos alunos e = %f valores", media_final(l));
+        break;
+    case '2': ;
+        LinkedList *aprovados;
+        aprovados=find_all_aprovados(l);
+        system("cls");
+        percentagem_aprovados(aprovados,l);
+        break;
+    case '3':
+        LinkedList *reprovados;
+        aprovados=find_all_reprovados(l);
+        system("cls");
+        percentagem_aprovados(reprovados,l);
+        break;
+    default:
+        break;
+    }
+
+
 }
 
 /************************************************
@@ -123,7 +169,7 @@ void menu_gerir_alunos(LinkedList *l)
         op = getc(stdin);
         system("cls");
     }
-    while(op < '1' || op > '5');
+    while(op < '1' || op > '4');
 
     switch (op)
     {

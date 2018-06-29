@@ -73,5 +73,8 @@ int num_aprovados(LinkedList* l);
 float media_final(LinkedList* l);
 LinkedList* find_all_by_name(LinkedList *l, char* info);
 LinkedList *find_all_aprovados(LinkedList *l);
+LinkedList *find_all_reprovados(LinkedList *l);
+float percentagem_aprovados(LinkedList *aprovados, LinkedList *l);
+float percentagem_aprovados(LinkedList *reprovados, LinkedList *l);
 
 #endif // LINKEDLIST_H_INCLUDED

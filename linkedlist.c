@@ -35,11 +35,12 @@
 *
 *H*/
 
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "linkedlist.h"
 #include "menu.h"
-#include "string.h"
+#include <string.h>
 
 
 /**F*****************************************************************
@@ -809,7 +810,7 @@ LinkedList* find_all_by_name(LinkedList *l, char* info){
     // encontrado o elemento, precorre a lista
     while (aux != NULL)
     {
-        if(strstr(aux->aluno->nome, info) != NULL){
+        if(strncasecmp(aux->aluno->nome, info,5) == NULL){
             printf("/---------------------------------------------------------------\\\n");
             printf("|************************ Aluno Encontrados ********************|\n");
             printf("|---------------------------------------------------------------|\n");
@@ -828,6 +829,30 @@ LinkedList* find_all_by_name(LinkedList *l, char* info){
         return f;
 
 }
+char* strcasestr(const char* haystack, const char* needle) {
+    /* Edge case: The empty string is a substring of everything. */
+    if (!needle[0]) return (char*) haystack;
+
+    /* Loop over all possible start positions. */
+    for (size_t i = 0; haystack[i]; i++) {
+        bool matches = true;
+        /* See if the string matches here. */
+        for (size_t j = 0; needle[j]; j++) {
+            /* If we're out of room in the haystack, give up. */
+            if (!haystack[i + j]) return NULL;
+
+            /* If there's a character mismatch, the needle doesn't fit here. */
+            if (tolower((unsigned char)needle[j]) !=
+                tolower((unsigned char)haystack[i + j])) {
+                matches = false;
+                break;
+            }
+        }
+        if (matches) return (char *)(haystack + i);
+    }
+    return NULL;
+}
+
 
 LinkedList *find_all_aprovados(LinkedList *l){
 
@@ -845,7 +870,7 @@ LinkedList *find_all_aprovados(LinkedList *l){
     {
         if(aprovacao(aux->aluno->nota_final) == 1){
             printf("/---------------------------------------------------------------\\\n");
-            printf("|************************ Aluno Encontrados ********************|\n");
+            printf("|************************ Aluno Encontrado *********************|\n");
             printf("|---------------------------------------------------------------|\n");
             print_node(aux->aluno);
             printf("\\---------------------------------------------------------------/\n");
@@ -863,6 +888,42 @@ LinkedList *find_all_aprovados(LinkedList *l){
 
 }
 
+
+
+
+LinkedList *find_all_reprovados(LinkedList *l){
+
+    LinkedList *reprovados=create();
+
+    Node *aux;
+    aux = l->head;
+    //lista vazia?
+    if(l->head == NULL)
+        return 0;
+
+    // Enquanto não for o últimmo elemento e nao for
+    // encontrado o elemento, precorre a lista
+    while (aux != NULL)
+    {
+        if(aprovacao(aux->aluno->nota_final) == 0){
+            printf("/---------------------------------------------------------------\\\n");
+            printf("|************************ Aluno Encontrado *********************|\n");
+            printf("|---------------------------------------------------------------|\n");
+            print_node(aux->aluno);
+            printf("\\---------------------------------------------------------------/\n");
+            insert_tail(reprovados,aux);
+        }
+
+        aux = aux->next;
+
+        //printf(" Nome: %s\n", info->nome); // apenas um teste
+    }
+    if (length(reprovados)== 0)
+        return NULL;
+    else
+        return reprovados;
+
+}
 
 
 
@@ -1068,4 +1129,14 @@ float media_final(LinkedList* l){
     }
     media = (float)soma /length(l);
     return media;
+}
+
+float percentagem_aprovados(LinkedList *aprovados, LinkedList *l){
+
+    return printf("A percentagem de aprovacao e de: %f %",((float)(length(aprovados)/length(l))*100));
+}
+
+float percentagem_aprovados(LinkedList *reprovados, LinkedList *l){
+
+    return printf("A percentagem de aprovacao e de: %f %",((float)(length(reprovados)/length(l))*100));
 }
