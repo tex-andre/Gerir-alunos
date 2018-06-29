@@ -133,11 +133,11 @@ void menu_estatistica(LinkedList *l){
         system("cls");
         percentagem_aprovados(aprovados,l);
         break;
-    case '3':
+    case '3': ;
         LinkedList *reprovados;
-        aprovados=find_all_reprovados(l);
+        reprovados=find_all_reprovados(l);
         system("cls");
-        percentagem_aprovados(reprovados,l);
+        percentagem_reprovados(reprovados,l);
         break;
     default:
         break;

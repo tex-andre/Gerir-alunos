@@ -1136,7 +1136,7 @@ float percentagem_aprovados(LinkedList *aprovados, LinkedList *l){
     return printf("A percentagem de aprovacao e de: %f %",((float)(length(aprovados)/length(l))*100));
 }
 
-float percentagem_aprovados(LinkedList *reprovados, LinkedList *l){
+float percentagem_reprovados(LinkedList *reprovados, LinkedList *l){
 
-    return printf("A percentagem de aprovacao e de: %f %",((float)(length(reprovados)/length(l))*100));
+    return printf("A percentagem de reprovacao e de: %f %",((float)(length(reprovados)/length(l))*100));
 }
