@@ -6,17 +6,17 @@ void menu(LinkedList *l)
 
     char op;
     do{
-        printf("\n");
-        print_menu_header("Gestao de alunos");
-        print_menu_option("1) Gerir Lista de Alunos");
-        print_menu_option("2) Pesquisa");
-        print_menu_option("3) Importar Lista de Alunos");
-        print_menu_option("4) Exportar Lista de Alunos");
-        print_menu_option("5) Sair e Guardar");
-        print_menu_option("6) Sair");
-        print_menu_end_line();
-
         do{
+            printf("\n");
+            print_menu_header("Gestao de alunos");
+            print_menu_option("1) Gerir Lista de Alunos");
+            print_menu_option("2) Pesquisa");
+            print_menu_option("3) Importar Lista de Alunos");
+            print_menu_option("4) Exportar Lista de Alunos");
+            print_menu_option("5) Sair e Guardar");
+            print_menu_option("6) Sair");
+            print_menu_end_line();
+
             printf("%c%cBem-vindo, introduza a sua opcao: ", 8, 13);
             fflush(stdin);
             op = getc(stdin);
@@ -56,16 +56,16 @@ void menu(LinkedList *l)
 void menu_gerir_alunos(LinkedList *l)
 {
     char op;
-    printf("\n");
-    print_menu_header("Menu Gerir Alunos");
-    print_menu_option("1) Adicionar novo aluno");
-    print_menu_option("2) Editar aluno");
-    print_menu_option("3) Remover um aluno");
-    print_menu_option("4) Voltar");
-    print_menu_end_line();
 
-    do
-    {
+    do{
+        printf("\n");
+        print_menu_header("Menu Gerir Alunos");
+        print_menu_option("1) Adicionar novo aluno");
+        print_menu_option("2) Editar aluno");
+        print_menu_option("3) Remover um aluno");
+        print_menu_option("4) Voltar");
+        print_menu_end_line();
+
         printf("%c%cIntroduza a sua opcao: ", 8, 13);
         fflush(stdin);
         op = getc(stdin);
@@ -113,15 +113,15 @@ void menu_gerir_alunos(LinkedList *l)
 void menu_pesquisa(LinkedList *l)
 {
     int op;
-    printf("\n");
-    print_menu_header("Menu de Pesquisa");
-    print_menu_option("1) Pesquisar aluno");
-    print_menu_option("2) Pesquisar varios alunos");
-    print_menu_option("3) Voltar");
-    print_menu_end_line();
 
-    do
-    {
+    do{
+        printf("\n");
+        print_menu_header("Menu de Pesquisa");
+        print_menu_option("1) Pesquisar aluno");
+        print_menu_option("2) Pesquisar varios alunos");
+        print_menu_option("3) Voltar");
+        print_menu_end_line();
+
         printf("%c%cIntroduza a sua opcao: ", 8, 13);
         fflush(stdin);
         op = getc(stdin);
@@ -151,15 +151,14 @@ void menu_pesquisa(LinkedList *l)
 void menu_importar(LinkedList *l)
 {
     int op;
-    printf("\n");
-    print_menu_header("Menu de Importacao");
-    print_menu_option("1) Ver");
-    print_menu_option("2) Voltar");
-    print_menu_end_line();
 
+    do{
+        printf("\n");
+        print_menu_header("Menu de Importacao");
+        print_menu_option("1) Ver");
+        print_menu_option("2) Voltar");
+        print_menu_end_line();
 
-    do
-    {
         printf("%c%cIntroduza a sua opcao: ", 8, 13);
         fflush(stdin);
         op = getc(stdin);
@@ -184,15 +183,15 @@ void menu_importar(LinkedList *l)
 void menu_exportar(LinkedList *l)
 {
     int op;
-    printf("\n");
-    print_menu_header("Menu de Importacao");
-    print_menu_option("1) Ver todos os alunos existentes");
-    print_menu_option("2) Exportar um aluno");
-    print_menu_option("3) Voltar");
-    print_menu_end_line();
 
-    do
-    {
+    do{
+        printf("\n");
+        print_menu_header("Menu de Importacao");
+        print_menu_option("1) Ver todos os alunos existentes");
+        print_menu_option("2) Exportar um aluno");
+        print_menu_option("3) Voltar");
+        print_menu_end_line();
+
         printf("%c%cIntroduza a sua opcao: ", 8, 13);
         fflush(stdin);
         op = getc(stdin);
@@ -216,13 +215,13 @@ void menu_exportar(LinkedList *l)
 void menu_sair_guardar(LinkedList *l){
 
     int op;
-    printf("\n");
-    print_menu_header("Menu Sair e Guardar");
-    print_menu_option("3) Voltar");
-    print_menu_end_line();
 
-    do
-    {
+    do{
+        printf("\n");
+        print_menu_header("Menu Sair e Guardar");
+        print_menu_option("3) Voltar");
+        print_menu_end_line();
+
         printf("%c%cIntroduza a sua opcao: ", 8, 13);
         fflush(stdin);
         op = getc(stdin);
@@ -251,15 +250,15 @@ void menu_sair_guardar(LinkedList *l){
 void menu_remover_alunos(LinkedList *l){
 
     char op;
-    printf("\n");
-    print_menu_header("Menu Remover Alunos");
-    print_menu_option("1) Nome");
-    print_menu_option("2) Numero");
-    print_menu_option("3) Voltar");
-    print_menu_end_line();
 
-    do
-    {
+    do{
+        printf("\n");
+        print_menu_header("Menu Remover Alunos");
+        print_menu_option("1) Nome");
+        print_menu_option("2) Numero");
+        print_menu_option("3) Voltar");
+        print_menu_end_line();
+
         printf("%c%cDeseja Remover o Aluno por?: ", 8, 13);
         fflush(stdin);
         op = getc(stdin);
@@ -377,16 +376,16 @@ void menu_editar_aluno(LinkedList *l)
     {
 
         int op;
-        printf("\n");
-        print_menu_header("Quer editar o aluno por:");
-        print_menu_option("1) Nome");
-        print_menu_option("2) Numero");
-        print_menu_option("3) Email");
-        print_menu_option("4) Voltar");
-        print_menu_end_line();
 
-        do
-        {
+        do{
+            printf("\n");
+            print_menu_header("Quer editar o aluno por:");
+            print_menu_option("1) Nome");
+            print_menu_option("2) Numero");
+            print_menu_option("3) Email");
+            print_menu_option("4) Voltar");
+            print_menu_end_line();
+
             printf("%c%cIntroduza a sua opcao: ", 8, 13);
             fflush(stdin);
             op=getc(stdin);

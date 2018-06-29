@@ -37,7 +37,7 @@ int main(){
     printf("%f\n", media_final(l));
     media = media_final(l);
     printf("%f", media);
-    //output_lista(l);
+    //export_lista(l);
 
 
 
