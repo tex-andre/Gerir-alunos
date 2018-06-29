@@ -810,7 +810,7 @@ LinkedList* find_all_by_name(LinkedList *l, char* info){
     // encontrado o elemento, precorre a lista
     while (aux != NULL)
     {
-        if(strncasecmp(aux->aluno->nome, info,5) == NULL){
+        if(strcasestr(aux->aluno->nome, info) != NULL){
             printf("/---------------------------------------------------------------\\\n");
             printf("|************************ Aluno Encontrados ********************|\n");
             printf("|---------------------------------------------------------------|\n");
@@ -1131,12 +1131,12 @@ float media_final(LinkedList* l){
     return media;
 }
 
-float percentagem_aprovados(LinkedList *aprovados, LinkedList *l){
+void percentagem_aprovados(LinkedList *aprovados, LinkedList *l){
 
-    return printf("A percentagem de aprovacao e de: %f %",((float)(length(aprovados)/length(l))*100));
+    printf("A percentagem de aprovacao e de: %.2f por cento",(((float)length(aprovados)/length(l))*100));
 }
 
-float percentagem_reprovados(LinkedList *reprovados, LinkedList *l){
+void percentagem_reprovados(LinkedList *reprovados, LinkedList *l){
 
-    return printf("A percentagem de reprovacao e de: %f %",((float)(length(reprovados)/length(l))*100));
+    printf("A percentagem de reprovacao e de: %.2f por cento",(((float)length(reprovados)/length(l))*100));
 }
