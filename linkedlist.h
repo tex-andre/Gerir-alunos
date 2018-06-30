@@ -64,13 +64,8 @@ int remove_first(LinkedList *l);
 int remove_last(LinkedList *l);
 int length(LinkedList *l);
 Node* find(LinkedList *l);
-<<<<<<< HEAD
-Node* find_by_name(LinkedList *l, Aluno* info);
-Node* find_by_number(LinkedList *l, Aluno* info);
-=======
 Node* find_by_name(LinkedList *l, char* info);
 Node* find_by_number(LinkedList *l, int info);   //done
->>>>>>> master
 void sort(LinkedList *l);
 void reverse(LinkedList *l);
 void print_list(LinkedList *l);
