@@ -721,10 +721,12 @@ LinkedList* find(LinkedList *l)
         resultado = find_all_by_name(l,nome);
         if(resultado!= NULL){
             printf("encontrado com sucesso!!\n");
+            printf("\n");
             return resultado;
         }
         else{
             printf("Nao encontrado...\n");
+            printf("\n");
             return NULL;
         }
 
@@ -737,10 +739,12 @@ LinkedList* find(LinkedList *l)
        resultado_num = find_all_by_number(l, numero);
         if (resultado_num != NULL){
             printf("Aluno encontrado com sucesso!!\n");
+            printf("\n");
             return resultado_num;
         }
         else{
             printf("O Aluno nao foi encontrado...\n");
+            printf("\n");
             return NULL;
         }
         break;
@@ -1186,12 +1190,12 @@ void guardar_sair(LinkedList* l, const char* list_file){
 
 void percentagem_aprovados(LinkedList *aprovados, LinkedList *l){
 
-    printf("A percentagem de aprovacao e de: %.2f por cento",(((float)length(aprovados)/length(l))*100));
+    printf("A percentagem de aprovacao e de: %f por cento",(((float)length(aprovados)/length(l))*100));
 }
 
 void percentagem_reprovados(LinkedList *reprovados, LinkedList *l){
 
-    printf("A percentagem de reprovacao e de: %.2f por cento",(((float)length(reprovados)/length(l))*100));
+    printf("A percentagem de reprovacao e de: %f por cento",(((float)length(reprovados)/length(l))*100));
 }
 
 /************************************************

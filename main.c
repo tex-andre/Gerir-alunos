@@ -21,11 +21,7 @@ int main(){
 
     input_list_txt(fp, l);
     /********Para editar um aluno pela solução adotada pelo Professor*******/
-   while(1){
-        scanf("%d", &i);
-        remove_node_by_number(l, i);
-        print_list(l);
-   }
+
     menu(l, list_file);
 
     //export_list(l);
