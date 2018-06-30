@@ -467,7 +467,7 @@ void menu_editar_aluno(LinkedList *l)
             for(i=1; i <= tam_lfiltrada; i++)
                 printf("%d) \n",i);
 
-            printf("O que pretende editar? \n");
+            printf("O que pretende editar? ");
             scanf("%d",&indice);
             a = posicao_indice(indice,filtrada);
             define_campos_de_edicao(a);
