@@ -12,11 +12,9 @@ int main(){
     const char* origem = "Ficheiros\\Participantes.txt";
     const char* list_file = "Ficheiros\\Participantes.dat";
 
+    printf("%s", asctime(data_atual()));
 
     LinkedList* l = create();
-
-
-
     import_list_bin(list_file, l);
 
 

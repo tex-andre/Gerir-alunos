@@ -12,6 +12,7 @@ void menu(LinkedList *l, const char* list_file)
 
     do{
         do{
+
             printf("\n");
             print_menu_header("Gestao de alunos");
             print_menu_option("1) Gerir Lista de Alunos");
@@ -57,7 +58,7 @@ void menu(LinkedList *l, const char* list_file)
         }
     }
     while (op != '7' && op != '6');
-    printf("Good bye\n");
+    printf("Goodbye\n");
 
 }
 
@@ -216,8 +217,7 @@ void menu_pesquisa(LinkedList *l)
         printf("\n");
         print_menu_header("Menu de Pesquisa");
         print_menu_option("1) Pesquisar aluno");
-        print_menu_option("2) Pesquisar varios alunos");
-        print_menu_option("3) Voltar");
+        print_menu_option("2) Voltar");
         print_menu_end_line();
 
         printf("%c%cIntroduza a sua opcao: ", 8, 13);
@@ -225,7 +225,7 @@ void menu_pesquisa(LinkedList *l)
         op = getc(stdin);
         system("cls");
     }
-    while(op< '1'|| op> '5');
+    while(op< '1'|| op> '2');
 
     switch (op)
     {
@@ -234,24 +234,7 @@ void menu_pesquisa(LinkedList *l)
         find(l);
         break;
     case '2' : ;
-        char nome[20];
-        printf("Qual o a nome do aluno a encontrar?");
-        fflush(stdin);
-        gets(nome);
-        printf("\n");
-        LinkedList *resultado=find_all_by_name(l,nome);
-        if(resultado!= NULL){
-            printf("Foram encontrados estes %ss!!\n", nome);
-        }
-        else{
-            printf("Nao encontrado...\n");
-        }
-
         break;
-
-    case '3':
-        break;
-
 
     default:
         break;
