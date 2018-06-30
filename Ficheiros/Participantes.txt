@@ -1,0 +1,31 @@
+Andre Teixeira|1|aluno1@ipt.pt|20|Aprovado
+Md Sharif|2|aluno2@ipt.pt|8|Reprovado
+Paulo Lopes|3|aluno3@ipt.pt|13|Aprovado
+Nuno Nunes|4|aluno4@ipt.pt|19|Aprovado
+Tiago Mendes|5|aluno5@ipt.pt|17|Aprovado
+Micael Couceiro|6|aluno6@ipt.pt|16|Aprovado
+Jacinto Silva|7|aluno7@ipt.pt|12|Aprovado
+Duarte Miguel|8|aluno8@ipt.pt|20|Aprovado
+Tiago Ramos|9|aluno9@ipt.pt|19|Aprovado
+Marcelo Godinho|10|aluno10@ipt.pt|20|Aprovado
+Goncalo Leite|11|aluno11@ipt.pt|14|Aprovado
+Bruno Ferreira|12|aluno12@ipt.pt|5|Reprovado
+Antonio Jana|13|aluno13@ipt.pt|13|Aprovado
+Joao Francisco|14|aluno14@ipt.pt|6|Reprovado
+Luis Figueiredo|15|aluno15@ipt.pt|7|Reprovado
+Jorge Pedro|16|aluno16@ipt.pt|8|Reprovado
+Renato Panda|17|aluno17@ipt.pt|13|Aprovado
+Alexandre Nunes|18|aluno18@ipt.pt|14|Aprovado
+Rui Dias|19|aluno19@ipt.pt|18|Aprovado
+Gabriel Correia|20|aluno20@ipt.pt|18|Aprovado
+Sergio Formiga|21|aluno21@ipt.pt|9|Reprovado
+Miguel Bispo|22|aluno22@ipt.pt|9|Reprovado
+Ricardo Morais|23|aluno23@ipt.pt|17|Aprovado
+Andre Leitao|24|aluno24@ipt.pt|6|Reprovado
+Filipe Alves|25|aluno25@ipt.pt|19|Aprovado
+Rui Mamede|26|aluno26@ipt.pt|13|Aprovado
+Hugo Monsanto|27|aluno27@ipt.pt|12|Aprovado
+Paulo Santos|28|aluno28@ipt.pt|5|Reprovado
+Samuel Pereira|29|aluno29@ipt.pt|20|Aprovado
+macavenco|30|aluno30@ipt.pt|20|Aprovado
+macavenco_mais|30|aluno30@ipt.pt|20|Aprovado
