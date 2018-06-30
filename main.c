@@ -15,9 +15,10 @@ int main(){
     //printf(" O Andre e o Duarte ja dominam o GITHUB \n");
 
     LinkedList* l = create();
+
     FILE* fp = le_f(origem);
 
-    input_list(fp, l);
+    input_list_txt(fp, l);
     /********Para editar um aluno pela solução adotada pelo Professor*******/
 
     //inport_list_bin(list_file, l);

@@ -9,6 +9,7 @@ void menu(LinkedList *l, const char* list_file)
 {
 
     char op;
+    LinkedList *nova=create();
     do{
         do{
             printf("\n");
@@ -43,7 +44,8 @@ void menu(LinkedList *l, const char* list_file)
             menu_ver(l);
             break;
         case '4' :
-            menu_importar(l);
+            nova=menu_importar(l);
+            l=nova;
             break;
         case '5' :
             menu_exportar(l);
@@ -180,18 +182,12 @@ void menu_gerir_alunos(LinkedList *l)
             insert_tail(l, a);
         }
         print_list(l);
-           //
-        // verificar se o aluno que está a ser inserido já existe na lista através da função contains
-        // se existir mostra WARNING!!
-        //  se não existir função guardar na lista ligada!!
-        //menu();
         break;
     }
     case '2' :
         menu_editar_aluno(l);
         break;
     case '3' : {
-        //remover_aluno();
         menu_remover_alunos(l);
 
         break;
@@ -200,8 +196,6 @@ void menu_gerir_alunos(LinkedList *l)
     case '4': {
         break;
     }
-
-
     default:
         break;
     }
@@ -268,14 +262,15 @@ Descrição:
 Sub-menu para importar a lista de um ficheiro externo.
 */
 
-void menu_importar(LinkedList *l)
+LinkedList* menu_importar(LinkedList *l)
 {
     int op;
+    LinkedList *nova=create();
 
     do{
         printf("\n");
         print_menu_header("Menu de Importacao");
-        print_menu_option("1) Ver");
+        print_menu_option("1) Importar Nova Lista");
         print_menu_option("2) Voltar");
         print_menu_end_line();
 
@@ -284,13 +279,14 @@ void menu_importar(LinkedList *l)
         op = getc(stdin);
         system("cls");
     }
-    while(op< '1' || op> '5');
+    while(op< '1' || op> '2');
 
     switch (op)
     {
 
     case '1' :
-
+        nova=import_new_list(l);
+        return nova;
         break;
     case '2':
         break;
@@ -313,8 +309,7 @@ void menu_exportar(LinkedList *l)
         printf("\n");
         print_menu_header("Menu de Exportacao");
         print_menu_option("1) Exportar Lista de Alunos");
-        print_menu_option("2) Exportar um aluno");
-        print_menu_option("3) Voltar");
+        print_menu_option("2) Voltar");
         print_menu_end_line();
 
         printf("%c%cIntroduza a sua opcao: ", 8, 13);
@@ -322,12 +317,13 @@ void menu_exportar(LinkedList *l)
         op = getc(stdin);
         system("cls");
     }
-    while(op< '1' || op> '5');
+    while(op< '1' || op> '2');
 
     switch (op)
     {
 
     case '1' :
+        export_list(l);
         break;
     case '2':
         break;
@@ -337,46 +333,8 @@ void menu_exportar(LinkedList *l)
     }
 }
 
-/************************************************
-Descrição:
-Sub-menu para guardar o conteúdo da lista e sair da aplicação.
-*/
-
-void menu_sair_guardar(LinkedList *l){
-
-    int op;
-
-    do{
-        printf("\n");
-        print_menu_header("Menu Guardar e Sair");
-        print_menu_option("3) Voltar");
-        print_menu_end_line();
-
-        printf("%c%cIntroduza a sua opcao: ", 8, 13);
-        fflush(stdin);
-        op = getc(stdin);
-        system("cls");
-    }
-    while(op< '1' || op> '5');
-
-    switch (op)
-    {
-
-    case '1' :
-
-        break;
-    case '2' :
-        // mostrar os alunos que pertencem ao mesmo curso
-        break;
-    case '3':
-        break;
-
-    default:
-        break;
-    }
 
 
-}
 
 /************************************************
 Descrição:

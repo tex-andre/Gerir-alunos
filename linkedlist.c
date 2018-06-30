@@ -1167,7 +1167,7 @@ Importa uma lista através do ponteiro fp para FILE
 e guarda o conteúdo numa lista.
 */
 
-void input_list(FILE* fp, LinkedList* l){
+void input_list_txt(FILE* fp, LinkedList* l){
     // Variáveis da estrutura Aluno
     char* nome;
     char mail[30];
@@ -1193,6 +1193,7 @@ void input_list(FILE* fp, LinkedList* l){
         }
     }
     printf("\nLista importada com sucesso!\n");
+
 }
 
 void inport_list_bin(const char* list_file, LinkedList* l){
@@ -1208,6 +1209,54 @@ void inport_list_bin(const char* list_file, LinkedList* l){
     //free(a);
     fclose(fp);
 }
+
+
+LinkedList *import_new_list(LinkedList *l){
+
+    int opc;
+    LinkedList *nova_lista=create();
+    char destino[30] = "Ficheiros\\";
+    char file_name[20] = {"0"}; // nome do ficheiro para guardar lista
+
+    Node* aux = l->head;
+
+    //lista vazia?
+    if(aux == NULL)
+        return 0;
+
+    printf("\nIntroduza o nome do ficheiro (sem extencao): ");
+
+    scanf("%s", &file_name);        // lê nome do ficheiro
+    strcat(destino, file_name);     // adiciona o nome do ficheiro à directoria de destino
+
+    print_menu_header("Formato do ficheiro:");
+    print_menu_option("1. Texto(.txt)");
+    print_menu_option("2. Binario(.dat)");
+    print_menu_end_line();
+
+    do{
+        printf("%c%cOpcao: ", 8, 13);
+        fflush(stdin);
+        opc = getc(stdin);
+    }while(opc < '1' || opc > '2');
+
+    switch(opc){
+    case '1':
+        destroy(l); // Formato de texto
+        strcat(destino, ".txt");
+        input_list_txt(destino, nova_lista);
+        break;
+    case '2':
+        destroy(l);
+        strcat(destino,".dat");
+        inport_list_bin(destino,nova_lista);
+
+    default:
+    break;
+    }
+    return nova_lista;
+}
+
 
 /************************************************
 Descrição:

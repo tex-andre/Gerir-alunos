@@ -27,3 +27,5 @@ Rui Mamede|26|aluno26@ipt.pt|13|Aprovado
 Hugo Monsanto|27|aluno27@ipt.pt|12|Aprovado
 Paulo Santos|28|aluno28@ipt.pt|5|Reprovado
 Samuel Pereira|29|aluno29@ipt.pt|20|Aprovado
+macavenco|30|aluno30@ipt.pt|20|Aprovado
+macavenco_mais|30|aluno30@ipt.pt|20|Aprovado
