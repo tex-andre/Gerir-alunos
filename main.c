@@ -17,13 +17,12 @@ int main(){
     //printf(" O Andre e o Duarte ja dominam o GITHUB \n");
 
     LinkedList* l = create();
-    FILE* fp = le_f(teste_origem);
+    FILE* fp = le_f(origem);
 
-    input_list(fp, l);
+    //input_list(fp, l);
     /********Para editar um aluno pela solução adotada pelo Professor*******/
 
-    //inport_list_bin(list_file, l);
-
+    inport_list_bin(teste_destino, l);
 
     print_list(l);
     menu(l, teste_destino);

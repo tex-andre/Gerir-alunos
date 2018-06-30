@@ -1141,15 +1141,16 @@ void guardar_sair(LinkedList* l, const char* list_file){
         return 0;
     }
 
-    char* terminator = '\0';                    //He will be back trust me!
+    int* terminator = '\0';                    //He will be back trust me!
     FILE* fp = escreve_fB(list_file);
     Node* aux = l->head;
 
-    while(aux->next != NULL){
+    while(aux != NULL){
         fwrite(aux->aluno, sizeof(Aluno), 1, fp);
         aux = aux->next;
     }
-    fwrite(terminator, sizeof(char), 1, fp);
+    fflush(fp);
+    //fwrite(terminator, sizeof(char), 1, fp);
     printf("Lista guardada com sucesso! %c", 7);
 }
 
@@ -1209,10 +1210,12 @@ void inport_list_bin(const char* list_file, LinkedList* l){
         Aluno* a = (Aluno*) malloc(sizeof(Aluno));
 
         fread(a, sizeof(Aluno), 1, fp);
-        if(a->nome != '\n')
+        //if(a->nome != '\n')
             insert_tail(l, a);
     }
+
     //free(a);
+
     fclose(fp);
 }
 
