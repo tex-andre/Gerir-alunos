@@ -7,7 +7,7 @@
 
 /************************************************
 Descrição:
-
+Função que pede ao utilizador todos os dados de um novo aluno criando a sua estrutura e devolve o mesmo.
 */
 Aluno* cria_aluno(){
     //Variaveis para a estrutura aluno
@@ -20,7 +20,10 @@ Aluno* cria_aluno(){
 
     return a;
 }
-
+/************************************************
+Descrição:
+Função que pede ao utilizador todos os dados de um novo aluno
+*/
 void pede_dados (char *nome, int* numero, char *mail, unsigned short* nota_final){
 
     fflush(stdin);
@@ -38,7 +41,10 @@ void pede_dados (char *nome, int* numero, char *mail, unsigned short* nota_final
     scanf("%hu", nota_final);
 
 }
-
+/************************************************
+Descrição:
+Função que cria a estrutura do aluno.
+*/
 Aluno *cria_estrutura(char *nome, int numero, char  *mail, unsigned short nota_final){
 
     Aluno *a=(Aluno*) malloc(sizeof(Aluno));
@@ -58,11 +64,17 @@ Aluno *cria_estrutura(char *nome, int numero, char  *mail, unsigned short nota_f
     return a;
 
 }
-
+/************************************************
+Descrição:
+Função que define o estado do aluno (aprovado/reprovado)
+*/
 bool aprovacao(unsigned short nota_final){
     return (nota_final >= 10) ? 1 : 0;
 }
-
+/************************************************
+Descrição:
+Função que edita o nome de um aluno e que retorna o mesmo mas com o nome alterado
+*/
 void editar_aluno_by_name(Aluno *a){
 
     /*******Novo nome do aluno que o utilizador pretende editar*****/
@@ -81,7 +93,10 @@ void editar_aluno_by_name(Aluno *a){
 
 
 }
-
+/************************************************
+Descrição:
+Função que edita o numero de um aluno e que retorna o mesmo mas com o numero alterado
+*/
 void editar_aluno_by_number(Aluno *a){
 
     /**********Novo numero do aluno que o utilizador pretende editar****/
@@ -100,7 +115,10 @@ void editar_aluno_by_number(Aluno *a){
 
 
 }
-
+/************************************************
+Descrição:
+Função que edita o email de um aluno e que retorna o mesmo mas com o email alterado
+*/
 void editar_aluno_by_email(Aluno *a){
 
     /*******Novo email do aluno que o utilizador pretende editar***/
