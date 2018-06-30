@@ -696,7 +696,6 @@ LinkedList* find(LinkedList *l)
     print_menu_header("Menu de Pesquisa Alunos");
     print_menu_option("1) Nome");
     print_menu_option("2) Numero");
-    print_menu_option("3) Voltar");
     print_menu_end_line();
 
 
@@ -707,7 +706,7 @@ LinkedList* find(LinkedList *l)
         op = getc(stdin);
         system("cls");
     }
-    while(op<'1'||op>'5');
+    while(op<'1'||op>'2');
 
     switch (op)
     {
@@ -748,7 +747,6 @@ LinkedList* find(LinkedList *l)
             return NULL;
         }
         break;
-
     default:
         break;
     }
@@ -1204,12 +1202,13 @@ Importa uma lista através do ponteiro fp para FILE
 e guarda o conteúdo numa lista.
 */
 
-void input_list_txt(FILE* fp, LinkedList* l){
+void input_list_txt(const char* origem, LinkedList* l){
     // Variáveis da estrutura Aluno
     char* nome;
     char mail[30];
     int numero;
     unsigned short nota;
+    FILE* fp = le_f(origem);
 
     char buffer[80]; // buffer temporário
 
@@ -1256,10 +1255,9 @@ void import_list_bin(const char* list_file, LinkedList* l){
 }
 
 
-LinkedList *import_new_list(LinkedList *l){
+void import_new_list(LinkedList *l){
 
     int opc;
-    LinkedList *nova_lista=create();
     char destino[30] = "Ficheiros\\";
     char file_name[20] = {"0"}; // nome do ficheiro para guardar lista
 
@@ -1287,21 +1285,30 @@ LinkedList *import_new_list(LinkedList *l){
 
     switch(opc){
     case '1':
-        destroy(l); // Formato de texto
+        clear_list(l); // Formato de texto
         strcat(destino, ".txt");
-        input_list_txt(destino, nova_lista);
+        input_list_txt(destino, l);
         break;
     case '2':
-        destroy(l);
+        clear_list(l);
         strcat(destino,".dat");
-        import_list_bin(destino,nova_lista);
+        import_list_bin(destino, l);
 
     default:
     break;
     }
-    return nova_lista;
+
 }
 
+void clear_list(LinkedList* l){
+
+    Node *aux;
+    aux = l->head;
+    while(l->head != l->tail)
+    {
+        remove_last(l);
+    }
+}
 
 /************************************************
 Descrição:

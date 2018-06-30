@@ -1,0 +1,191 @@
+/---------------------------------------------------------------\
+|************** Alunos de Tecnicas de programacao **************|
+| Numero de alunos: 31						|
+|---------------------------------------------------------------|
+| Nome: Andre Teixeira						|
+| Numero: 1							|
+| E-mail: aluno1@ipt.pt						|
+| Nota final:  20						|
+| Estado: Aprovado						|
+|---------------------------------------------------------------|
+| Nome: Md Sharif						|
+| Numero: 2							|
+| E-mail: aluno2@ipt.pt						|
+| Nota final:  8						|
+| Estado: Reprovado						|
+|---------------------------------------------------------------|
+| Nome: Paulo Lopes						|
+| Numero: 3							|
+| E-mail: aluno3@ipt.pt						|
+| Nota final:  13						|
+| Estado: Aprovado						|
+|---------------------------------------------------------------|
+| Nome: Nuno Nunes						|
+| Numero: 4							|
+| E-mail: aluno4@ipt.pt						|
+| Nota final:  19						|
+| Estado: Aprovado						|
+|---------------------------------------------------------------|
+| Nome: Tiago Mendes						|
+| Numero: 5							|
+| E-mail: aluno5@ipt.pt						|
+| Nota final:  17						|
+| Estado: Aprovado						|
+|---------------------------------------------------------------|
+| Nome: Micael Couceiro						|
+| Numero: 6							|
+| E-mail: aluno6@ipt.pt						|
+| Nota final:  16						|
+| Estado: Aprovado						|
+|---------------------------------------------------------------|
+| Nome: Jacinto Silva						|
+| Numero: 7							|
+| E-mail: aluno7@ipt.pt						|
+| Nota final:  12						|
+| Estado: Aprovado						|
+|---------------------------------------------------------------|
+| Nome: Duarte Miguel						|
+| Numero: 8							|
+| E-mail: aluno8@ipt.pt						|
+| Nota final:  20						|
+| Estado: Aprovado						|
+|---------------------------------------------------------------|
+| Nome: Tiago Ramos						|
+| Numero: 9							|
+| E-mail: aluno9@ipt.pt						|
+| Nota final:  19						|
+| Estado: Aprovado						|
+|---------------------------------------------------------------|
+| Nome: Marcelo Godinho						|
+| Numero: 10							|
+| E-mail: aluno10@ipt.pt						|
+| Nota final:  20						|
+| Estado: Aprovado						|
+|---------------------------------------------------------------|
+| Nome: Goncalo Leite						|
+| Numero: 11							|
+| E-mail: aluno11@ipt.pt						|
+| Nota final:  14						|
+| Estado: Aprovado						|
+|---------------------------------------------------------------|
+| Nome: Bruno Ferreira						|
+| Numero: 12							|
+| E-mail: aluno12@ipt.pt						|
+| Nota final:  5						|
+| Estado: Reprovado						|
+|---------------------------------------------------------------|
+| Nome: Antonio Jana						|
+| Numero: 13							|
+| E-mail: aluno13@ipt.pt						|
+| Nota final:  13						|
+| Estado: Aprovado						|
+|---------------------------------------------------------------|
+| Nome: Joao Francisco						|
+| Numero: 14							|
+| E-mail: aluno14@ipt.pt						|
+| Nota final:  6						|
+| Estado: Reprovado						|
+|---------------------------------------------------------------|
+| Nome: Luis Figueiredo						|
+| Numero: 15							|
+| E-mail: aluno15@ipt.pt						|
+| Nota final:  7						|
+| Estado: Reprovado						|
+|---------------------------------------------------------------|
+| Nome: Jorge Pedro						|
+| Numero: 16							|
+| E-mail: aluno16@ipt.pt						|
+| Nota final:  8						|
+| Estado: Reprovado						|
+|---------------------------------------------------------------|
+| Nome: Renato Panda						|
+| Numero: 17							|
+| E-mail: aluno17@ipt.pt						|
+| Nota final:  13						|
+| Estado: Aprovado						|
+|---------------------------------------------------------------|
+| Nome: Alexandre Nunes						|
+| Numero: 18							|
+| E-mail: aluno18@ipt.pt						|
+| Nota final:  14						|
+| Estado: Aprovado						|
+|---------------------------------------------------------------|
+| Nome: Rui Dias						|
+| Numero: 19							|
+| E-mail: aluno19@ipt.pt						|
+| Nota final:  18						|
+| Estado: Aprovado						|
+|---------------------------------------------------------------|
+| Nome: Gabriel Correia						|
+| Numero: 20							|
+| E-mail: aluno20@ipt.pt						|
+| Nota final:  18						|
+| Estado: Aprovado						|
+|---------------------------------------------------------------|
+| Nome: Sergio Formiga						|
+| Numero: 21							|
+| E-mail: aluno21@ipt.pt						|
+| Nota final:  9						|
+| Estado: Reprovado						|
+|---------------------------------------------------------------|
+| Nome: Miguel Bispo						|
+| Numero: 22							|
+| E-mail: aluno22@ipt.pt						|
+| Nota final:  9						|
+| Estado: Reprovado						|
+|---------------------------------------------------------------|
+| Nome: Ricardo Morais						|
+| Numero: 23							|
+| E-mail: aluno23@ipt.pt						|
+| Nota final:  17						|
+| Estado: Aprovado						|
+|---------------------------------------------------------------|
+| Nome: Andre Leitao						|
+| Numero: 24							|
+| E-mail: aluno24@ipt.pt						|
+| Nota final:  6						|
+| Estado: Reprovado						|
+|---------------------------------------------------------------|
+| Nome: Filipe Alves						|
+| Numero: 25							|
+| E-mail: aluno25@ipt.pt						|
+| Nota final:  19						|
+| Estado: Aprovado						|
+|---------------------------------------------------------------|
+| Nome: Rui Mamede						|
+| Numero: 26							|
+| E-mail: aluno26@ipt.pt						|
+| Nota final:  13						|
+| Estado: Aprovado						|
+|---------------------------------------------------------------|
+| Nome: Hugo Monsanto						|
+| Numero: 27							|
+| E-mail: aluno27@ipt.pt						|
+| Nota final:  12						|
+| Estado: Aprovado						|
+|---------------------------------------------------------------|
+| Nome: Paulo Santos						|
+| Numero: 28							|
+| E-mail: aluno28@ipt.pt						|
+| Nota final:  5						|
+| Estado: Reprovado						|
+|---------------------------------------------------------------|
+| Nome: Samuel Pereira						|
+| Numero: 29							|
+| E-mail: aluno29@ipt.pt						|
+| Nota final:  20						|
+| Estado: Aprovado						|
+|---------------------------------------------------------------|
+| Nome: macavenco						|
+| Numero: 30							|
+| E-mail: aluno30@ipt.pt						|
+| Nota final:  20						|
+| Estado: Aprovado						|
+|---------------------------------------------------------------|
+| Nome: macavenco_mais						|
+| Numero: 30							|
+| E-mail: aluno30@ipt.pt						|
+| Nota final:  20						|
+| Estado: Aprovado						|
+|---------------------------------------------------------------|
+\---------------------------------------------------------------/

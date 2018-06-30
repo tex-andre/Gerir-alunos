@@ -101,6 +101,6 @@ void export_list_txt(char* destino, LinkedList* l);
 
 void fprint_node_txt (FILE* fp, Aluno *a);
 void fprint_tabs_txt (FILE* fp, char* str);
-LinkedList *import_new_list(LinkedList *l);
-void input_list_txt(FILE* fp, LinkedList* l);
+void import_new_list(LinkedList *l);
+void input_list_txt(const char* origem, LinkedList* l);
 #endif // LINKEDLIST_H_INCLUDED

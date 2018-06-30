@@ -9,7 +9,7 @@ void menu(LinkedList *l, const char* list_file)
 {
 
     char op;
-    LinkedList *nova=create();
+
     do{
         do{
             printf("\n");
@@ -44,8 +44,7 @@ void menu(LinkedList *l, const char* list_file)
             menu_ver(l);
             break;
         case '4' :
-            nova=menu_importar(l);
-            l=nova;
+            menu_importar(l);
             break;
         case '5' :
             menu_exportar(l);
@@ -98,6 +97,8 @@ void menu_ver(LinkedList *l)
     case '4':
         menu_estatistica(l);
         break;
+    case '5':
+        break;
     default:
         break;
     }
@@ -141,11 +142,11 @@ void menu_estatistica(LinkedList *l){
         system("cls");
         percentagem_reprovados(reprovados,l);
         break;
+    case '4': ;
+        break;
     default:
         break;
     }
-
-
 }
 
 /************************************************
@@ -246,7 +247,6 @@ void menu_pesquisa(LinkedList *l)
             printf("Nao encontrado...\n");
         }
 
-        //find_all_by_name(l,"Andre");
         break;
 
     case '3':
@@ -263,10 +263,9 @@ Descrição:
 Sub-menu para importar a lista de um ficheiro externo.
 */
 
-LinkedList* menu_importar(LinkedList *l)
+void menu_importar(LinkedList *l)
 {
     int op;
-    LinkedList *nova=create();
 
     do{
         printf("\n");
@@ -286,8 +285,7 @@ LinkedList* menu_importar(LinkedList *l)
     {
 
     case '1' :
-        nova=import_new_list(l);
-        return nova;
+        import_new_list(l);
         break;
     case '2':
         break;
@@ -344,70 +342,39 @@ Sub-menu para remover um aluno da lista.
 
 void menu_remover_alunos(LinkedList *l){
 
-    char op;
+    Aluno* a;
+    LinkedList *filtrada=find(l);
+    int tam_lfiltrada=length(filtrada);
 
-    do{
-        printf("\n");
-        print_menu_header("Menu Remover Alunos");
-        print_menu_option("1) Nome");
-        print_menu_option("2) Numero");
-        print_menu_option("3) Voltar");
-        print_menu_end_line();
-
-        printf("%c%cDeseja Remover o Aluno por?: ", 8, 13);
-        fflush(stdin);
-        op = getc(stdin);
-        system("cls");
-    }
-    while(op < '1' || op > '5');
-
-    switch (op)
+    if(filtrada!=NULL)
     {
-    case '1': {
-            char nome[20];
-            printf("Qual o nome do aluno que deseja remover?");
-            fflush(stdin); // limpa o enter anterior
-            gets(nome);
-            find_all_by_name(l,nome);
-            int resultado = remove_node_by_name(l, nome);
-            if (resultado == 1)
-                printf("Removido com sucesso!!\n");
-            else
-                printf("Nao encontrado / nao removido...\n");
+        if(tam_lfiltrada>1)
+        {
+            int indice,i;
 
-            //print_list(l);
-        break;
+            for(i=1; i <= tam_lfiltrada; i++)
+                printf("%d) \n",i);
+
+            printf("O que pretende remover? \n");
+            scanf("%d",&indice);
+            a = posicao_indice(indice,filtrada);
+            remove_node_by_number(l, a->numero);
+
+        }
+        else         // tam=1 para o caso da lista só ter um elemento a editar
+        {
+            a = filtrada->head->aluno;
+            remove_node_by_number(l, a->numero);
+        }
+        printf("\nAluno removido com sucesso!\n");
     }
-    case '2' : ;
+    else
+        printf("Aluno nao encontrado");
 
-        int numero;
-        printf("Qual o num do aluno a remover?");
-        scanf("%d", &numero);
-        find_all_by_number(l,numero);
-        int resultado = remove_node_by_number(l, numero);
-        if (resultado == 1)
-            printf("Removido com sucesso!!\n");
-        else
-            printf("Nao encontrado / nao removido...\n");
-
-        //print_list(l);
-        break;
-
-    case '3':
-        break;
-
-
-    default:
-        break;
-    }
 
 
 }
 
-void menu_find(LinkedList *l){
-
-
-}
 
 /************************************************
 Descrição:
@@ -532,7 +499,7 @@ void define_campos_de_edicao (Aluno* a){
                 fflush(stdin);
                 op=getc(stdin);
             }
-            while(op< '1' || op> '3');
+            while(op< '1' || op> '4');
 
             switch (op)
             {
@@ -547,9 +514,9 @@ void define_campos_de_edicao (Aluno* a){
             case '3':
                 ;
                 editar_aluno_by_email(a);
+            case '4': ;
+                break;
             default:
                 break;
             }
-
-
 }
