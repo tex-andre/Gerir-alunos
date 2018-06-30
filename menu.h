@@ -7,7 +7,7 @@
 /**********Todos os Menus Existentes************/
 
 
- void menu(LinkedList *l);
+ void menu(LinkedList *l, const char* list_file);
  void menu_gerir_alunos(LinkedList *l);
  void menu_pesquisa(LinkedList *l);
  void menu_importar(LinkedList *l);

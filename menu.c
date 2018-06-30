@@ -5,7 +5,7 @@
 Descrição:
 Menu principal.
 */
-void menu(LinkedList *l)
+void menu(LinkedList *l, const char* list_file)
 {
 
     char op;
@@ -18,7 +18,7 @@ void menu(LinkedList *l)
             print_menu_option("3) Ver");
             print_menu_option("4) Importar Lista de Alunos");
             print_menu_option("5) Exportar Lista de Alunos");
-            print_menu_option("6) Sair e Guardar");
+            print_menu_option("6) Guardar e Sair");
             print_menu_option("7) Sair");
             print_menu_end_line();
 
@@ -49,13 +49,13 @@ void menu(LinkedList *l)
             menu_exportar(l);
             break;
         case '6':
-            menu_sair_guardar(l);
+            guardar_sair(l, list_file);
 
         default:
             break;
         }
     }
-    while (op != '7');
+    while (op != '7' && op != '6');
     printf("Good bye\n");
 
 }

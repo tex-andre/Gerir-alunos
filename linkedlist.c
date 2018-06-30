@@ -1134,8 +1134,20 @@ float media_final(LinkedList* l){
 }
 
 
-void guardar_sair(LinkedList* l){
-    //FILE* fp =
+void guardar_sair(LinkedList* l, const char* list_file){
+    if(l->head == NULL){
+        printf("\nERRO: lista vazia!!\n");;
+        return 0;
+    }
+
+    FILE* fp = escreve_fB(list_file);
+    Node* aux = l->head;
+
+    while(aux->next != NULL){
+        fwrite(aux->aluno, sizeof(Aluno), 1, fp);
+        aux = aux->next;
+    }
+    printf("Lista guardada com sucesso! %c", 7);
 }
 
 void percentagem_aprovados(LinkedList *aprovados, LinkedList *l){
@@ -1146,5 +1158,240 @@ void percentagem_aprovados(LinkedList *aprovados, LinkedList *l){
 void percentagem_reprovados(LinkedList *reprovados, LinkedList *l){
 
     printf("A percentagem de reprovacao e de: %.2f por cento",(((float)length(reprovados)/length(l))*100));
+}
+
+/************************************************
+Descrição:
+Importa uma lista através do ponteiro fp para FILE
+e guarda o conteúdo numa lista.
+*/
+
+void input_list(FILE* fp, LinkedList* l){
+    // Variáveis da estrutura Aluno
+    char* nome;
+    char mail[30];
+    int numero;
+    unsigned short nota;
+
+    char buffer[80]; // buffer temporário
+
+    while(!feof(fp)){
+        fgets(buffer, 80, fp);
+        strtok(buffer, "\n");       // Retira "\n" do fim da string lida
+        if(buffer[0] != '\n'){      // Previne a utilização de uma string composta apenas por "\n",
+                                    // relacionado com a forma de escrita de cada nó da lista.
+            nome = strtok(buffer, "|");
+            numero = atoi(strtok(NULL, "|")); // "|" : Caracter e de separação
+            strcpy(mail, strtok(NULL, "|"));
+            nota = atoi(strtok(NULL, "|"));
+
+        // Cria estrutura Aluno com dados lidos e incere na lista
+        Aluno* a = cria_estrutura(nome, numero, mail, nota);
+
+        insert_tail(l, a);
+        }
+    }
+    printf("\nLista importada com sucesso!\n");
+}
+
+void inport_list_bin(const char* list_file, LinkedList* l){
+    FILE* fp = le_fB(list_file);
+
+    while(!feof(fp)){
+        Aluno* a = (Aluno*) malloc(sizeof(Aluno));
+
+        fread(a, sizeof(Aluno), 1, fp);
+        if(a->nome != '\n')
+            insert_tail(l, a);
+    }
+    //free(a);
+    fclose(fp);
+}
+
+/************************************************
+Descrição:
+Exporta a lista para diferentes formatos predefinidos
+que o utilizador pode escolher.
+*/
+
+int export_list(LinkedList* l){
+    int opc;
+    char destino[30] = "Ficheiros\\";
+    char file_name[20] = {"0"}; // nome do ficheiro para guardar lista
+
+    Node* aux = l->head;
+
+    //lista vazia?
+    if(aux == NULL)
+        return 0;
+
+    printf("\nIntroduza o nome do ficheiro (sem extencao): ");
+
+    scanf("%s", &file_name);        // lê nome do ficheiro
+    strcat(destino, file_name);     // adiciona o nome do ficheiro à directoria de destino
+
+    print_menu_header("Formato para guardar o ficheiro:");
+    print_menu_option("1. Texto(.txt)");
+    print_menu_option("2. Excel(.csv)");
+    print_menu_option("3. HTML(.html)");
+    print_menu_end_line();
+
+    do{
+        printf("%c%cOpcao: ", 8, 13);
+        fflush(stdin);
+        opc = getc(stdin);
+    }while(opc < '1' || opc > '3');
+
+    switch(opc){
+    case '1':                 // Formato de texto
+        strcat(destino, ".txt");
+        export_list_txt(destino, l);
+        break;
+    case '2':                 // Formato csv
+        strcat(destino, ".csv");
+        export_list_csv(destino, l);
+        break;
+    case '3':                 // Formato HTML
+        strcat(destino, ".html");
+        export_list_html(destino, l);
+        break;
+    default:
+    break;
+    }
+    return 1;
+}
+
+/************************************************
+Descrição:
+Exporta a lista em formato de texto
+*/
+
+void export_list_txt(char* destino, LinkedList* l){
+    Node* aux = l->head;
+
+    FILE* fp = escreve_f(destino);
+
+    fprintf(fp, "/---------------------------------------------------------------\\\n");
+    fprintf(fp, "|************** Alunos de Tecnicas de programacao **************|\n");
+    fprintf(fp, "| Numero de alunos: %d\t\t\t\t\t\t|\n", length(l));
+    fprintf(fp, "|---------------------------------------------------------------|\n");
+
+    while(aux != NULL)
+    {
+        fprint_node_txt(fp, aux->aluno);
+        fprintf(fp, "|---------------------------------------------------------------|\n");
+        aux = aux->next;
+    }
+    fprintf(fp, "\\---------------------------------------------------------------/\n");
+    printf("Lista guardada com sucesso!\n");
+
+
+}
+
+/************************************************
+Descrição:
+Escreve o conteúdo da estrutura Aluno de um nó para
+o ficheiro de texto.
+*/
+
+void fprint_node_txt (FILE* fp, Aluno *a){
+
+    fprintf(fp, "| Nome: %s", a->nome);
+    fprint_tabs(fp, a->nome);           // escreve o número de tabs correcto para uma string
+                                        // de modo a estar formatado
+    fprintf(fp, "|\n");
+    fprintf(fp, "| Numero: %d", a->numero);
+    fprintf(fp, "\t\t\t\t\t\t\t|\n");
+
+    fprintf(fp, "| E-mail: %s", a->mail);
+    fprint_tabs(fp, a->mail);
+    fprintf(fp, "|\n");                 // Insere caracter separador
+
+    fprintf(fp, "| Nota final:  %d", a->nota_final);
+    fprintf(fp, "\t\t\t\t\t\t|\n");
+
+    fprintf(fp, "| Estado: %s", a->estado);
+    fprintf(fp, "\t\t\t\t\t\t|\n");
+
+}
+
+/************************************************
+Descrição:
+Escreve o número de tabs correcto para uma string
+de modo a que a informação esteja formatada.
+*/
+
+void fprint_tabs(FILE* fp, char* str){
+    int i;
+
+    size_t size = strlen(str);
+
+    short tab_num = (size / 8) + 1;
+
+    for (i=0;  (i + tab_num) < 8; i++)
+        fprintf(fp, "\t");
+}
+
+/************************************************
+Descrição:
+Exporta lista em formato csv.
+*/
+
+void export_list_csv(char* destino, LinkedList* l){
+    Node* aux = l->head; // Cria nó temporário para aceder aos elementos da lista
+    FILE* fp = escreve_f(destino);
+
+    fprintf(fp, "Nome do aluno;Numero;e-mail;Nota final;Estado\n");
+
+    while(aux != NULL){
+        fprintf(fp, "%s;%d;%s;%d;%s\n", aux->aluno->nome, aux->aluno->numero, aux->aluno->mail, aux->aluno->nota_final, aux->aluno->estado);
+        aux = aux->next;
+    }
+    printf("Lista guardada com sucesso!\n");
+
+}
+
+/************************************************
+Descrição:
+Exporta lista em formato HTML.
+*/
+
+void export_list_html(char* destino, LinkedList* l){
+    Node* aux = l->head;                // Cria nó temporário para aceder aos elementos da lista
+    FILE* fp = escreve_f(destino);      // ponteiro para escrita em texto
+
+    //titulo da página
+    fprintf(fp, "<head>\n<title>Lista de Alunos</title>\n</head>\n");
+    // Formatação da tabela
+    fprintf(fp, "<style>\ntable, th, td {border: 1px solid black;\nborder-collapse: collapse;padding: 5px;}\n</style>");
+    // imagem do logo do ipt
+    fprintf(fp, "\n<img src=\"http://portal2.ipt.pt/img/logo.png\" alt=\"IPT Logo\" width=\"348\" height=\"65\">\n");
+    // Header
+    fprintf(fp, "<h1>Lista de alunos</h1>\n");
+
+    // Cria uma tabela para escrever a lista de alunos
+    fprintf(fp, "<table>");
+    // Headers de cada coluna
+    fprintf(fp, "\n<td><b>Nome:</b></td>");
+    fprintf(fp, "\n<td><b>Numero:</b></td>");
+    fprintf(fp, "\n<td><b>E-mail:</b></td>");
+    fprintf(fp, "\n<td><b>Nota final:</b></td>");
+    fprintf(fp, "\n<td><b>Estado:</b></td>");
+
+    while(aux != NULL){
+        fprintf(fp, "<tr>");
+        // conteúdo da tabela
+        fprintf(fp, "\n<td>%s</td>", aux->aluno->nome);
+        fprintf(fp, "\n<td>%d</td>", aux->aluno->numero);
+        fprintf(fp, "\n<td>%s</td>", aux->aluno->mail);
+        fprintf(fp, "\n<td>%hu</td>", aux->aluno->nota_final);
+        fprintf(fp, "\n<td>%s</td>", aux->aluno->estado);
+
+        fprintf(fp, "\n</tr>");
+    aux = aux->next;
+        }
+    fprintf(fp, "\n<table>\n");
+
+    printf("Lista guardada com sucesso!\n");
 }
 

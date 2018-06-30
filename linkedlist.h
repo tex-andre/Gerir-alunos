@@ -71,11 +71,17 @@ void print_list(LinkedList *l);
 void print_node (Aluno *a);
 int num_aprovados(LinkedList* l);
 float media_final(LinkedList* l);
+void guardar_sair(LinkedList* l, const char* list_file);
 LinkedList* find_all_by_name(LinkedList *l, char* info);
 LinkedList *find_all_aprovados(LinkedList *l);
 LinkedList *find_all_reprovados(LinkedList *l);
 void percentagem_aprovados(LinkedList *aprovados, LinkedList *l);
 void percentagem_reprovados(LinkedList *reprovados, LinkedList *l);
 char* strcasestr(const char* haystack, const char* needle);
-
+void export_list_csv(char* destino, LinkedList* l);
+void export_list_html(char* destino, LinkedList* l);
+int export_list(LinkedList* l);
+void export_list_txt(char* destino, LinkedList* l);
+void fprint_node_txt (FILE* fp, Aluno *a);
+void fprint_tabs_txt (FILE* fp, char* str);
 #endif // LINKEDLIST_H_INCLUDED
