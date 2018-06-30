@@ -19,9 +19,6 @@ typedef struct {
     char nome [30];
     int numero;
     char e_mail [30];
-
-#warning TODO (tex#1#): struct professor: turmas que tem ou disciplinas?
-
 }professor;
 
 Aluno* cria_aluno();
