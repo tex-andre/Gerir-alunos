@@ -830,14 +830,16 @@ LinkedList* find_all_by_name(LinkedList *l, char* info){
 
 }
 char* strcasestr(const char* haystack, const char* needle) {
+    size_t i, j;
+
     /* Edge case: The empty string is a substring of everything. */
     if (!needle[0]) return (char*) haystack;
 
     /* Loop over all possible start positions. */
-    for (size_t i = 0; haystack[i]; i++) {
+    for (i = 0; haystack[i]; i++) {
         bool matches = true;
         /* See if the string matches here. */
-        for (size_t j = 0; needle[j]; j++) {
+        for (j = 0; needle[j]; j++) {
             /* If we're out of room in the haystack, give up. */
             if (!haystack[i + j]) return NULL;
 
@@ -1131,9 +1133,11 @@ float media_final(LinkedList* l){
     return media;
 }
 
-<<<<<<< HEAD
-void guardar_sair(LinkedList* l)
-=======
+
+void guardar_sair(LinkedList* l){
+    //FILE* fp =
+}
+
 void percentagem_aprovados(LinkedList *aprovados, LinkedList *l){
 
     printf("A percentagem de aprovacao e de: %.2f por cento",(((float)length(aprovados)/length(l))*100));
@@ -1143,4 +1147,4 @@ void percentagem_reprovados(LinkedList *reprovados, LinkedList *l){
 
     printf("A percentagem de reprovacao e de: %.2f por cento",(((float)length(reprovados)/length(l))*100));
 }
->>>>>>> 3c699f1aeb1346a84452f8cdb80dec80c2effd58
+
