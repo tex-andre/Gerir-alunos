@@ -412,9 +412,10 @@ int remove_node_by_name(LinkedList *l, char *nome_aluno)
         return 0;
     else
     {
-        aux = l->head;
+
+        aux = find_by_name(l, nome_aluno);
         // valor no inicio
-        if (strcmpi(aux->aluno->nome,nome_aluno)==0)
+        if (aux == l->head)
         {
             // 2:Lista com um elemento
             if (l->head == l->tail)
@@ -427,16 +428,12 @@ int remove_node_by_name(LinkedList *l, char *nome_aluno)
             {
                 // 3:Lista com vários elementos
                 l->head = l->head->next;
+                l->head->prev = NULL;
                 free(aux);
             }
             return 1;
         }
-        // Vai procurar o valor
-        while (aux->next != NULL && strcmpi(aux->next->aluno->nome,nome_aluno)!=0)
-            aux = aux->next;
-        // se o valor existe
-        if (aux->next != NULL)
-        {
+
             // 4:se é o ultimo valor da lista
             if (aux->next == l->tail)
             {
@@ -454,10 +451,10 @@ int remove_node_by_name(LinkedList *l, char *nome_aluno)
             }
             return 1;
         }
-        else
+
             // 6:valor não existe
             return 0;
-    }
+
 }
 
 
