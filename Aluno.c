@@ -56,6 +56,7 @@ Aluno *cria_estrutura(char *nome, int numero, char  *mail, unsigned short nota_f
         strcpy(a->estado, "Reprovado");
 
     return a;
+
 }
 
 bool aprovacao(unsigned short nota_final){

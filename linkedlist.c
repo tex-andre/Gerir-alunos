@@ -1376,6 +1376,7 @@ void export_list_txt(char* destino, LinkedList* l){
     }
     fprintf(fp, "\\---------------------------------------------------------------/\n");
     printf("Lista guardada com sucesso!\n");
+    fclose(fp);
 }
 
 /************************************************
