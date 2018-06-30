@@ -1069,3 +1069,5 @@ float media_final(LinkedList* l){
     media = (float)soma /length(l);
     return media;
 }
+
+void guardar_sair(LinkedList* l)
