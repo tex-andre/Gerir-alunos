@@ -2,11 +2,6 @@
 #define ALUNO_H_INCLUDED
 #include <stdbool.h>
 
-
-
-
-
-
 typedef struct {
     char nome[30];
     int numero;

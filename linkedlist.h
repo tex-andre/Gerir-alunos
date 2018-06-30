@@ -42,6 +42,7 @@
 
 typedef struct _Node {
     Aluno* aluno;
+    struct _Node *prev;
     struct _Node *next;
 } Node;
 
@@ -72,6 +73,7 @@ LinkedList* find(LinkedList *l);
 Node* find_by_name(LinkedList *l, char* info);
 Node* find_by_number(LinkedList *l, int info);
    //done
+
 void sort(LinkedList *l);
 void reverse(LinkedList *l);
 

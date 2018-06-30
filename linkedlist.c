@@ -155,14 +155,17 @@ int insert_tail(LinkedList *l, Aluno* info)
 
     n->aluno = info;
     n->next = NULL;
+    n->prev = NULL;
     // lista vazia
     if (l->head == NULL)
     {
         l->head = n;
         l->tail = n;
+
     }
     else
     {
+        n->prev = l->tail;
         l->tail->next = n;
         l->tail = n;
     }
@@ -212,6 +215,7 @@ int insert_head(LinkedList *l, Aluno* info)
 
     n->aluno = info;
     n->next = NULL;
+    n->prev = NULL;
     // lista vazia
     if (l->head == NULL)
     {
@@ -355,6 +359,7 @@ int remove_node_by_number(LinkedList *l, int num_aluno)
                 // 5:esta no meio da lista
                 aux1 = aux->next;
                 aux->next = aux->next->next;
+                aux1->next->prev = aux;
                 free(aux1);
             }
             return 1;
@@ -444,6 +449,7 @@ int remove_node_by_name(LinkedList *l, char *nome_aluno)
                 // 5:esta no meio da lista
                 aux1 = aux->next;
                 aux->next = aux->next->next;
+                aux1->next->prev = aux;
                 free(aux1);
             }
             return 1;
@@ -552,6 +558,7 @@ int remove_first(LinkedList *l)
         }
         else
             l->head = l->head->next;
+            l->head->prev = NULL;
     free(aux->aluno);
     free(aux);
     }
@@ -586,34 +593,26 @@ int remove_first(LinkedList *l)
 
 int remove_last(LinkedList* l)
 {
-     Node *aux1, *aux2;
+     Node *aux;
 
-    aux1 = l->head;
-    aux2 = l->head->next;
      // 1:Lista vazia?
     if (l->head == NULL)
         return 0;
     else{
+        aux = l->tail;
+
         // Se a lista tem 1 elemento...
         if (l->head == l->tail){
             l->head = NULL;
             l->tail = NULL;
-            //liberta memória da estrutura e do nó.
-            free(aux1->aluno);
-            free(aux1);
         }
         else{ // Mais do que um elemento.
-            while (aux2->next != NULL){
-                aux1 = aux1->next;
-                aux2 = aux2->next;
-            }
-            //aux1 passa a ser a nova tail
-            aux1->next =NULL;
-            l->tail = aux1;
-            //free da tail anterior (aux2)
-            free(aux2->aluno);
-            free(aux2);
+            aux->prev->next = NULL;
+            l->tail = aux->prev;
         }
+        //liberta memória da estrutura e do nó.
+            free(aux->aluno);
+            free(aux);
     }
     return 1;
 }
