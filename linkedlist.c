@@ -1195,6 +1195,11 @@ void input_list(FILE* fp, LinkedList* l){
     printf("\nLista importada com sucesso!\n");
 }
 
+/************************************************
+Descrição:
+
+*/
+
 void inport_list_bin(const char* list_file, LinkedList* l){
     FILE* fp = le_fB(list_file);
 
@@ -1285,8 +1290,6 @@ void export_list_txt(char* destino, LinkedList* l){
     }
     fprintf(fp, "\\---------------------------------------------------------------/\n");
     printf("Lista guardada com sucesso!\n");
-
-
 }
 
 /************************************************
