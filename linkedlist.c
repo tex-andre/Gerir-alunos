@@ -1141,13 +1141,16 @@ void guardar_sair(LinkedList* l, const char* list_file){
         return 0;
     }
 
+    int* terminator = '\0';                    //He will be back trust me!
     FILE* fp = escreve_fB(list_file);
     Node* aux = l->head;
 
-    while(aux->next != NULL){
+    while(aux != NULL){
         fwrite(aux->aluno, sizeof(Aluno), 1, fp);
         aux = aux->next;
     }
+    fflush(fp);
+    //fwrite(terminator, sizeof(char), 1, fp);
     printf("Lista guardada com sucesso! %c", 7);
 }
 
@@ -1196,17 +1199,25 @@ void input_list_txt(FILE* fp, LinkedList* l){
 
 }
 
+/************************************************
+Descrição:
+
+*/
+
 void inport_list_bin(const char* list_file, LinkedList* l){
     FILE* fp = le_fB(list_file);
 
-    while(!feof(fp)){
+    while(1){
         Aluno* a = (Aluno*) malloc(sizeof(Aluno));
 
         fread(a, sizeof(Aluno), 1, fp);
-        if(a->nome != '\n')
-            insert_tail(l, a);
+        if(feof(fp))
+            break;
+        insert_tail(l, a);
     }
+
     //free(a);
+
     fclose(fp);
 }
 
@@ -1334,8 +1345,6 @@ void export_list_txt(char* destino, LinkedList* l){
     }
     fprintf(fp, "\\---------------------------------------------------------------/\n");
     printf("Lista guardada com sucesso!\n");
-
-
 }
 
 /************************************************

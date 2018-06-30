@@ -21,21 +21,10 @@ int main(){
     input_list_txt(fp, l);
     /********Para editar um aluno pela solução adotada pelo Professor*******/
 
-    //inport_list_bin(list_file, l);
-
     menu(l, list_file);
-    print_list(l);
-    //find(l);
 
-    printf("%f\n", media_final(l));
-    media = media_final(l);
-    printf("%f", media);
     //export_list(l);
-    //fclose(fp);
+    fclose(fp);
     destroy(l);
     return 0;
 } //main
-
-
-
-

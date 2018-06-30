@@ -1,0 +1,3 @@
+Andre Teixeira |1|aluno1@ipt.pt|20|Aprovado
+Md Sharif |2|aluno2@ipt.pt|8|Reprovado
+Paulo Lopes |3|aluno3@ipt.p|13|Aprovado
