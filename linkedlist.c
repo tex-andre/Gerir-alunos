@@ -1104,7 +1104,7 @@ void print_node (Aluno *a){
     printf("| Numero: %d", a->numero);
     printf("\t\t\t\t\t\t\t|\n");
 
-    printf("| E-mail: %s", a->mail);
+    printf("| E-mail:%s", a->mail);
     print_tabs(a->mail, 8);
     printf("|\n");
 
