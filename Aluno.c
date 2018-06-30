@@ -5,20 +5,22 @@
 #include "Aluno.h"
 
 
+/************************************************
+Descrição:
 
+*/
 Aluno* cria_aluno(){
-
+    //Variaveis para a estrutura aluno
     char nome [30], mail[30];
     short numero;
     unsigned short nota_final;
 
-    pede_dados(&nome,&numero,&mail,&nota_final);
-    Aluno *a = cria_estrutura(nome,numero,mail,nota_final);
-   //imprimir_aluno(a);
-
+    pede_dados(&nome,&numero,&mail,&nota_final);                    //Recolhe os dados do novo aluno a criar
+    Aluno *a = cria_estrutura(nome,numero,mail,nota_final);         //cria a estrutura aluno e rotorna-a para a estrutura "a"
 
     return a;
 }
+
 void pede_dados (char *nome, int* numero, char *mail, unsigned short* nota_final){
 
     fflush(stdin);
@@ -108,13 +110,12 @@ void editar_aluno_by_email(Aluno *a){
         gets(buffer_novo_email);
         printf("\n");
         strcpy(a->mail, buffer_novo_email);
+
         printf("/---------------------------------------------------------------\\\n");
         printf("|************************* Aluno Alterado **********************|\n");
         printf("|---------------------------------------------------------------|\n");
         print_node(a);
         printf("\\---------------------------------------------------------------/\n");
-
-
 
 }
 
