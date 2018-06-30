@@ -485,13 +485,41 @@ Sub-menu para editar um aluno da lista.
 
 void menu_editar_aluno(LinkedList *l)
 {
-    Aluno *a=find(l);
-    if(a!=NULL)
+    Aluno* a;
+    LinkedList *filtrada=find(l);
+    int tam_lfiltrada=length(filtrada);
+
+    if(filtrada!=NULL)
     {
+        printf("Resultados da pesquisa:\n");
 
-        int op;
+        if(tam_lfiltrada>1)
+        {
+            int indice,i;
 
-        do{
+            for(i=1; i <= tam_lfiltrada; i++)
+                printf("%d) \n",i);
+            printf("O que pretende editar?\n");
+
+            scanf("%d",&indice);
+            a = posicao_indice(indice,filtrada);
+            define_campos_de_edicao(a);
+
+        }
+        else         // tam=1 para o caso da lista só ter um elemento a editar
+        {
+            a = filtrada->head->aluno;
+            define_campos_de_edicao(a);
+        }
+    }
+    else
+        printf("Aluno nao encontrado");
+}
+
+void define_campos_de_edicao (Aluno* a){
+
+    int op;
+    do{
             printf("\n");
             print_menu_header("Quer editar o aluno por:");
             print_menu_option("1) Nome");
@@ -500,30 +528,28 @@ void menu_editar_aluno(LinkedList *l)
             print_menu_option("4) Voltar");
             print_menu_end_line();
 
-            printf("%c%cIntroduza a sua opcao: ", 8, 13);
-            fflush(stdin);
-            op=getc(stdin);
-        }
-        while(op< '1' || op> '3');
+                printf("%c%cIntroduza a sua opcao: ", 8, 13);
+                fflush(stdin);
+                op=getc(stdin);
+            }
+            while(op< '1' || op> '3');
 
-        switch (op)
-        {
+            switch (op)
+            {
+            case '1' :
+                ;
+                editar_aluno_by_name(a);
+                break;
+            case '2':
+                ;
+                editar_aluno_by_number(a);
+                break;
+            case '3':
+                ;
+                editar_aluno_by_email(a);
+            default:
+                break;
+            }
 
-        case '1' :
-            ;
-            editar_aluno_by_name(a);
-            break;
-        case '2':
-            ;
-            editar_aluno_by_number(a);
-            break;
-        case '3':
-            ;
-            editar_aluno_by_email(a);
-        default:
-            break;
-        }
-    }
-    else
-        printf("Aluno nao encontrado");
+
 }
