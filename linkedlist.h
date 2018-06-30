@@ -62,14 +62,6 @@ int remove_node_by_name(LinkedList *l, char *nome_aluno);
 
 Aluno* peek_head(LinkedList *l);
 Aluno* peek_tail(LinkedList *l);
-<<<<<<< HEAD
-int remove_first(LinkedList *l);
-int remove_last(LinkedList *l);
-int length(LinkedList *l);
-Node* find(LinkedList *l);
-//Node* find_by_name(LinkedList *l, char* info);
-//Node* find_by_number(LinkedList *l, int info);   //done
-=======
 
 int remove_first(LinkedList *l);        //done
 int remove_last(LinkedList *l);
@@ -81,7 +73,7 @@ LinkedList* find(LinkedList *l);
 Node* find_by_name(LinkedList *l, char* info);
 Node* find_by_number(LinkedList *l, int info);
    //done
->>>>>>> master
+
 void sort(LinkedList *l);
 void reverse(LinkedList *l);
 
