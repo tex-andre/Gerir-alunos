@@ -1238,7 +1238,7 @@ Descrição:
 
 */
 
-void inport_list_bin(const char* list_file, LinkedList* l){
+void import_list_bin(const char* list_file, LinkedList* l){
     FILE* fp = le_fB(list_file);
 
     while(1){
@@ -1294,7 +1294,7 @@ LinkedList *import_new_list(LinkedList *l){
     case '2':
         destroy(l);
         strcat(destino,".dat");
-        inport_list_bin(destino,nova_lista);
+        import_list_bin(destino,nova_lista);
 
     default:
     break;
