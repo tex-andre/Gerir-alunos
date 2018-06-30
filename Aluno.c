@@ -12,7 +12,7 @@ Aluno* cria_aluno(){
     short numero;
     unsigned short nota_final;
 
-    pede_dados(nome,&numero,mail,&nota_final);
+    pede_dados(&nome,&numero,&mail,&nota_final);
     Aluno *a = cria_estrutura(nome,numero,mail,nota_final);
    //imprimir_aluno(a);
 
