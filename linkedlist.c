@@ -1206,12 +1206,13 @@ Descrição:
 void inport_list_bin(const char* list_file, LinkedList* l){
     FILE* fp = le_fB(list_file);
 
-    while(!feof(fp)){
+    while(1){
         Aluno* a = (Aluno*) malloc(sizeof(Aluno));
 
         fread(a, sizeof(Aluno), 1, fp);
-        //if(a->nome != '\n')
-            insert_tail(l, a);
+        if(feof(fp))
+            break;
+        insert_tail(l, a);
     }
 
     //free(a);
