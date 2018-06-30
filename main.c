@@ -19,10 +19,10 @@ int main(){
     LinkedList* l = create();
     FILE* fp = le_f(teste_origem);
 
-    //input_list(fp, l);
+    input_list(fp, l);
     /********Para editar um aluno pela solução adotada pelo Professor*******/
 
-    inport_list_bin(list_file, l);
+    //inport_list_bin(list_file, l);
 
 
     print_list(l);

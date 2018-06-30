@@ -1141,6 +1141,7 @@ void guardar_sair(LinkedList* l, const char* list_file){
         return 0;
     }
 
+    char* terminator = '\0';                    //He will be back trust me!
     FILE* fp = escreve_fB(list_file);
     Node* aux = l->head;
 
@@ -1148,6 +1149,7 @@ void guardar_sair(LinkedList* l, const char* list_file){
         fwrite(aux->aluno, sizeof(Aluno), 1, fp);
         aux = aux->next;
     }
+    fwrite(terminator, sizeof(char), 1, fp);
     printf("Lista guardada com sucesso! %c", 7);
 }
 

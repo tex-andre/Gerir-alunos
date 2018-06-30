@@ -26,4 +26,4 @@ Filipe Alves|25|aluno25@ipt.pt|19|Aprovado
 Rui Mamede|26|aluno26@ipt.pt|13|Aprovado
 Hugo Monsanto|27|aluno27@ipt.pt|12|Aprovado
 Paulo Santos|28|aluno28@ipt.pt|5|Reprovado
-Samuel Pereira|29|aluno29@ipt.pt|20|Aprovado
+Samuel Pereira|29|aluno29@ipt.pt|20|provado
