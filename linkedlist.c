@@ -688,8 +688,10 @@ int length(LinkedList *l)
 *
 */
 
-Node* find(LinkedList *l)
+LinkedList* find(LinkedList *l)
 {
+    LinkedList *resultado;
+     LinkedList* resultado_num;
     int op;
     printf("\n");
     print_menu_header("Menu de Pesquisa Alunos");
@@ -714,17 +716,17 @@ Node* find(LinkedList *l)
     case '1' : ;
         char nome[20];
         printf("Qual o a nome do aluno a encontrar?");
-        getchar();
+        fflush(stdin);
         gets(nome);
         printf("\n");
-        Node *resultado=find_all_by_name(l,nome);
+        resultado = find_all_by_name(l,nome);
         if(resultado!= NULL){
             printf("encontrado com sucesso!!\n");
-            return resultado->aluno;
+            return resultado;
         }
         else{
             printf("Nao encontrado...\n");
-            return 0;
+            return NULL;
         }
 
         break;
@@ -733,21 +735,15 @@ Node* find(LinkedList *l)
         printf("Qual o a numero do aluno a encontar?");
         scanf(" %d", &numero);
         printf("\n");
-        Node* resultado_num = find_all_by_number(l, numero);
-        if (resultado_num != NULL)
+       resultado_num = find_all_by_number(l, numero);
+        if (resultado_num != NULL){
             printf("Aluno encontrado com sucesso!!\n");
-        else
+            return resultado_num;
+        }
+        else{
             printf("O Aluno nao foi encontrado...\n");
-        break;
-    case '3' :
-
-        break;
-    case '4' :
-
-        break;
-    case '5' :
-
-        break;
+            return NULL;
+        }
         break;
 
     default:
@@ -757,12 +753,8 @@ Node* find(LinkedList *l)
 
 }
 
-/***strcmp(aux->aluno->nome, info->nome) != 0)   //Compara nome
-            return 0;
-        else if(aux->aluno->numero != info->numero)     //Compara numero
-            return 0;***/
 
-/*Node* find_by_name(LinkedList *l, char* info){
+Node* find_by_name(LinkedList *l, char* info){
 
     Node* aux;
 
@@ -794,7 +786,39 @@ Node* find(LinkedList *l)
         return aux;
 
 }
-*/
+
+Node* find_by_number(LinkedList *l, int info){
+
+    Node* aux;
+
+    aux = l->head;
+    //lista vazia?
+    if(l->head == NULL)
+        return 0;
+
+    // Enquanto não for o últimmo elemento e nao for
+    // encontrado o elemento, precorre a lista
+    while (aux != NULL)
+    {
+        if(aux->aluno->numero == info){
+            printf("/---------------------------------------------------------------\\\n");
+            printf("|************************ Aluno Encontrado *********************|\n");
+            printf("|---------------------------------------------------------------|\n");
+            print_node(aux->aluno);
+            printf("\\---------------------------------------------------------------/\n");
+            return aux;
+        }
+
+        aux = aux->next;
+        //printf("Numero: %d\n", info->numero);
+
+    }
+    if (aux == NULL)
+        return NULL;
+    else
+        return aux;
+
+}
 LinkedList* find_all_by_name(LinkedList *l, char* info){
 
     LinkedList *f=create();
@@ -817,7 +841,7 @@ LinkedList* find_all_by_name(LinkedList *l, char* info){
             printf("|---------------------------------------------------------------|\n");
             print_node(aux->aluno);
             printf("\\---------------------------------------------------------------/\n");
-            insert_tail(f,aux);
+            insert_tail(f,aux->aluno);
         }
 
         aux = aux->next;
@@ -854,7 +878,7 @@ LinkedList* find_all_by_number(LinkedList *l, int info)
             printf("|---------------------------------------------------------------|\n");
             print_node(aux->aluno);
             printf("\\---------------------------------------------------------------/\n");
-            insert_tail(f,aux);
+            insert_tail(f,aux->aluno);
         }
 
         aux = aux->next;
@@ -968,39 +992,8 @@ LinkedList *find_all_reprovados(LinkedList *l){
 
 
 
-/*Node* find_by_number(LinkedList *l, int info){
 
-    Node* aux;
 
-    aux = l->head;
-    //lista vazia?
-    if(l->head == NULL)
-        return 0;
-
-    // Enquanto não for o últimmo elemento e nao for
-    // encontrado o elemento, precorre a lista
-    while (aux != NULL)
-    {
-        if(aux->aluno->numero == info){
-            printf("/---------------------------------------------------------------\\\n");
-            printf("|************************ Aluno Encontrado *********************|\n");
-            printf("|---------------------------------------------------------------|\n");
-            print_node(aux->aluno);
-            printf("\\---------------------------------------------------------------/\n");
-            return aux;
-        }
-
-        aux = aux->next;
-        //printf("Numero: %d\n", info->numero);
-
-    }
-    if (aux == NULL)
-        return NULL;
-    else
-        return aux;
-
-}
-*/
 /**F*****************************************************************
 * NAME :            int length()
 *
@@ -1490,5 +1483,27 @@ void export_list_html(char* destino, LinkedList* l){
     fprintf(fp, "\n<table>\n");
 
     printf("Lista guardada com sucesso!\n");
+}
+
+Node* posicao_indice(int indice, LinkedList *l)
+{
+
+    if(l->head == NULL || indice == 0)
+    {
+        printf("\nERRO: lista vazia!!\n");;
+        return 0;
+    }
+
+    Node *aux;
+    aux=l->head;
+
+    int i=1;
+
+    while(aux!=NULL && i<indice)
+    {
+        aux=aux->next;
+        i++;
+    }
+    return aux->aluno;
 }
 

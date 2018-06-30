@@ -20,6 +20,7 @@
  void menu_editar_aluno(LinkedList *l);
  void menu_ver(LinkedList *l);
  void menu_estatistica(LinkedList *l);
+ void define_campos_de_edicao (Aluno* a);
 
 
 

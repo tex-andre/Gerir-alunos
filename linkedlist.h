@@ -55,34 +55,48 @@ void destroy(LinkedList *l);
 int insert_tail(LinkedList *l, Aluno* info);
 int insert_head(LinkedList *l, Aluno* info);
 int contains(LinkedList *l, Aluno* info);
+
 int remove_node_by_number(LinkedList *l, int num_aluno);
 int remove_node_by_name(LinkedList *l, char *nome_aluno);
+
 Aluno* peek_head(LinkedList *l);
 Aluno* peek_tail(LinkedList *l);
+
 int remove_first(LinkedList *l);        //done
-int remove_last(LinkedList *l);         //done
-int length(LinkedList *l);              //done
-Node* find(LinkedList *l);
-//Node* find_by_name(LinkedList *l, char* info);
-//Node* find_by_number(LinkedList *l, int info);   //done
+int remove_last(LinkedList *l);
+         //done
+int length(LinkedList *l);
+Node* posicao_indice(int indice,LinkedList *l);
+              //done
+LinkedList* find(LinkedList *l);
+Node* find_by_name(LinkedList *l, char* info);
+Node* find_by_number(LinkedList *l, int info);
+   //done
 void sort(LinkedList *l);
 void reverse(LinkedList *l);
+
 void print_list(LinkedList *l);
 void print_node (Aluno *a);
+
 int num_aprovados(LinkedList* l);
 float media_final(LinkedList* l);
 void guardar_sair(LinkedList* l, const char* list_file);
+
 LinkedList* find_all_by_name(LinkedList *l, char* info);
 LinkedList* find_all_by_number(LinkedList *l, int info);
 LinkedList *find_all_aprovados(LinkedList *l);
 LinkedList *find_all_reprovados(LinkedList *l);
+
 void percentagem_aprovados(LinkedList *aprovados, LinkedList *l);
 void percentagem_reprovados(LinkedList *reprovados, LinkedList *l);
+
 char* strcasestr(const char* haystack, const char* needle);
+
 void export_list_csv(char* destino, LinkedList* l);
 void export_list_html(char* destino, LinkedList* l);
 int export_list(LinkedList* l);
 void export_list_txt(char* destino, LinkedList* l);
+
 void fprint_node_txt (FILE* fp, Aluno *a);
 void fprint_tabs_txt (FILE* fp, char* str);
 LinkedList *import_new_list(LinkedList *l);
