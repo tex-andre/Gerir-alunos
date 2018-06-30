@@ -311,8 +311,8 @@ void menu_exportar(LinkedList *l)
 
     do{
         printf("\n");
-        print_menu_header("Menu de Importacao");
-        print_menu_option("1) Ver todos os alunos existentes");
+        print_menu_header("Menu de Exportacao");
+        print_menu_option("1) Exportar Lista de Alunos");
         print_menu_option("2) Exportar um aluno");
         print_menu_option("3) Voltar");
         print_menu_end_line();

@@ -810,7 +810,8 @@ LinkedList* find_all_by_name(LinkedList *l, char* info){
     // encontrado o elemento, precorre a lista
     while (aux != NULL)
     {
-        if(strcasestr(aux->aluno->nome, info) != NULL){
+        char* ptr = strcasestr(aux->aluno->nome,info);
+        if(ptr != NULL){
             printf("/---------------------------------------------------------------\\\n");
             printf("|************************ Aluno Encontrados ********************|\n");
             printf("|---------------------------------------------------------------|\n");
