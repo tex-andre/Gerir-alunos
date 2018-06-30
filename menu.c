@@ -245,6 +245,7 @@ void menu_pesquisa(LinkedList *l)
         else{
             printf("Nao encontrado...\n");
         }
+
         //find_all_by_name(l,"Andre");
         break;
 
@@ -367,7 +368,7 @@ void menu_remover_alunos(LinkedList *l){
             printf("Qual o nome do aluno que deseja remover?");
             fflush(stdin); // limpa o enter anterior
             gets(nome);
-            find_by_name(l,nome);
+            find_all_by_name(l,nome);
             int resultado = remove_node_by_name(l, nome);
             if (resultado == 1)
                 printf("Removido com sucesso!!\n");
@@ -382,8 +383,8 @@ void menu_remover_alunos(LinkedList *l){
         int numero;
         printf("Qual o num do aluno a remover?");
         scanf("%d", &numero);
-        find_by_number(l,numero);
-        int resultado = remove_node(l, numero);
+        find_all_by_number(l,numero);
+        int resultado = remove_node_by_number(l, numero);
         if (resultado == 1)
             printf("Removido com sucesso!!\n");
         else

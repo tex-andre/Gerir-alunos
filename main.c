@@ -11,7 +11,6 @@
 int main(){
     const char* origem = "Ficheiros\\Participantes.txt";
     const char* list_file = "Ficheiros\\Participantes.dat";
-    float media = 0;
     //printf(" O Andre e o Duarte ja dominam o GITHUB \n");
 
     LinkedList* l = create();

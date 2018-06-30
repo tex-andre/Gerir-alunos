@@ -314,7 +314,7 @@ int contains(LinkedList *l, Aluno* info)
 //#warning TODO (tex#1#): Em  falta
 
 
-int remove_node(LinkedList *l, int num_aluno)
+int remove_node_by_number(LinkedList *l, int num_aluno)
 {
     Node *aux, *aux1;
     // 1:Lista vazia
@@ -714,7 +714,7 @@ Node* find(LinkedList *l)
         getchar();
         gets(nome);
         printf("\n");
-        Node *resultado=find_by_name(l,nome);
+        Node *resultado=find_all_by_name(l,nome);
         if(resultado!= NULL){
             printf("encontrado com sucesso!!\n");
             return resultado->aluno;
@@ -730,7 +730,7 @@ Node* find(LinkedList *l)
         printf("Qual o a numero do aluno a encontar?");
         scanf(" %d", &numero);
         printf("\n");
-        Node* resultado_num = find_by_number(l, numero);
+        Node* resultado_num = find_all_by_number(l, numero);
         if (resultado_num != NULL)
             printf("Aluno encontrado com sucesso!!\n");
         else
@@ -759,7 +759,7 @@ Node* find(LinkedList *l)
         else if(aux->aluno->numero != info->numero)     //Compara numero
             return 0;***/
 
-Node* find_by_name(LinkedList *l, char* info){
+/*Node* find_by_name(LinkedList *l, char* info){
 
     Node* aux;
 
@@ -791,7 +791,7 @@ Node* find_by_name(LinkedList *l, char* info){
         return aux;
 
 }
-
+*/
 LinkedList* find_all_by_name(LinkedList *l, char* info){
 
     LinkedList *f=create();
@@ -809,6 +809,43 @@ LinkedList* find_all_by_name(LinkedList *l, char* info){
     {
         char* ptr = strcasestr(aux->aluno->nome,info);
         if(ptr != NULL){
+            printf("/---------------------------------------------------------------\\\n");
+            printf("|************************ Aluno Encontrados ********************|\n");
+            printf("|---------------------------------------------------------------|\n");
+            print_node(aux->aluno);
+            printf("\\---------------------------------------------------------------/\n");
+            insert_tail(f,aux);
+        }
+
+        aux = aux->next;
+
+        //printf(" Nome: %s\n", info->nome); // apenas um teste
+    }
+    if (length(f)== 0)
+        return NULL;
+    else
+        return f;
+
+}
+
+LinkedList* find_all_by_number(LinkedList *l, int info)
+{
+
+    LinkedList *f=create();
+
+    Node* aux;
+
+    aux = l->head;
+    //lista vazia?
+    if(l->head == NULL)
+        return 0;
+
+    // Enquanto não for o últimmo elemento e nao for
+    // encontrado o elemento, precorre a lista
+    while (aux != NULL)
+    {
+        if(aux->aluno->numero==info)
+        {
             printf("/---------------------------------------------------------------\\\n");
             printf("|************************ Aluno Encontrados ********************|\n");
             printf("|---------------------------------------------------------------|\n");
@@ -928,7 +965,7 @@ LinkedList *find_all_reprovados(LinkedList *l){
 
 
 
-Node* find_by_number(LinkedList *l, int info){
+/*Node* find_by_number(LinkedList *l, int info){
 
     Node* aux;
 
@@ -960,6 +997,7 @@ Node* find_by_number(LinkedList *l, int info){
         return aux;
 
 }
+*/
 /**F*****************************************************************
 * NAME :            int length()
 *
