@@ -359,6 +359,7 @@ int remove_node_by_number(LinkedList *l, int num_aluno)
                 // 5:esta no meio da lista
                 aux1 = aux->next;
                 aux->next = aux->next->next;
+                aux1->next->prev = aux;
                 free(aux1);
             }
             return 1;
@@ -448,6 +449,7 @@ int remove_node_by_name(LinkedList *l, char *nome_aluno)
                 // 5:esta no meio da lista
                 aux1 = aux->next;
                 aux->next = aux->next->next;
+                aux1->next->prev = aux;
                 free(aux1);
             }
             return 1;
