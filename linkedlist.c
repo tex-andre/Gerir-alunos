@@ -1264,7 +1264,7 @@ void import_new_list(LinkedList *l){
     if(aux == NULL)
         return 0;
 
-    printf("\nIntroduza o nome do ficheiro (sem extencao): ");
+    printf("\nIntroduza o nome do ficheiro (sem extensao): ");
 
     scanf("%s", &file_name);        // lê nome do ficheiro
     strcat(destino, file_name);     // adiciona o nome do ficheiro à directoria de destino

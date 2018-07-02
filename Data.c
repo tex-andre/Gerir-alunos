@@ -18,10 +18,15 @@ void pede_data(int* dia, int* mes, int* ano){
 }
 
 my_tm* data_atual(){
-    time_t t = time(NULL); // NULL porque antes time() recebia ponteiro onde guardava o tempo, agora retorna esse valor
-    my_tm* tmp_atual = localtime(&t); // converte o tempo da variavel t e guarda na estrutura tm
+    // NULL porque antes time()
+    //recebia ponteiro onde guardava o tempo,
+    //agora retorna diretamente esse valor.
+    time_t t = time(NULL);
 
-    // Ajusted para a data atual
+    // Converte o tempo da variavel t e
+    //guarda na estrutura tm
+    my_tm* tmp_atual = localtime(&t);
+    // Ajusta para a data atual
     tmp_atual->tm_year += 1900;
     tmp_atual->tm_mon += 1;
 

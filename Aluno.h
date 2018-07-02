@@ -24,6 +24,7 @@ bool aprovacao(unsigned short nota_final);
 void editar_aluno_by_name(Aluno *a);
 void editar_aluno_by_number(Aluno *a);
 void editar_aluno_by_email(Aluno *a);
+void editar_aluno_by_nota(Aluno* a);
 
 
 #endif // FUNCOES_H_INCLUDED
