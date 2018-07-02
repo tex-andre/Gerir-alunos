@@ -80,7 +80,7 @@ void editar_aluno_by_name(Aluno *a){
     /*******Novo nome do aluno que o utilizador pretende editar*****/
 
         char buffer_novo_nome[20];
-        printf("Qual o a novo nome do aluno a que pretende editar?");
+        printf("Qual o a novo nome do aluno a que pretende editar? ");
         fflush(stdin);
         gets(buffer_novo_nome);
         printf("\n");
@@ -102,7 +102,7 @@ void editar_aluno_by_number(Aluno *a){
     /**********Novo numero do aluno que o utilizador pretende editar****/
 
         int buffer_novo_number;
-        printf("Qual o a novo numero do aluno a que pretende editar?");
+        printf("Qual o a novo numero do aluno a que pretende editar? ");
         fflush(stdin);
         scanf("%d", &buffer_novo_number);
         printf("\n");
@@ -124,7 +124,7 @@ void editar_aluno_by_email(Aluno *a){
     /*******Novo email do aluno que o utilizador pretende editar***/
 
         char buffer_novo_email[20];
-        printf("Qual o a novo email do aluno a que pretende editar?");
+        printf("Qual o a novo email do aluno a que pretende editar? ");
         fflush(stdin);
         gets(buffer_novo_email);
         printf("\n");
@@ -138,5 +138,19 @@ void editar_aluno_by_email(Aluno *a){
 
 }
 
+void editar_aluno_by_nota(Aluno* a){
+    int nova_nota = 0;
+        printf("Qual a nova nota do aluno que pretende editar? ");
+        fflush(stdin);
+        scanf("%d", &nova_nota);
+        a->nota_final = nova_nota;
+        printf("\n");
 
+        printf("/---------------------------------------------------------------\\\n");
+        printf("|************************* Aluno Alterado **********************|\n");
+        printf("|---------------------------------------------------------------|\n");
+        print_node(a);
+        printf("\\---------------------------------------------------------------/\n");
+
+}
 

@@ -475,14 +475,15 @@ void define_campos_de_edicao (Aluno* a){
             print_menu_option("1) Nome");
             print_menu_option("2) Numero");
             print_menu_option("3) Email");
-            print_menu_option("4) Voltar");
+            print_menu_option("4) Nota final");
+            print_menu_option("5) Voltar");
             print_menu_end_line();
 
                 printf("%c%cIntroduza a sua opcao: ", 8, 13);
                 fflush(stdin);
                 op=getc(stdin);
             }
-            while(op< '1' || op> '4');
+            while(op< '1' || op> '5');
 
             switch (op)
             {
@@ -497,7 +498,10 @@ void define_campos_de_edicao (Aluno* a){
             case '3':
                 ;
                 editar_aluno_by_email(a);
-            case '4': ;
+            case '4':
+                editar_aluno_by_nota(a);
+                break;
+            case '5': ;
                 break;
             default:
                 break;
