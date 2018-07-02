@@ -19,7 +19,6 @@ typedef struct {
 Aluno* cria_aluno();
 void pede_dados(char *nome, int *numero,char *mail, unsigned short *nota_final);
 Aluno *cria_estrutura(char *nome, int numero, char  *mail, unsigned short nota_final);
-void imprimir_aluno (Aluno *a);
 bool aprovacao(unsigned short nota_final);
 void editar_aluno_by_name(Aluno *a);
 void editar_aluno_by_number(Aluno *a);
