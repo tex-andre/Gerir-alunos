@@ -1488,7 +1488,7 @@ void export_list_html(char* destino, LinkedList* l){
         fprintf(fp, "\n</tr>");
     aux = aux->next;
         }
-    fprintf(fp, "\n<table>\n");
+    fprintf(fp, "\n</table>\n");
 
     printf("Lista guardada com sucesso!\n");
 }
